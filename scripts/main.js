@@ -81,6 +81,7 @@
       const overlay = document.getElementById("menuOverlay");
       const closeBtn = document.getElementById("menuOverlayClose");
       const menuLinks = overlay ? overlay.querySelectorAll(".menu-overlay-link") : [];
+      const subMenuLinks = overlay ? overlay.querySelectorAll(".menu-submenu-link") : [];
       const hoverBubble = document.getElementById("menuHoverBubble");
 
       if (!menuBtn || !overlay || !closeBtn) return;
@@ -153,6 +154,10 @@
         link.addEventListener("mouseleave", hideBubble);
         link.addEventListener("blur", hideBubble);
 
+        link.addEventListener("click", closeMenu);
+      });
+
+      subMenuLinks.forEach(function (link) {
         link.addEventListener("click", closeMenu);
       });
 

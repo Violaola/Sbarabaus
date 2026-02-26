@@ -73,9 +73,12 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s ease;
-      background:
-        radial-gradient(circle at center, rgba(0, 0, 0, 0.75) 0 42%, rgba(0, 0, 0, 0.5) 100%),
-        #000;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 50%,
+        rgba(0, 0, 0, 1) 100%
+      );
     }
 
     .menu-overlay.is-open {
@@ -110,6 +113,13 @@
       padding: 1rem;
     }
 
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
     .menu-overlay-link {
       color: #fff;
       text-decoration: none;
@@ -123,6 +133,41 @@
 
     .menu-overlay-link:hover,
     .menu-overlay-link:focus-visible {
+      color: #0fa8ea;
+    }
+
+    .menu-submenu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(-0.35rem);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease, max-height 0.2s ease;
+    }
+
+    .menu-item:hover .menu-submenu,
+    .menu-item:focus-within .menu-submenu {
+      opacity: 1;
+      max-height: 12rem;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .menu-submenu-link {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-size: clamp(1rem, 1.05vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.1;
+      transition: color 0.2s ease;
+    }
+
+    .menu-submenu-link:hover,
+    .menu-submenu-link:focus-visible {
       color: #0fa8ea;
     }
 
@@ -1287,6 +1332,10 @@
 
       .menu-overlay-link {
         font-size: clamp(1.8rem, 8vw, 2.35rem);
+      }
+
+      .menu-submenu-link {
+        font-size: clamp(0.95rem, 4.4vw, 1.15rem);
       }
 
       .menu-overlay-team {
