@@ -127,33 +127,49 @@
         }
       });
 
+      function showBubbleForLink(link) {
+        if (!hoverBubble) return;
+        const src = link.dataset.bubble;
+        if (!src) return;
+        const linkRect = link.getBoundingClientRect();
+        const overlayRect = overlay.getBoundingClientRect();
+        const centerX = linkRect.left - overlayRect.left + linkRect.width / 2;
+        const centerY = linkRect.top - overlayRect.top + linkRect.height / 2;
+
+        hoverBubble.src = src;
+        hoverBubble.alt = "Balloon " + link.textContent.trim();
+        hoverBubble.style.setProperty("--bubble-x", centerX + "px");
+        hoverBubble.style.setProperty("--bubble-y", centerY + "px");
+        hoverBubble.classList.add("is-visible");
+      }
+
+      function hideBubble() {
+        if (!hoverBubble) return;
+        hoverBubble.classList.remove("is-visible");
+      }
+
+      const handledItems = new WeakSet();
+
       menuLinks.forEach(function (link) {
-        function showBubble() {
-          if (!hoverBubble) return;
-          const src = link.dataset.bubble;
-          if (!src) return;
-          const linkRect = link.getBoundingClientRect();
-          const overlayRect = overlay.getBoundingClientRect();
-          const centerX = linkRect.left - overlayRect.left + linkRect.width / 2;
-          const centerY = linkRect.top - overlayRect.top + linkRect.height / 2;
+        const item = link.closest(".menu-item");
 
-          hoverBubble.src = src;
-          hoverBubble.alt = "Balloon " + link.textContent.trim();
-          hoverBubble.style.setProperty("--bubble-x", centerX + "px");
-          hoverBubble.style.setProperty("--bubble-y", centerY + "px");
-          hoverBubble.classList.add("is-visible");
+        if (item && !handledItems.has(item)) {
+          item.addEventListener("mouseenter", function () {
+            showBubbleForLink(link);
+          });
+          item.addEventListener("mouseleave", hideBubble);
+          handledItems.add(item);
+        } else if (!item) {
+          link.addEventListener("mouseenter", function () {
+            showBubbleForLink(link);
+          });
+          link.addEventListener("mouseleave", hideBubble);
         }
 
-        function hideBubble() {
-          if (!hoverBubble) return;
-          hoverBubble.classList.remove("is-visible");
-        }
-
-        link.addEventListener("mouseenter", showBubble);
-        link.addEventListener("focus", showBubble);
-        link.addEventListener("mouseleave", hideBubble);
+        link.addEventListener("focus", function () {
+          showBubbleForLink(link);
+        });
         link.addEventListener("blur", hideBubble);
-
         link.addEventListener("click", closeMenu);
       });
 

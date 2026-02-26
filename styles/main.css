@@ -198,11 +198,18 @@
       border: 0;
       background: transparent;
       color: #fff;
-      font-size: 1.45rem;
       line-height: 1;
       padding: 0;
       cursor: pointer;
       transition: transform 0.2s ease;
+    }
+
+    .menu-lang-btn img {
+      display: block;
+      width: 1.6rem;
+      height: 1.1rem;
+      object-fit: cover;
+      border-radius: 0.15rem;
     }
 
     .menu-lang-btn:hover {
@@ -1344,10 +1351,13 @@
       .menu-overlay-nav {
         width: 100%;
         max-width: 22rem;
+        min-height: calc(100vh - 2rem);
+        min-height: calc(100svh - 2rem);
         min-height: calc(100dvh - 2rem);
         justify-content: center;
         gap: 1.25rem;
         padding: 0;
+        margin-block: auto;
       }
 
       .menu-item {
