@@ -30,9 +30,24 @@ body {
 }
 
 .hero-nav {
+  position: relative;
   min-height: 2.4rem;
   display: flex;
   align-items: center;
+}
+
+.hero-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  line-height: 0;
+}
+
+.hero-logo img {
+  width: clamp(9.2rem, 15vw, 12.5rem);
+  height: auto;
+  display: block;
 }
 
 .menu-trigger {
@@ -228,7 +243,7 @@ body.menu-open {
   min-height: clamp(34rem, 78vh, 47rem);
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
   background: #000;
 }
@@ -254,16 +269,15 @@ body.menu-open {
   max-width: 1700px;
   margin-inline: auto;
   width: 100%;
-  padding: clamp(5.2rem, 12vh, 7.2rem) clamp(1rem, 3.5vw, 2.5rem) 3rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(17rem, 0.95fr);
-  align-items: end;
-  gap: clamp(1.2rem, 3vw, 3rem);
+  padding: clamp(5.2rem, 12vh, 7.2rem) clamp(1rem, 3.5vw, 2.5rem) clamp(5.4rem, 12vh, 7rem);
+  position: relative;
 }
 
 .page-hero-text {
   position: relative;
   color: #fff;
+  max-width: min(60rem, 64vw);
+  z-index: 1;
 }
 
 .page-hero-bgword {
@@ -297,13 +311,15 @@ body.menu-open {
 }
 
 .page-hero-media {
-  display: flex;
-  justify-content: flex-end;
-  align-items: end;
+  position: absolute;
+  right: clamp(1rem, 4vw, 3.2rem);
+  bottom: clamp(-2.8rem, -5vw, -1.4rem);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .page-hero-media img {
-  width: min(100%, 34rem);
+  width: min(42vw, 36rem);
   height: auto;
   display: block;
 }
@@ -333,15 +349,15 @@ body.menu-open {
   }
 
   .page-hero-content {
-    grid-template-columns: 1fr;
-    align-items: center;
     text-align: left;
     padding-top: 6.2rem;
+    padding-bottom: 3rem;
   }
 
   .page-hero-media {
-    justify-content: center;
-    margin-top: 0.4rem;
+    position: static;
+    margin-top: 1rem;
+    pointer-events: none;
   }
 
   .page-hero-media img {
@@ -399,6 +415,10 @@ body.menu-open {
 
   .page-hero-content {
     padding-top: 5.5rem;
+  }
+
+  .hero-logo img {
+    width: clamp(7.6rem, 28vw, 9.3rem);
   }
 
   .page-hero-bgword {
