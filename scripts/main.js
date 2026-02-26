@@ -131,9 +131,15 @@
           if (!hoverBubble) return;
           const src = link.dataset.bubble;
           if (!src) return;
+          const linkRect = link.getBoundingClientRect();
+          const overlayRect = overlay.getBoundingClientRect();
+          const centerX = linkRect.left - overlayRect.left + linkRect.width / 2;
+          const centerY = linkRect.top - overlayRect.top + linkRect.height / 2;
 
           hoverBubble.src = src;
           hoverBubble.alt = "Balloon " + link.textContent.trim();
+          hoverBubble.style.setProperty("--bubble-x", centerX + "px");
+          hoverBubble.style.setProperty("--bubble-y", centerY + "px");
           hoverBubble.classList.add("is-visible");
         }
 
