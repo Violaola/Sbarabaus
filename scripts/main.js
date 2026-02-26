@@ -81,6 +81,7 @@
       const overlay = document.getElementById("menuOverlay");
       const closeBtn = document.getElementById("menuOverlayClose");
       const menuLinks = overlay ? overlay.querySelectorAll(".menu-overlay-link") : [];
+      const hoverBubble = document.getElementById("menuHoverBubble");
 
       if (!menuBtn || !overlay || !closeBtn) return;
 
@@ -91,6 +92,10 @@
         overlay.setAttribute("aria-hidden", "false");
         document.body.classList.add("menu-open");
         menuBtn.setAttribute("aria-expanded", "true");
+        if (hoverBubble) {
+          hoverBubble.classList.remove("is-visible");
+          hoverBubble.src = "";
+        }
       }
 
       function closeMenu() {
@@ -98,6 +103,10 @@
         overlay.setAttribute("aria-hidden", "true");
         document.body.classList.remove("menu-open");
         menuBtn.setAttribute("aria-expanded", "false");
+        if (hoverBubble) {
+          hoverBubble.classList.remove("is-visible");
+          hoverBubble.src = "";
+        }
       }
 
       menuBtn.addEventListener("click", function () {
@@ -118,6 +127,26 @@
       });
 
       menuLinks.forEach(function (link) {
+        function showBubble() {
+          if (!hoverBubble) return;
+          const src = link.dataset.bubble;
+          if (!src) return;
+
+          hoverBubble.src = src;
+          hoverBubble.alt = "Balloon " + link.textContent.trim();
+          hoverBubble.classList.add("is-visible");
+        }
+
+        function hideBubble() {
+          if (!hoverBubble) return;
+          hoverBubble.classList.remove("is-visible");
+        }
+
+        link.addEventListener("mouseenter", showBubble);
+        link.addEventListener("focus", showBubble);
+        link.addEventListener("mouseleave", hideBubble);
+        link.addEventListener("blur", hideBubble);
+
         link.addEventListener("click", closeMenu);
       });
 

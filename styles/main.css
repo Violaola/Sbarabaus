@@ -126,6 +126,23 @@
       color: #0fa8ea;
     }
 
+    .menu-hover-bubble {
+      position: absolute;
+      right: clamp(6rem, 14vw, 16rem);
+      top: 50%;
+      transform: translateY(-50%) scale(0.92);
+      width: clamp(12rem, 20vw, 18rem);
+      opacity: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 0.55rem 0.9rem rgba(0, 0, 0, 0.35));
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .menu-hover-bubble.is-visible {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+
     .menu-lang {
       margin-top: 1.25rem;
       display: flex;
@@ -1274,6 +1291,10 @@
 
       .menu-overlay-team {
         width: clamp(8rem, 34vw, 11rem);
+      }
+
+      .menu-hover-bubble {
+        display: none;
       }
 
       .hero-card {
