@@ -419,6 +419,14 @@ h2 {
     .btn-cta--orange:focus-visible,
     .btn.btn-warning:hover,
     .btn.btn-warning:focus-visible {
+      background: var(--cta-blue);
+      color: var(--cta-white);
+    }
+
+    .footer-cta .btn-cta--orange:hover,
+    .footer-cta .btn-cta--orange:focus-visible,
+    .footer-cta .btn.btn-warning:hover,
+    .footer-cta .btn.btn-warning:focus-visible {
       background: var(--cta-orange);
       color: var(--cta-ink);
     }
