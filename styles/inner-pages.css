@@ -1,4 +1,7 @@
-﻿:root {
+﻿@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+:root {
   color-scheme: light;
 }
 
@@ -9,8 +12,16 @@
 body {
   margin: 0;
   font-family: "Sofia Sans", sans-serif;
-  background: #ececef;
+  background: #f9fafb;
   color: #121212;
+}
+
+h2 {
+  font-family: "Sofia Sans Semi Condensed", "Sofia Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5rem;
+  text-transform: uppercase;
 }
 
 .top-header {
@@ -325,7 +336,7 @@ body.menu-open {
 }
 
 .page-main {
-  background: #ececef;
+  background: #f9fafb;
   padding: 3rem 1rem 4rem;
   min-height: 30vh;
 }
@@ -362,6 +373,16 @@ body.menu-open {
 
   .page-hero-media img {
     width: min(100%, 23rem);
+  }
+
+  .footer-main .col-lg-4,
+  .footer-main .col-lg-3,
+  .footer-main .col-lg-5 {
+    text-align: left;
+  }
+
+  .social-row {
+    justify-content: flex-start;
   }
 }
 
@@ -432,11 +453,16 @@ body.menu-open {
   padding-top: 3.2rem;
 }
 
-.footer-cta h3 {
-  font-weight: 900;
-  font-size: clamp(2rem, 5vw, 3.1rem);
+.footer-heading {
+  margin: 0 0 1rem;
+  font-family: "Sofia Sans", sans-serif;
+  font-size: clamp(2.5rem, 7vw, 4.0625rem);
   line-height: 1.02;
-  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.footer-heading-strong {
+  font-weight: 900;
 }
 
 .footer-main {
@@ -510,11 +536,13 @@ body.menu-open {
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   padding: 0.85rem 0 1rem;
   text-align: center;
+  color: #fff;
 }
 
 .small-muted {
   font-size: 0.96rem;
-  opacity: 0.85;
+  color: #fff;
+  opacity: 1;
 }
 
 .footer-signature {
@@ -522,8 +550,10 @@ body.menu-open {
   color: #1a1a1a;
   text-align: center;
   padding: 0.95rem 0 1rem;
+  font-family: "Poppins", sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.35;
 }
 
@@ -558,4 +588,3 @@ body {
 .footer-meta a:hover {
   text-decoration: underline;
 }
-
