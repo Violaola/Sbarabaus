@@ -326,21 +326,21 @@
         {
           date: "15/01/2026",
           character: "Maya",
-          avatar: "https://picsum.photos/seed/chat-persona-1/160/160",
+          avatar: "/images/teams-avatar-che-fate-01.png",
           title: "Titolo del messaggio",
           text: "Aenean vel tortor aliquet, lobortis ligula a, tempus metus.",
         },
         {
           date: "22/01/2026",
           character: "Luca",
-          avatar: "https://picsum.photos/seed/chat-persona-2/160/160",
+          avatar: "/images/teams-avatar-che-fate-02.png",
           title: "Secondo messaggio",
           text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
         },
         {
           date: "30/01/2026",
           character: "Nora",
-          avatar: "https://picsum.photos/seed/chat-persona-3/160/160",
+          avatar: "/images/teams-avatar-che-fate-03.png",
           title: "Terzo messaggio",
           text: "Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum.",
         },
@@ -444,15 +444,15 @@
       const originals = [
         {
           title: "Caramelle",
-          image: "https://picsum.photos/seed/caramelle-fixed/1600/1000",
+          image: "/images/originals-cover-01-700x395.jpg",
         },
         {
           title: "Marta e la morte",
-          image: "https://picsum.photos/seed/marta-fixed/1600/1000",
+          image: "/images/originals-cover-02-270x395.jpg",
         },
         {
           title: "#Nostoppignora",
-          image: "https://picsum.photos/seed/nora-fixed/1600/1000",
+          image: "/images/originals-cover-03-270x395.jpg",
         },
       ];
 
@@ -526,4 +526,3 @@
 
       renderOriginals();
     })();
-
