@@ -1,0 +1,47 @@
+---
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "../../styles/main.css";
+import menuScriptUrl from "../scripts/menu.js?url";
+import mainScriptUrl from "../scripts/main.js?url";
+import innerPagesScriptUrl from "../scripts/inner-pages.js?url";
+
+interface Props {
+  title?: string;
+  description?: string;
+  useInnerPagesScript?: boolean;
+}
+
+const {
+  title = "Panebarco",
+  description = "",
+  useInnerPagesScript = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Margarine&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+
+    <script type="module" src={menuScriptUrl}></script>
+    <script type="module" src={mainScriptUrl}></script>
+
+    {useInnerPagesScript && (
+      <script type="module" src={innerPagesScriptUrl}></script>
+    )}
+  </body>
+</html>
