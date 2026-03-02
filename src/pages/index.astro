@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
 <BaseLayout title="Panebarco - Homepage" description="Homepage Panebarco" useInnerPagesScript={false}>
@@ -286,47 +287,5 @@ import MenuOverlay from "../components/MenuOverlay.astro";
       </section>
     </main>
   
-    <footer id="contatti" class="footer-cta">
-      <div class="container">
-        <div class="row g-4 footer-main align-items-center">
-          <div class="col-lg-4">
-            <img class="footer-logo" src="/images/panebarco logo light.png" alt="Panebarco">
-            <p class="contact-line mb-0">Panebarco &amp; C. S.r.l. - Via Molino, 9<br>48121 Ravenna, Italia<br>+39 0544 35012 | +39 338 3693558<br>info@panebarco.it</p>
-          </div>
-  
-          <div class="col-lg-3">
-            <div class="social-row">
-              <a class="social-circle social-facebook" href="#" aria-label="Facebook">
-                <i class="bi bi-facebook"></i>
-              </a>
-              <a class="social-circle social-instagram" href="#" aria-label="Instagram">
-                <i class="bi bi-instagram"></i>
-              </a>
-              <a class="social-circle social-vimeo" href="#" aria-label="Vimeo">
-                <i class="bi bi-vimeo"></i>
-              </a>
-            </div>
-            <p class="legal-line">Codice SDI XL13LG4<br>P. Iva e C. F. IT01315670396<br>R.E.A. RA 135428<br>Capitale sociale euro 40.000,00 I.V.</p>
-          </div>
-  
-          <div class="col-lg-5">
-            <h3 class="footer-heading">Hai un progetto in mente?<br><span class="footer-heading-strong">Lo animiamo noi.</span></h3>
-            <a href="#" class="btn btn-cta btn-cta--orange btn-pill">CONTATTACI</a>
-          </div>
-        </div>
-  
-        <div class="footer-meta">
-                  <p class="small-muted mb-0">
-            Copyright &copy; Panebarco &amp; C. 2025 | <a href="#">Privacy Policy</a> - <a href="#">Cookie Policy</a>
-          </p>
-        </div>
-      </div>
-  
-      <div class="footer-signature">
-        <div class="container">
-          Prodotto originale frutto delle menti felici e creative di
-          <a href="https://www.happyminds.it" target="_blank" rel="noopener noreferrer">HappyMinds</a>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter />
 </BaseLayout>

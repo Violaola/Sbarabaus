@@ -2,18 +2,34 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<BaseLayout title="Panebarco - portfolio" useInnerPagesScript={true}>
-  <SiteHeader />
+<BaseLayout title="Portfolio - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+  <SiteHeader logoSrc="/images/panebarco logo light.png" containerClass="hero-fluid" />
   <MenuOverlay />
-
-  <main class="page-main">
-    <section class="section-space">
-      <div class="container">
-        <h1>portfolio</h1>
-        <p>TODO: migrare contenuto da <code>portfolio.html</code> a questa pagina Astro.</p>
-      </div>
-    </section>
-  </main>
+    <main>
+      <section class="page-hero">
+        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="/images/1021768637.mp4" type="video/mp4">
+        </video>
+        <div class="page-hero-content">
+          <div class="page-hero-text">
+            <p class="page-hero-bgword">COSE BELLE</p>
+            <h1 class="page-hero-title">PORTFOLIO</h1>
+            <p class="page-hero-subtitle">Progetti, storie e mondi costruiti fotogramma per fotogramma</p>
+          </div>
+          <div class="page-hero-media">
+            <img src="/images/testata img.png" alt="Portfolio">
+          </div>
+        </div>
+      </section>
+  
+      <section class="page-main">
+        <div class="inner">
+          <h2>I nostri lavori in evidenza</h2>
+        </div>
+      </section>
+    </main>
+      <SiteFooter />
 </BaseLayout>

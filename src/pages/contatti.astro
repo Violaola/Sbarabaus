@@ -2,18 +2,34 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<BaseLayout title="Panebarco - contatti" useInnerPagesScript={true}>
-  <SiteHeader />
+<BaseLayout title="Contatti - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+  <SiteHeader logoSrc="/images/panebarco logo light.png" containerClass="hero-fluid" />
   <MenuOverlay />
-
-  <main class="page-main">
-    <section class="section-space">
-      <div class="container">
-        <h1>contatti</h1>
-        <p>TODO: migrare contenuto da <code>contatti.html</code> a questa pagina Astro.</p>
-      </div>
-    </section>
-  </main>
+    <main>
+      <section class="page-hero">
+        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="/images/1021768637.mp4" type="video/mp4">
+        </video>
+        <div class="page-hero-content">
+          <div class="page-hero-text">
+            <p class="page-hero-bgword">RACCONTACI</p>
+            <h1 class="page-hero-title">CONTATTI</h1>
+            <p class="page-hero-subtitle">Parlaci del tuo progetto: lo animiamo insieme</p>
+          </div>
+          <div class="page-hero-media">
+            <img src="/images/testata img.png" alt="Contatti">
+          </div>
+        </div>
+      </section>
+  
+      <section class="page-main">
+        <div class="inner">
+          <h2>Raccontaci il tuo progetto</h2>
+        </div>
+      </section>
+    </main>
+      <SiteFooter />
 </BaseLayout>

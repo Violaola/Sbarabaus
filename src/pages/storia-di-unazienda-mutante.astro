@@ -2,18 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<BaseLayout title="Panebarco - storia-di-unazienda-mutante" useInnerPagesScript={true}>
-  <SiteHeader />
+<BaseLayout title="Storia di un'azienda mutante - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+  <SiteHeader logoSrc="/images/panebarco logo light.png" containerClass="hero-fluid" />
   <MenuOverlay />
-
-  <main class="page-main">
-    <section class="section-space">
-      <div class="container">
-        <h1>storia-di-unazienda-mutante</h1>
-        <p>TODO: migrare contenuto da <code>storia-di-unazienda-mutante.html</code> a questa pagina Astro.</p>
-      </div>
-    </section>
-  </main>
+    <main>
+      <h1>Storia di un'azienda mutante</h1>
+      <p>Work in progress</p>
+      <a href="index.html">Torna alla home</a>
+    </main>
+    <SiteFooter />
 </BaseLayout>

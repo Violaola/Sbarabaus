@@ -1,7 +1,8 @@
 ---
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "../../styles/main.css";
+import "../../styles/main.scss";
+import innerStylesUrl from "../../styles/inner-pages.scss?url";
 import menuScriptUrl from "../scripts/menu.js?url";
 import mainScriptUrl from "../scripts/main.js?url";
 import innerPagesScriptUrl from "../scripts/inner-pages.js?url";
@@ -10,12 +11,14 @@ interface Props {
   title?: string;
   description?: string;
   useInnerPagesScript?: boolean;
+  useInnerStyles?: boolean;
 }
 
 const {
   title = "Panebarco",
   description = "",
   useInnerPagesScript = false,
+  useInnerStyles = false,
 } = Astro.props;
 ---
 
@@ -33,6 +36,7 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Margarine&display=swap" rel="stylesheet" />
+    {useInnerStyles && <link rel="stylesheet" href={innerStylesUrl} />}
   </head>
   <body>
     <slot />

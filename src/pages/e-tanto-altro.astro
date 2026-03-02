@@ -2,18 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<BaseLayout title="Panebarco - e-tanto-altro" useInnerPagesScript={true}>
-  <SiteHeader />
+<BaseLayout title="E tanto altro - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+  <SiteHeader logoSrc="/images/panebarco logo light.png" containerClass="hero-fluid" />
   <MenuOverlay />
-
-  <main class="page-main">
-    <section class="section-space">
-      <div class="container">
-        <h1>e-tanto-altro</h1>
-        <p>TODO: migrare contenuto da <code>e-tanto-altro.html</code> a questa pagina Astro.</p>
-      </div>
-    </section>
-  </main>
+    <main>
+      <h1>E tanto altro</h1>
+      <p>Work in progress</p>
+      <a href="index.html">Torna alla home</a>
+    </main>
+    <SiteFooter />
 </BaseLayout>

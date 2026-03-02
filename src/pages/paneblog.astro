@@ -2,18 +2,34 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<BaseLayout title="Panebarco - paneblog" useInnerPagesScript={true}>
-  <SiteHeader />
+<BaseLayout title="Paneblog - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+  <SiteHeader logoSrc="/images/panebarco logo light.png" containerClass="hero-fluid" />
   <MenuOverlay />
-
-  <main class="page-main">
-    <section class="section-space">
-      <div class="container">
-        <h1>paneblog</h1>
-        <p>TODO: migrare contenuto da <code>paneblog.html</code> a questa pagina Astro.</p>
-      </div>
-    </section>
-  </main>
+    <main>
+      <section class="page-hero">
+        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="/images/1021768637.mp4" type="video/mp4">
+        </video>
+        <div class="page-hero-content">
+          <div class="page-hero-text">
+            <p class="page-hero-bgword">PENSIERI</p>
+            <h1 class="page-hero-title">PANEBLOG</h1>
+            <p class="page-hero-subtitle">Appunti, processi e dietro le quinte del nostro lavoro</p>
+          </div>
+          <div class="page-hero-media">
+            <img src="/images/testata img.png" alt="Paneblog">
+          </div>
+        </div>
+      </section>
+  
+      <section class="page-main">
+        <div class="inner">
+          <h2>Pensieri che diventano storie</h2>
+        </div>
+      </section>
+    </main>
+      <SiteFooter />
 </BaseLayout>

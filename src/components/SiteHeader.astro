@@ -1,13 +1,29 @@
+---
+interface Props {
+  logoSrc?: string;
+  logoHref?: string;
+  logoAlt?: string;
+  containerClass?: string;
+}
+
+const {
+  logoSrc = "/images/panebarco logo dark.png",
+  logoHref = "/",
+  logoAlt = "Panebarco",
+  containerClass = "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
+} = Astro.props;
+---
+
 <header class="top-header">
-  <div class="container-fluid hero-fluid px-3 px-md-4 px-lg-5">
+  <div class={containerClass}>
     <div class="hero-nav">
       <button class="menu-trigger" type="button" aria-label="Apri menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <a href="/" class="hero-logo text-decoration-none" aria-label="Panebarco">
-        <img src="/images/panebarco logo dark.png" alt="Panebarco" />
+      <a href={logoHref} class="hero-logo text-decoration-none" aria-label="Panebarco">
+        <img src={logoSrc} alt={logoAlt} />
       </a>
     </div>
   </div>
