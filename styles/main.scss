@@ -1,25 +1,38 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@700&display=swap");
+﻿@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 
 /* Design tokens globali */
 :root {
-      --bg: #f9fafb;
-      --ink: #121212;
-      --teal: #2c9e88;
-      --cyan: #13a7e7;
-      --cta-blue: #009fe3;
-      --cta-orange: #f3ab28;
-      --cta-ink: #141414;
-      --cta-white: #ffffff;
-      --cta-radius: 100px;
-      --cta-padding-y: clamp(0.5rem, 0.45rem + 0.35vw, 0.625rem);
-      --cta-padding-x: clamp(2rem, 7vw, 3.75rem);
-      --dark: #343434;
-      --night: #070a0d;
-      --text-fluid: clamp(1rem, 0.88rem + 0.6vw, 1.4rem);
-      --section-space-y: clamp(3rem, 6vw, 4.6rem);
-      --section-space-top-soft: clamp(2.35rem, 4.5vw, 3.2rem);
-      --section-space-top-tight: clamp(1.9rem, 3.6vw, 2.6rem);
+      --bs-body-font-family: "Sofia Sans", sans-serif;
+      --bs-body-bg: #{$gray-100};
+      --bs-body-color: #{$gray-900};
+      --bs-primary: #009fe3;
+      --bs-primary-rgb: 0, 159, 227;
+      --bs-warning: #f3ab28;
+      --bs-warning-rgb: 243, 171, 40;
+      --bg: var(--bs-body-bg);
+      --ink: var(--bs-body-color);
+      --teal: #{$teal};
+      --cyan: #{$cyan};
+      --cta-blue: var(--bs-primary);
+      --cta-orange: var(--bs-warning);
+      --cta-ink: #{$gray-900};
+      --cta-white: #{$white};
+      --cta-radius: #{$border-radius-pill};
+      --cta-padding-y: clamp(#{$spacer * 0.5}, 0.45rem + 0.35vw, #{$spacer * 0.625});
+      --cta-padding-x: clamp(#{$spacer * 2}, 7vw, #{$spacer * 3.75});
+      --dark: #{$gray-700};
+      --night: #{$black};
+      --type-body: clamp(#{$font-size-base}, 0.88rem + 0.6vw, #{$font-size-lg});
+      --type-heading-section: clamp(#{$h2-font-size}, 4.1vw, #{$h1-font-size * 1.3});
+      --section-space-y: clamp(#{$spacer * 3}, 6vw, #{$spacer * 4.6});
+      --section-space-top-soft: clamp(#{$spacer * 2.35}, 4.5vw, #{$spacer * 3.2});
+      --section-space-top-tight: clamp(#{$spacer * 1.9}, 3.6vw, #{$spacer * 2.6});
       --menu-scrollbar-comp: 0px;
     }
 
@@ -40,13 +53,13 @@
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: "Sofia Sans", sans-serif;
-      font-size: var(--text-fluid);
+      font-family: var(--bs-body-font-family);
+      font-size: var(--type-body);
       line-height: 1.5;
     }
 
 p {
-  font-size: var(--text-fluid);
+  font-size: var(--type-body);
   line-height: 1.42;
   font-weight: 700;
 }
@@ -55,14 +68,14 @@ h2 {
   font-family: "Sofia Sans Semi Condensed", "Sofia Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 5rem;
+  font-size: clamp(#{$h1-font-size}, 5vw, #{$h1-font-size * 2});
   text-transform: uppercase;
 }
 
 .page-title-uniform,
 .page-main h2.page-title-uniform {
   font-family: "Sofia Sans Semi Condensed", "Sofia Sans", sans-serif;
-  font-size: clamp(2rem, 4.1vw, 3.25rem);
+  font-size: var(--type-heading-section);
   line-height: 1.05;
   font-weight: 900;
   letter-spacing: -0.01em;
@@ -76,7 +89,7 @@ h2 {
 
     /* Header e trigger menu */
     .top-header {
-      padding: 0.5rem 0 0.15rem;
+      padding: #{$spacer * 0.5} 0 #{$spacer * 0.15};
     }
 
     .hero-fluid {
@@ -89,8 +102,8 @@ h2 {
       min-height: 2.4rem;
       display: flex;
       align-items: center;
-      margin-bottom: 2.5rem;
-      margin-top: 1rem;
+      margin-bottom: $spacer * 2.5;
+      margin-top: $spacer;
     }
 
     .menu-trigger {
@@ -111,7 +124,7 @@ h2 {
       width: 2.05rem;
       height: 0.2rem;
       border-radius: 999px;
-      background: #1a1a1a;
+      background: var(--ink);
     }
 
     .menu-trigger-icon {
@@ -738,15 +751,18 @@ h2 {
     }
 
     .section-space {
-      padding-block: var(--section-space-y);
+      --section-space-top: var(--section-space-y);
+      --section-space-bottom: var(--section-space-y);
+      padding-top: var(--section-space-top);
+      padding-bottom: var(--section-space-bottom);
     }
 
-    .section-space.pt-2 {
-      padding-top: var(--section-space-top-soft) !important;
+    .section-space--soft {
+      --section-space-top: var(--section-space-top-soft);
     }
 
-    .section-space.pt-0 {
-      padding-top: var(--section-space-top-tight) !important;
+    .section-space--tight {
+      --section-space-top: var(--section-space-top-tight);
     }
 
     .section-title {
@@ -1621,13 +1637,3 @@ h2 {
         width: 100%;
       }
     }
-
-
-:root {
-  --bs-body-font-family: "Sofia Sans", sans-serif;
-}
-
-html,
-body {
-  font-family: "Sofia Sans", sans-serif;
-}

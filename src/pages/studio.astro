@@ -3,44 +3,58 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import SiteHero from "../components/SiteHero.astro";
 ---
 
 <BaseLayout title="Studio - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
   <!-- Header pagina + overlay menu -->
-  <SiteHeader logoSrc="/images/panebarco logo light.png" containerClass="hero-fluid" menuIconSrc="/images/hamburger-menu-bianco.png" />
+  <SiteHeader
+    logoSrc="/images/panebarco logo light.png"
+    containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
+    menuIconSrc="/images/hamburger-menu-bianco.png"
+  />
   <MenuOverlay />
     <main class="studio-page">
       <!-- Hero dello Studio -->
-      <SiteHero
-        sectionClass="page-hero page-hero--studio"
-        contentClass="container page-hero-content page-hero-content--studio"
-        bgWord="LA TANA"
-        title="LO STUDIO"
-        subtitle="Idee al confine tra cartoon e realtà"
-        mediaSrc="/images/lo-studio-panebarco-teams.png"
-        mediaAlt="Team Panebarco"
-      />
+      <section class="page-hero page-hero--studio">
+        <div class="container page-hero-content page-hero-content--studio">
+          <div class="row g-4 g-lg-5 align-items-end">
+            <div class="col-12 col-lg-7 col-xl-6">
+              <div class="page-hero-text">
+                <p class="page-hero-bgword">LA TANA</p>
+                <h1 class="page-hero-title">LO STUDIO</h1>
+                <p class="page-hero-subtitle">Idee al confine tra cartoon e realtà</p>
+              </div>
+            </div>
+            <div class="col-12 col-lg-5 col-xl-6 text-lg-end">
+              <div class="page-hero-media">
+                <img class="img-fluid d-block ms-lg-auto" src="/images/lo-studio-panebarco-teams.png" alt="Team Panebarco">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
   
       <!-- Blocco storia introduttivo -->
       <section class="page-main page-main--studio">
-        <div class="container studio-story">
-          <div class="studio-story-copy">
-            <h2 class="page-title-uniform">Storia di un'azienda mutante</h2>
-            <p>
-              Duis in nibh egestas, facilisis magna ac, sagittis felis. Curabitur
-              sagittis nisi non porttitor ullamcorper. Proin mattis, lacus eu
-              condimentum dapibus, turpis lectus pellentesque mauris, vitae ornare
-              nunc leo et justo.
-            </p>
-            <p>
-              Pellentesque tempus elementum aliquet. Etiam commodo elit ut mi
-              tristique laoreet. Donec ac enim vestibulum, sagittis urna sit amet,
-              posuere ex.
-            </p>
-          </div>
-          <div class="studio-story-art">
-            <img class="studio-story-intro-img" src="/images/lo-studio-img-intro.png" alt="Illustrazione intro lo studio">
+        <div class="container">
+          <div class="row g-4 g-xl-5 align-items-end studio-story">
+            <div class="col-12 col-lg-7 studio-story-copy">
+              <h2 class="page-title-uniform">Storia di un'azienda mutante</h2>
+              <p>
+                Duis in nibh egestas, facilisis magna ac, sagittis felis. Curabitur
+                sagittis nisi non porttitor ullamcorper. Proin mattis, lacus eu
+                condimentum dapibus, turpis lectus pellentesque mauris, vitae ornare
+                nunc leo et justo.
+              </p>
+              <p>
+                Pellentesque tempus elementum aliquet. Etiam commodo elit ut mi
+                tristique laoreet. Donec ac enim vestibulum, sagittis urna sit amet,
+                posuere ex.
+              </p>
+            </div>
+            <div class="col-12 col-lg-5 studio-story-art text-lg-end">
+              <img class="studio-story-intro-img img-fluid d-block ms-lg-auto" src="/images/lo-studio-img-intro.png" alt="Illustrazione intro lo studio">
+            </div>
           </div>
         </div>
       </section>
@@ -62,70 +76,78 @@ import SiteHero from "../components/SiteHero.astro";
             <div class="studio-timeline-viewport" id="studioTimelineViewport" aria-labelledby="studioTimelineTitle">
               <div class="studio-timeline-slides">
                 <article class="studio-timeline-card is-active">
-                  <div class="studio-timeline-year">
-                    <img src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 1976">
-                  </div>
-                  <div class="studio-timeline-copy">
-                    <h3>Gli inizi</h3>
-                    <p>
-                      Mauris nec orci sit amet nunc sodales pulvinar. Aliquam placerat, est a
-                      vestibulum eleifend, ante nisl rhoncus ante, eu lacinia dui sem ut arcu.
-                    </p>
-                    <p>
-                      Praesent aliquam interdum lectus, id imperdiet elit. Curabitur sagittis nisi
-                      non porttitor ullamcorper, in fermentum lorem aliquet.
-                    </p>
-                  </div>
-                </article>
-
-                <article class="studio-timeline-card">
-                  <div class="studio-timeline-year">
-                    <img src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 1989">
-                  </div>
-                  <div class="studio-timeline-copy">
-                    <h3>Crescita creativa</h3>
-                    <p>
-                      Pellentesque tempus elementum aliquet. Etiam commodo elit ut mi tristique
-                      laoreet. Donec ac enim vestibulum, sagittis urna sit amet, posuere ex.
-                    </p>
-                    <p>
-                      Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac
-                      facilisis in, egestas eget quam.
-                    </p>
+                  <div class="row g-3 g-lg-4 align-items-center">
+                    <div class="col-12 col-md-6 studio-timeline-year">
+                      <img class="img-fluid d-block" src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 1976">
+                    </div>
+                    <div class="col-12 col-md-6 studio-timeline-copy">
+                      <h3>Gli inizi</h3>
+                      <p>
+                        Mauris nec orci sit amet nunc sodales pulvinar. Aliquam placerat, est a
+                        vestibulum eleifend, ante nisl rhoncus ante, eu lacinia dui sem ut arcu.
+                      </p>
+                      <p>
+                        Praesent aliquam interdum lectus, id imperdiet elit. Curabitur sagittis nisi
+                        non porttitor ullamcorper, in fermentum lorem aliquet.
+                      </p>
+                    </div>
                   </div>
                 </article>
 
                 <article class="studio-timeline-card">
-                  <div class="studio-timeline-year">
-                    <img src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 2003">
-                  </div>
-                  <div class="studio-timeline-copy">
-                    <h3>Nuove produzioni</h3>
-                    <p>
-                      Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas
-                      faucibus mollis interdum, sed posuere consectetur est at lobortis.
-                    </p>
-                    <p>
-                      Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna
-                      mollis ornare vel eu leo.
-                    </p>
+                  <div class="row g-3 g-lg-4 align-items-center">
+                    <div class="col-12 col-md-6 studio-timeline-year">
+                      <img class="img-fluid d-block" src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 1989">
+                    </div>
+                    <div class="col-12 col-md-6 studio-timeline-copy">
+                      <h3>Crescita creativa</h3>
+                      <p>
+                        Pellentesque tempus elementum aliquet. Etiam commodo elit ut mi tristique
+                        laoreet. Donec ac enim vestibulum, sagittis urna sit amet, posuere ex.
+                      </p>
+                      <p>
+                        Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac
+                        facilisis in, egestas eget quam.
+                      </p>
+                    </div>
                   </div>
                 </article>
 
                 <article class="studio-timeline-card">
-                  <div class="studio-timeline-year">
-                    <img src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 2024">
+                  <div class="row g-3 g-lg-4 align-items-center">
+                    <div class="col-12 col-md-6 studio-timeline-year">
+                      <img class="img-fluid d-block" src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 2003">
+                    </div>
+                    <div class="col-12 col-md-6 studio-timeline-copy">
+                      <h3>Nuove produzioni</h3>
+                      <p>
+                        Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas
+                        faucibus mollis interdum, sed posuere consectetur est at lobortis.
+                      </p>
+                      <p>
+                        Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna
+                        mollis ornare vel eu leo.
+                      </p>
+                    </div>
                   </div>
-                  <div class="studio-timeline-copy">
-                    <h3>Nuove mutazioni</h3>
-                    <p>
-                      Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere
-                      erat a ante venenatis dapibus posuere velit aliquet.
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus,
-                      porta ac consectetur ac, vestibulum at eros.
-                    </p>
+                </article>
+
+                <article class="studio-timeline-card">
+                  <div class="row g-3 g-lg-4 align-items-center">
+                    <div class="col-12 col-md-6 studio-timeline-year">
+                      <img class="img-fluid d-block" src="/images/lo-studi-storia-panebarco.png" alt="Illustrazione 2024">
+                    </div>
+                    <div class="col-12 col-md-6 studio-timeline-copy">
+                      <h3>Nuove mutazioni</h3>
+                      <p>
+                        Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere
+                        erat a ante venenatis dapibus posuere velit aliquet.
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus,
+                        porta ac consectetur ac, vestibulum at eros.
+                      </p>
+                    </div>
                   </div>
                 </article>
               </div>
@@ -150,36 +172,44 @@ import SiteHero from "../components/SiteHero.astro";
         </div>
       </section>
 
-      <section class="studio-panebarcos-intro section-space pt-5 pb-5">
-        <div class="container studio-panebarcos-intro-inner text-start text-md-center">
-          <h2 class="page-title-uniform">I protagonisti siamo tutti noi... i Panebarcos</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-          </p>
-          <a class="btn btn-cta btn-cta--blue btn-pill" href="/i-panebarcos">Conosci i Panebarcos</a>
+      <section class="studio-panebarcos-intro section-space pt-5 pb-5 mt-3 mt-md-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-xl-10 studio-panebarcos-intro-inner text-start text-md-center">
+              <h2 class="page-title-uniform">I protagonisti siamo tutti noi... i Panebarcos</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+              </p>
+              <a class="btn btn-cta btn-cta--blue btn-pill" href="/i-panebarcos">Conosci i Panebarcos</a>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="studio-panebarcos-photo py-0" aria-label="Il team Panebarcos">
-        <img src="/images/lo-studio-panebarcos.jpg" alt="Il team Panebarcos in studio">
+        <div class="container-fluid px-0">
+          <img class="img-fluid d-block w-100" src="/images/lo-studio-panebarcos.jpg" alt="Il team Panebarcos in studio">
+        </div>
       </section>
 
-      <section class="studio-oscar-section section-space pt-2">
-        <div class="container studio-oscar-grid">
-          <div class="studio-oscar-art">
-            <img src="/images/lo-studio-oscar.png" alt="Personaggi con Oscar">
-          </div>
-          <div class="studio-oscar-copy text-start">
-            <h2 class="page-title-uniform">
-              Spoiler sul finale?
-              <span>CI VEDIAMO AGLI OSCAR</span>
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
-              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-            </p>
-            <a class="btn btn-cta btn-cta--blue btn-pill" href="/ci-vediamo-agli-oscar">Scopri di più</a>
+      <section class="studio-oscar-section section-space section-space--soft">
+        <div class="container">
+          <div class="row g-4 g-lg-5 align-items-start align-items-lg-center studio-oscar-grid">
+            <div class="col-12 col-lg-5 studio-oscar-art">
+              <img class="img-fluid d-block mx-auto mx-lg-0" src="/images/lo-studio-oscar.png" alt="Personaggi con Oscar">
+            </div>
+            <div class="col-12 col-lg-7 studio-oscar-copy text-start">
+              <h2 class="page-title-uniform">
+                Spoiler sul finale?
+                <span>CI VEDIAMO AGLI OSCAR</span>
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+              </p>
+              <a class="btn btn-cta btn-cta--blue btn-pill" href="/ci-vediamo-agli-oscar">Scopri di più</a>
+            </div>
           </div>
         </div>
       </section>
