@@ -1,0 +1,44 @@
+---
+interface Props {
+  sectionClass?: string;
+  contentClass?: string;
+  bgWord: string;
+  title: string;
+  subtitle: string;
+  mediaSrc: string;
+  mediaAlt?: string;
+  videoSrc?: string;
+  videoType?: string;
+}
+
+const {
+  sectionClass = "page-hero",
+  contentClass = "page-hero-content",
+  bgWord,
+  title,
+  subtitle,
+  mediaSrc,
+  mediaAlt = "",
+  videoSrc,
+  videoType = "video/mp4"
+} = Astro.props;
+---
+
+<section class={sectionClass}>
+  {videoSrc && (
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src={videoSrc} type={videoType} />
+    </video>
+  )}
+
+  <div class={contentClass}>
+    <div class="page-hero-text">
+      <p class="page-hero-bgword">{bgWord}</p>
+      <h1 class="page-hero-title">{title}</h1>
+      <p class="page-hero-subtitle">{subtitle}</p>
+    </div>
+    <div class="page-hero-media">
+      <img src={mediaSrc} alt={mediaAlt} />
+    </div>
+  </div>
+</section>

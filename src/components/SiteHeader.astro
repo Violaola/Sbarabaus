@@ -4,6 +4,8 @@ interface Props {
   logoHref?: string;
   logoAlt?: string;
   containerClass?: string;
+  showLogo?: boolean;
+  menuIconSrc?: string;
 }
 
 const {
@@ -11,6 +13,8 @@ const {
   logoHref = "/",
   logoAlt = "Panebarco",
   containerClass = "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
+  showLogo = true,
+  menuIconSrc,
 } = Astro.props;
 ---
 
@@ -18,13 +22,21 @@ const {
   <div class={containerClass}>
     <div class="hero-nav">
       <button class="menu-trigger" type="button" aria-label="Apri menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        {menuIconSrc ? (
+          <img class="menu-trigger-icon" src={menuIconSrc} alt="" aria-hidden="true" />
+        ) : (
+          <>
+            <span></span>
+            <span></span>
+            <span></span>
+          </>
+        )}
       </button>
-      <a href={logoHref} class="hero-logo text-decoration-none" aria-label="Panebarco">
-        <img src={logoSrc} alt={logoAlt} />
-      </a>
+      {showLogo && (
+        <a href={logoHref} class="hero-logo text-decoration-none" aria-label="Panebarco">
+          <img src={logoSrc} alt={logoAlt} />
+        </a>
+      )}
     </div>
   </div>
 </header>

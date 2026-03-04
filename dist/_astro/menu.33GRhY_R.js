@@ -12,7 +12,20 @@
   overlay.dataset.menuInitialized = "true";
   menuBtn.setAttribute("aria-expanded", "false");
 
+  function setMenuCompensation() {
+    const isMobileViewport = window.matchMedia("(max-width: 767.98px)").matches;
+    const scrollbarComp = isMobileViewport
+      ? 0
+      : Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+
+    document.documentElement.style.setProperty(
+      "--menu-scrollbar-comp",
+      scrollbarComp + "px"
+    );
+  }
+
   function openMenu() {
+    setMenuCompensation();
     overlay.classList.add("is-open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.classList.add("menu-open");
@@ -29,6 +42,7 @@
     overlay.setAttribute("aria-hidden", "true");
     document.body.classList.remove("menu-open");
     menuBtn.setAttribute("aria-expanded", "false");
+    document.documentElement.style.removeProperty("--menu-scrollbar-comp");
 
     if (hoverBubble) {
       hoverBubble.classList.remove("is-visible");
@@ -138,6 +152,12 @@
   });
 
   overlay.addEventListener("mouseleave", hideBubble);
+
+  window.addEventListener("resize", function () {
+    if (overlay.classList.contains("is-open")) {
+      setMenuCompensation();
+    }
+  });
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && overlay.classList.contains("is-open")) {

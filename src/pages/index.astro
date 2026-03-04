@@ -6,9 +6,11 @@ import SiteFooter from "../components/SiteFooter.astro";
 ---
 
 <BaseLayout title="Panebarco - Homepage" description="Homepage Panebarco" useInnerPagesScript={false}>
-  <SiteHeader />
+  <!-- Header globale + overlay menu -->
+  <SiteHeader menuIconSrc="/images/hamburger-menu-nero.png" />
   <MenuOverlay />
     <main>
+      <!-- Hero principale con video e card chat -->
       <section id="studio" class="hero-wrap">
         <div class="container-fluid hero-fluid px-3 px-md-4 px-lg-5">
           <div class="hero-card">
@@ -56,6 +58,7 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
   
+      <!-- Sezione "Siamo" con testo istituzionale e CTA -->
       <section class="section-space">
         <div class="container">
           <h2 class="section-title">
@@ -93,6 +96,7 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
   
+      <!-- Cards servizi -->
       <section id="servizi" class="section-space pt-2">
         <div class="container">
           <h2 class="section-title section-title-reveal">
@@ -122,6 +126,7 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
   
+      <!-- Slider Panebarco Originals -->
       <section id="originals" class="dark-band originals-parallax" style="--originals-bg-image:url('/images/panebarco-originals-bg.jpg');">
         <div class="originals-sticky">
           <div class="container originals-stage">
@@ -163,6 +168,7 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
   
+      <!-- Griglia portfolio -->
       <section id="portfolio" class="section-space">
         <div class="container originals-stage portfolio-container">
           <h2 class="section-title section-title-reveal">
@@ -233,6 +239,7 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
   
+      <!-- Anteprima Paneblog -->
       <section id="paneblog" class="section-space pt-0">
         <div class="container">
           <h2 class="section-title section-title-reveal">
@@ -287,5 +294,6 @@ import SiteFooter from "../components/SiteFooter.astro";
       </section>
     </main>
   
+    <!-- Footer globale -->
     <SiteFooter />
 </BaseLayout>

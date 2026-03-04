@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-labelledby="title desc">
+  <title id="title">Studio Story Card Placeholder</title>
+  <desc id="desc">Card azzurra illustrativa con personaggio stilizzato.</desc>
+  <rect x="10" y="10" width="500" height="300" rx="28" fill="#129fdf"/>
+  <ellipse cx="260" cy="308" rx="115" ry="20" fill="#0000001f"/>
+  <ellipse cx="280" cy="238" rx="130" ry="92" fill="#c9c8c3"/>
+  <ellipse cx="280" cy="192" rx="90" ry="135" fill="#7f7f79"/>
+  <circle cx="248" cy="157" r="24" fill="#d8d7d2"/>
+  <circle cx="314" cy="159" r="24" fill="#d8d7d2"/>
+  <circle cx="248" cy="157" r="10" fill="#1d1d1d"/>
+  <circle cx="314" cy="159" r="10" fill="#1d1d1d"/>
+  <polygon points="282,184 307,208 282,233 257,208" fill="#fffbd8" stroke="#1b1b1b" stroke-width="5"/>
+  <text x="28" y="44" fill="#ffffffcc" font-size="24" font-family="Sofia Sans, Arial, sans-serif" font-weight="700">
+    ILLUSTRAZIONE PLACEHOLDER
+  </text>
+</svg>

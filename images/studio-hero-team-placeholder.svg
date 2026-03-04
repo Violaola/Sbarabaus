@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 520" role="img" aria-labelledby="title desc">
+  <title id="title">Studio Team Placeholder</title>
+  <desc id="desc">Sagome illustrative del team per la hero della pagina studio.</desc>
+  <rect width="620" height="520" fill="none"/>
+  <ellipse cx="155" cy="490" rx="75" ry="20" fill="#00000022"/>
+  <ellipse cx="300" cy="500" rx="95" ry="22" fill="#00000022"/>
+  <ellipse cx="455" cy="492" rx="88" ry="20" fill="#00000022"/>
+  <circle cx="155" cy="220" r="72" fill="#f4b285"/>
+  <rect x="105" y="285" width="102" height="180" rx="50" fill="#b2673f"/>
+  <circle cx="304" cy="170" r="88" fill="#f6c19d"/>
+  <rect x="230" y="255" width="150" height="220" rx="72" fill="#f2e3d3"/>
+  <circle cx="455" cy="220" r="76" fill="#f6c19d"/>
+  <rect x="395" y="290" width="120" height="185" rx="60" fill="#ffffff"/>
+  <circle cx="145" cy="215" r="14" fill="#202020"/>
+  <circle cx="170" cy="215" r="14" fill="#202020"/>
+  <circle cx="290" cy="165" r="16" fill="#202020"/>
+  <circle cx="322" cy="165" r="16" fill="#202020"/>
+  <circle cx="440" cy="215" r="14" fill="#202020"/>
+  <circle cx="468" cy="215" r="14" fill="#202020"/>
+  <path d="M0 465h620" stroke="#ffffff55" stroke-width="0"/>
+  <text x="24" y="46" fill="#ffffffaa" font-size="26" font-family="Sofia Sans, Arial, sans-serif" font-weight="700">
+    TEAM PLACEHOLDER
+  </text>
+</svg>
