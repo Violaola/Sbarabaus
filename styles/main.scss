@@ -213,6 +213,31 @@ h2 {
       max-width: 100%;
     }
 
+    .menu-item-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      width: 100%;
+    }
+
+    .menu-submenu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      padding: 0.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .menu-submenu-toggle i {
+      display: block;
+      font-size: clamp(1.1rem, 1.35vw, 1.35rem);
+      transition: transform 0.2s ease;
+    }
+
     .menu-overlay-link {
       color: #fff;
       text-decoration: none;
@@ -246,6 +271,7 @@ h2 {
     }
 
     .menu-item:hover .menu-submenu,
+    .menu-item.is-open .menu-submenu,
     .menu-item:focus-within .menu-submenu {
       opacity: 1;
       max-height: 12rem;
@@ -1535,6 +1561,24 @@ h2 {
         gap: 0.2rem;
       }
 
+      .menu-item-head {
+        width: auto;
+        gap: 0.35rem;
+      }
+
+      .menu-submenu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.35rem;
+        height: 1.35rem;
+        margin-top: 0.1rem;
+      }
+
+      .menu-item.is-open .menu-submenu-toggle i {
+        transform: rotate(180deg);
+      }
+
       .menu-overlay-link {
         font-size: clamp(1.45rem, 7.5vw, 2.1rem);
         line-height: 1;
@@ -1542,6 +1586,21 @@ h2 {
 
       .menu-submenu-link {
         font-size: clamp(1.275rem, 6vw, 1.575rem);
+      }
+
+      .menu-item:hover .menu-submenu,
+      .menu-item:focus-within .menu-submenu {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-0.35rem);
+        pointer-events: none;
+      }
+
+      .menu-item.is-open .menu-submenu {
+        opacity: 1;
+        max-height: 12rem;
+        transform: translateY(0);
+        pointer-events: auto;
       }
 
       .menu-overlay-team {

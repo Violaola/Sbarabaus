@@ -4,8 +4,19 @@
   </button>
   <nav class="menu-overlay-nav" aria-label="Menu principale">
     <div class="menu-item">
-      <a class="menu-overlay-link" href="/studio" data-bubble="/images/studio la nostra tana.png">Studio</a>
-      <div class="menu-submenu" aria-label="Sottovoci Studio">
+      <div class="menu-item-head">
+        <a class="menu-overlay-link" href="/studio" data-bubble="/images/studio la nostra tana.png">Studio</a>
+        <button
+          class="menu-submenu-toggle"
+          type="button"
+          aria-label="Mostra sottovoci Studio"
+          aria-controls="submenu-studio"
+          aria-expanded="false"
+        >
+          <i class="bi bi-chevron-down" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="submenu-studio" class="menu-submenu" aria-label="Sottovoci Studio">
         <a class="menu-submenu-link" href="/storia-di-unazienda-mutante">storia di un'azienda mutante</a>
         <a class="menu-submenu-link" href="/i-panebarcos">i panebarcos</a>
         <a class="menu-submenu-link" href="/ci-vediamo-agli-oscar">ci vediamo agli oscar</a>
@@ -13,8 +24,19 @@
     </div>
 
     <div class="menu-item">
-      <a class="menu-overlay-link" href="/servizi" data-bubble="/images/servizi cose.png">Servizi</a>
-      <div class="menu-submenu" aria-label="Sottovoci Servizi">
+      <div class="menu-item-head">
+        <a class="menu-overlay-link" href="/servizi" data-bubble="/images/servizi cose.png">Servizi</a>
+        <button
+          class="menu-submenu-toggle"
+          type="button"
+          aria-label="Mostra sottovoci Servizi"
+          aria-controls="submenu-servizi"
+          aria-expanded="false"
+        >
+          <i class="bi bi-chevron-down" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="submenu-servizi" class="menu-submenu" aria-label="Sottovoci Servizi">
         <a class="menu-submenu-link" href="/commercials">commercials</a>
         <a class="menu-submenu-link" href="/post-produzione">post-produzione</a>
         <a class="menu-submenu-link" href="/service">service</a>
