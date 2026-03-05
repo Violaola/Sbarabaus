@@ -48,6 +48,9 @@ const modeImageSets = {
   <MenuOverlay />
   <main class="commercials-page studio-page">
     <section class="page-hero page-hero--studio">
+      <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="/images/panebarco-commercial-video.mp4" type="video/mp4" />
+      </video>
       <div class="container page-hero-content page-hero-content--studio">
         <div class="row g-4 g-lg-5 align-items-end">
           <div class="col-12 col-lg-7 col-xl-6">
@@ -70,7 +73,7 @@ const modeImageSets = {
       <div class="w-100">
         <div class="container">
           <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-12 text-lg-center text-start">
               <h2 class="page-title-uniform mb-4 text-body">Lorem ipsum dolor sit amet</h2>
               <p class="mb-4">
                 Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -92,7 +95,7 @@ const modeImageSets = {
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h2 class="page-title-uniform text-primary mb-5">QUATTRO MODI PER COMUNICARE.</h2>
+            <h2 class="page-title-uniform text-primary mb-5 text-lg-center">QUATTRO MODI PER COMUNICARE.</h2>
             {communicationModes.map((mode, index) => {
               const scenes = modeImageSets[mode as keyof typeof modeImageSets] ?? [
                 `https://placehold.co/620x300/png?text=${mode}+01`,
