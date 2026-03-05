@@ -59,9 +59,10 @@
     }
 
 p {
-  font-size: var(--type-body);
+  font-size: inherit;
   line-height: 1.42;
   font-weight: 700;
+  margin: 0 0 1em;
 }
 
 h2 {
