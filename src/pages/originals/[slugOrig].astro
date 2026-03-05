@@ -3,7 +3,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import MenuOverlay from "../../components/MenuOverlay.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import OriginalProjectHero from "../../components/OriginalProjectHero.astro";
 
 export function getStaticPaths() {
   const originals = [
@@ -35,19 +34,44 @@ const { project } = Astro.props;
   />
   <MenuOverlay />
 
-  <main class="py-4 pb-5">
-    <OriginalProjectHero
-      imageSrc="/images/hero-dettaglio-originals.jpg"
-      imageAlt={`Frame progetto ${project.title}`}
-      ariaLabel={`Hero progetto ${project.title}`}
-    />
+  <main class="original-detail-page pb-5">
+    <section class="original-detail-hero" aria-label={`Hero progetto ${project.title}`}>
+      <div class="original-detail-hero__frame">
+        <img
+          class="original-detail-hero__image"
+          src="/images/hero-dettaglio-originals.jpg"
+          alt={`Frame progetto ${project.title}`}
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    </section>
 
     <section class="pb-4 pt-1">
       <div class="container">
-        <h1 class="h2 mb-0">{project.title}</h1>
+        <h1 class="mt-5">Caramelle</h1>
+        <p>“Caramelle” è stato proiettato in anteprima ad ottobre all’interno di Alice nella Città, sezione parallela della Festa del Cinema di Roma aggiudicandosi il Premio del Pubblico come Miglior Corto. </p>
+          <p>“Caramelle” narra di un legame affettivo fortissimo che unisce tre generazioni: padre/nonno, figlia/madre, nipote/figlio. Una relazione talmente forte da superare i confini tra la vita e la morte, il mondo terreno e l’aldilà, in un’atmosfera di affascinante realismo magico. La storia è semplice: Lucia è una donna di 40 anni che saltuariamente fa visita alla tomba del padre nel cimitero cittadino. Un giorno trova sulla tomba una carta colorata di caramella tutta appallottolata. Il curioso episodio si ripeterà più volte, fino a quando Lucia scoprirà che… e poi vabbè, il finale non ve lo raccontiamo ma vi anticipiamo che il pivot della storia sono le caramelle del titolo, una sorta di rivisitazione in chiave pop della madeleine proustiana!</p>
       </div>
+        <img src="" alt="">
     </section>
   </main>
 
   <SiteFooter />
 </BaseLayout>
+
+<style>
+  .original-detail-page {
+    background: #141414;
+    color: #fff;
+  }
+
+  .original-detail-page h1{
+    color: #009FE3
+  }
+
+  .original-detail-page h2,
+  .original-detail-page p {
+    color: #fff;
+  }
+</style>
