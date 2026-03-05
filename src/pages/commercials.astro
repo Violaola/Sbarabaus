@@ -4,6 +4,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import MenuOverlay from "../components/MenuOverlay.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 
+// I 4 cluster narrativi mostrati nella sezione "modi per comunicare".
 const communicationModes = [
   "Raccontare",
   "Spiegare",
@@ -11,6 +12,7 @@ const communicationModes = [
   "Coinvolgere",
 ];
 
+// Libreria immagini per ciascun cluster; ogni blocco usa 4 frame.
 const modeImageSets = {
   Raccontare: [
     "/images/raccontare-01.jpg",
@@ -38,6 +40,7 @@ const modeImageSets = {
   ],
 } as const;
 
+// Sticker grafico associato al titolo di ciascun cluster.
 const modeBubbleSets = {
   Raccontare: "/images/raccontare.png",
   Spiegare: "/images/spiegare.png",
@@ -54,6 +57,7 @@ const modeBubbleSets = {
   />
   <MenuOverlay />
   <main class="commercials-page studio-page">
+    <!-- Hero di pagina con video background e visual dedicato -->
     <section class="page-hero page-hero--studio">
       <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
         <source src="/images/panebarco-commercial-video.mp4" type="video/mp4" />
@@ -76,6 +80,7 @@ const modeBubbleSets = {
       </div>
     </section>
 
+    <!-- Intro editoriale della sezione commercials -->
     <section class="page-main page-main--studio">
       <div class="w-100">
         <div class="container">
@@ -98,6 +103,7 @@ const modeBubbleSets = {
       </div>
     </section>
 
+    <!-- Griglia dinamica: un blocco per ogni modalità comunicativa -->
     <section class="section-space section-space--tight pt-0">
       <div class="container">
         <div class="row">
@@ -114,6 +120,7 @@ const modeBubbleSets = {
 
               return (
               <article class:list={[index > 0 && "mt-5 pt-2", index === communicationModes.length - 1 && "mb-4 pb-4 mb-md-5 pb-md-4"]}>
+                <!-- Titolo modalità + bubble decorativa animata -->
                 <div class="commercial-mode-heading" data-commercial-mode-heading>
                   <h3 class="fw-bold text-body display-5 display-lg-4">{mode}</h3>
                   {bubble && (
@@ -132,6 +139,7 @@ const modeBubbleSets = {
                   mattis, sed et enim at nulla iaculis interdum. Suspendisse sed elit at sem rutrum molestie.
                 </p>
 
+                <!-- Set di 4 card media con overlay informativo al focus/hover -->
                 <div class="row g-3">
                   <div class="col-12 col-md-6">
                     <article class="commercials-media-card" tabindex="0" aria-label={`${mode} scena 1`}>
@@ -209,6 +217,7 @@ const modeBubbleSets = {
               </article>
             )})}
 
+            <!-- CTA finale verso pagina contatti -->
             <section class="mt-4 mt-md-5 pt-2 pt-md-4">
               <div class="commercials-cta-card position-relative rounded-4">
                 <img

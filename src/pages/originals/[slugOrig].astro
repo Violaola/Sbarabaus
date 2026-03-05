@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import MenuOverlay from "../../components/MenuOverlay.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import OriginalProjectHero from "../../components/OriginalProjectHero.astro";
+
+export function getStaticPaths() {
+  const originals = [
+    {
+      slugOrig: "caramelle",
+      title: "Caramelle"
+    },
+  ] as const;
+
+  return originals.map((project) => ({
+    params: { slugOrig: project.slugOrig },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout
+  title={`${project.title} - Panebarco Originals`}
+  description={`Dettaglio progetto Originals: ${project.title}`}
+  useInnerPagesScript={false}
+  useInnerStyles={true}
+>
+  <SiteHeader
+    logoSrc="/images/panebarco logo light.png"
+    containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
+    menuIconSrc="/images/hamburger-menu-bianco.png"
+  />
+  <MenuOverlay />
+
+  <main class="py-4 pb-5">
+    <OriginalProjectHero
+      imageSrc="/images/hero-dettaglio-originals.jpg"
+      imageAlt={`Frame progetto ${project.title}`}
+      ariaLabel={`Hero progetto ${project.title}`}
+    />
+
+    <section class="pb-4 pt-1">
+      <div class="container">
+        <h1 class="h2 mb-0">{project.title}</h1>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

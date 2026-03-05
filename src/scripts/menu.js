@@ -1,5 +1,6 @@
 (function () {
   const menuBtn = document.querySelector(".menu-trigger");
+  const topHeader = document.querySelector(".top-header");
   const overlay = document.getElementById("menuOverlay");
   const closeBtn = document.getElementById("menuOverlayClose");
   const hoverBubble = document.getElementById("menuHoverBubble");
@@ -12,6 +13,14 @@
 
   overlay.dataset.menuInitialized = "true";
   menuBtn.setAttribute("aria-expanded", "false");
+
+  function updateScrolledHeaderState() {
+    if (!topHeader) return;
+    const isScrolled = window.scrollY > 8;
+    topHeader.classList.toggle("is-scrolled", isScrolled);
+    topHeader.classList.toggle("bg-success", isScrolled);
+    topHeader.classList.toggle("shadow", isScrolled);
+  }
 
   function isMobileMenuViewport() {
     return window.matchMedia("(max-width: 767.98px)").matches;
@@ -215,4 +224,7 @@
       closeMenu();
     }
   });
+
+  updateScrolledHeaderState();
+  window.addEventListener("scroll", updateScrolledHeaderState, { passive: true });
 })();

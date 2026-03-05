@@ -8,7 +8,6 @@ body.inner-page {
 
   /* Header inner pages (menu icon su fondo scuro) */
   .top-header {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -411,6 +410,7 @@ body.inner-page {
     color: var(--bs-primary);
   }
 
+  /* CTA finale commercials con mascotte a sinistra e copy a destra. */
   .commercials-page .commercials-cta-card {
     background: #9f5ea3;
     min-height: clamp(13rem, 24vw, 19rem);
@@ -442,6 +442,7 @@ body.inner-page {
     max-width: 100%;
   }
 
+  /* Card visual: base del frame + effetti overlay su hover/focus. */
   .commercials-page .commercials-media-card {
     position: relative;
     border-radius: 1rem;
@@ -484,6 +485,7 @@ body.inner-page {
   }
 
   .commercials-page .commercials-media-overlay {
+    /* Layer informativo sopra l'immagine, inizialmente nascosto. */
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -536,6 +538,7 @@ body.inner-page {
     transform: translateY(0);
   }
 
+  /* Heading modalità (es. Raccontare) con bubble animata via JS. */
   .commercials-page .commercial-mode-heading {
     display: inline-grid;
     grid-template-columns: auto auto;
@@ -565,6 +568,7 @@ body.inner-page {
     opacity: 1;
     transform: translateY(0) rotate(-7deg) scale(1);
   }
+
 
   /* Breakpoint tablet */
   @include media-breakpoint-down(lg) {
@@ -787,6 +791,7 @@ body.inner-page {
     .commercials-page .commercial-mode-heading.is-in-view .commercial-mode-bubble {
       transform: translateY(0) rotate(-7deg) scale(1);
     }
+
   }
 
 }

@@ -13,6 +13,8 @@
       --bs-body-color: #{$gray-900};
       --bs-primary: #009fe3;
       --bs-primary-rgb: 0, 159, 227;
+      --bs-success: #30997b;
+      --bs-success-rgb: 48, 153, 123;
       --bs-warning: #f3ab28;
       --bs-warning-rgb: 243, 171, 40;
       --bg: var(--bs-body-bg);
@@ -91,6 +93,12 @@ h2 {
     /* Header e trigger menu */
     .top-header {
       padding: #{$spacer * 0.5} 0 #{$spacer * 0.15};
+      transition: background-color 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .top-header.is-scrolled {
+      -webkit-backdrop-filter: blur(10px) saturate(130%);
+      backdrop-filter: blur(10px) saturate(130%);
     }
 
     .hero-fluid {
@@ -383,6 +391,7 @@ h2 {
     }
 
     .hero-wrap {
+      margin-top: clamp(5rem, 7vw, 7rem);
       padding-bottom: 3.4rem;
     }
 

@@ -302,14 +302,17 @@
         {
           title: "Caramelle",
           image: "/images/originals-cover-01-700x395.jpg",
+          link: "/originals/caramelle",
         },
         {
           title: "Marta e la morte",
           image: "/images/originals-cover-02-270x395.jpg",
+          link: "/originals/caramelle",
         },
         {
           title: "#Nostoppignora",
           image: "/images/originals-cover-03-270x395.jpg",
+          link: "/originals/caramelle",
         },
       ];
 
@@ -362,7 +365,7 @@
         setCard(featuredCard, featuredTitle, featured);
         setCard(sideCard1, sideTitle1, sideOne);
         setCard(sideCard2, sideTitle2, sideTwo);
-        featuredBtn.setAttribute("href", "#");
+        featuredBtn.setAttribute("href", featured.link || "/originals/caramelle");
 
         requestAnimationFrame(function () {
           [featuredCard, sideCard1, sideCard2].forEach(function (card) {
