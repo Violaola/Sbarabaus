@@ -442,6 +442,130 @@ body.inner-page {
     max-width: 100%;
   }
 
+  .commercials-page .commercials-media-card {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 0.25rem 0.78rem rgba(0, 0, 0, 0.11);
+    outline: none;
+  }
+
+  .commercials-page .commercials-media-card img {
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .commercials-page .commercials-media-tags {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    max-width: calc(100% - 1.8rem);
+    opacity: 0;
+    transform: translateY(-0.4rem);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  .commercials-page .commercials-media-tag {
+    background: #000;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.36rem 1.08rem;
+    font-size: clamp(0.85rem, 0.76rem + 0.3vw, 1rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .commercials-page .commercials-media-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    text-align: center;
+    padding: 1.2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transform: translateY(0.55rem);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  .commercials-page .commercials-media-overlay h4 {
+    margin: 0;
+    font-size: clamp(1rem, 0.9rem + 0.45vw, 1.4rem);
+    line-height: 1.05;
+    font-weight: 900;
+  }
+
+  .commercials-page .commercials-media-overlay p {
+    margin: 0;
+    max-width: 30ch;
+    font-size: clamp(0.8rem, 0.72rem + 0.28vw, 0.98rem);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  .commercials-page .commercials-media-card:hover img,
+  .commercials-page .commercials-media-card:focus-visible img {
+    transform: scale(1.05);
+  }
+
+  .commercials-page .commercials-media-card:hover .commercials-media-tags,
+  .commercials-page .commercials-media-card:focus-visible .commercials-media-tags {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .commercials-page .commercials-media-card:hover .commercials-media-overlay,
+  .commercials-page .commercials-media-card:focus-visible .commercials-media-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .commercials-page .commercial-mode-heading {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    column-gap: clamp(#{$spacer * 0.55}, 1.8vw, #{$spacer * 1.25});
+    margin-bottom: clamp(#{$spacer * 0.55}, 1.8vw, #{$spacer * 0.9});
+    max-width: 100%;
+  }
+
+  .commercials-page .commercial-mode-heading h3 {
+    margin: 0;
+    line-height: 0.95;
+  }
+
+  .commercials-page .commercial-mode-bubble {
+    width: clamp(9.5rem, 18vw, 14.5rem);
+    max-width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.25rem) rotate(-7deg) scale(0.9);
+    transform-origin: 50% 50%;
+    transition: opacity 0.28s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(0 0.42rem 0.68rem rgba(0, 0, 0, 0.22));
+  }
+
+  .commercials-page .commercial-mode-heading.is-in-view .commercial-mode-bubble {
+    opacity: 1;
+    transform: translateY(0) rotate(-7deg) scale(1);
+  }
+
   /* Breakpoint tablet */
   @include media-breakpoint-down(lg) {
     .page-hero-content {
@@ -508,6 +632,14 @@ body.inner-page {
 
     .commercials-page .commercials-cta-copy {
       width: clamp(17rem, 46vw, 28rem);
+    }
+
+    .commercials-page .commercial-mode-heading {
+      column-gap: clamp(#{$spacer * 0.45}, 2.2vw, #{$spacer});
+    }
+
+    .commercials-page .commercial-mode-bubble {
+      width: clamp(8.2rem, 23vw, 11.2rem);
     }
 
   }
@@ -609,6 +741,51 @@ body.inner-page {
 
     .commercials-page .commercials-cta-copy {
       width: auto;
+    }
+
+    .commercials-page .commercials-media-tags {
+      top: 0.6rem;
+      right: 0.6rem;
+      max-width: calc(100% - 1.2rem);
+    }
+
+    .commercials-page .commercials-media-tag {
+      padding: 0.3rem 0.85rem;
+      font-size: clamp(0.72rem, 0.65rem + 0.34vw, 0.85rem);
+    }
+
+    .commercials-page .commercials-media-overlay {
+      padding: 0.9rem;
+    }
+
+    .commercials-page .commercials-media-overlay h4 {
+      font-size: clamp(0.9rem, 0.82rem + 0.55vw, 1.12rem);
+    }
+
+    .commercials-page .commercials-media-overlay p {
+      font-size: clamp(0.72rem, 0.66rem + 0.38vw, 0.86rem);
+    }
+
+    .commercials-page .commercial-mode-heading {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: $spacer * 0.45;
+      margin-bottom: $spacer * 0.5;
+    }
+
+    .commercials-page .commercial-mode-heading h3 {
+      white-space: nowrap;
+    }
+
+    .commercials-page .commercial-mode-bubble {
+      width: clamp(7rem, 34vw, 9.8rem);
+      transform: translateY(0.28rem) rotate(-7deg) scale(0.92);
+    }
+
+    .commercials-page .commercial-mode-heading.is-in-view .commercial-mode-bubble {
+      transform: translateY(0) rotate(-7deg) scale(1);
     }
   }
 

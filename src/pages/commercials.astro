@@ -37,6 +37,13 @@ const modeImageSets = {
     "/images/coinvolgere-04.jpg",
   ],
 } as const;
+
+const modeBubbleSets = {
+  Raccontare: "/images/raccontare.png",
+  Spiegare: "/images/spiegare.png",
+  Promuovere: "/images/promuovere.png",
+  Coinvolgere: "/images/coinvolgere.png",
+} as const;
 ---
 
 <BaseLayout title="Commercials - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
@@ -103,10 +110,23 @@ const modeImageSets = {
                 `https://placehold.co/460x280/png?text=${mode}+03`,
                 `https://placehold.co/760x340/png?text=${mode}+04`,
               ];
+              const bubble = modeBubbleSets[mode as keyof typeof modeBubbleSets];
 
               return (
               <article class:list={[index > 0 && "mt-5 pt-2", index === communicationModes.length - 1 && "mb-4 pb-4 mb-md-5 pb-md-4"]}>
-                <h3 class="mb-2 fw-bold text-body display-5 display-lg-4">{mode}</h3>
+                <div class="commercial-mode-heading" data-commercial-mode-heading>
+                  <h3 class="fw-bold text-body display-5 display-lg-4">{mode}</h3>
+                  {bubble && (
+                    <img
+                      class="commercial-mode-bubble"
+                      src={bubble}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis voluptate neque eget felis posuere
                   mattis, sed et enim at nulla iaculis interdum. Suspendisse sed elit at sem rutrum molestie.
@@ -114,36 +134,76 @@ const modeImageSets = {
 
                 <div class="row g-3">
                   <div class="col-12 col-md-6">
-                    <img
-                      class="img-fluid w-100 rounded-4"
-                      src={scenes[0]}
-                      alt={`${mode} scena 1`}
-                      style="height: 300px; object-fit: cover;"
-                    />
+                    <article class="commercials-media-card" tabindex="0" aria-label={`${mode} scena 1`}>
+                      <img
+                        class="img-fluid w-100"
+                        src={scenes[0]}
+                        alt={`${mode} scena 1`}
+                        style="height: 300px; object-fit: cover;"
+                      />
+                      <div class="commercials-media-tags" aria-hidden="true">
+                        <span class="commercials-media-tag">{mode}</span>
+                        <span class="commercials-media-tag">Commercial</span>
+                      </div>
+                      <div class="commercials-media-overlay" aria-hidden="true">
+                        <h4>{mode} 01</h4>
+                        <p>Frame dal progetto {mode.toLowerCase()}.</p>
+                      </div>
+                    </article>
                   </div>
                   <div class="col-12 col-md-6">
-                    <img
-                      class="img-fluid w-100 rounded-4"
-                      src={scenes[1]}
-                      alt={`${mode} scena 2`}
-                      style="height: 300px; object-fit: cover;"
-                    />
+                    <article class="commercials-media-card" tabindex="0" aria-label={`${mode} scena 2`}>
+                      <img
+                        class="img-fluid w-100"
+                        src={scenes[1]}
+                        alt={`${mode} scena 2`}
+                        style="height: 300px; object-fit: cover;"
+                      />
+                      <div class="commercials-media-tags" aria-hidden="true">
+                        <span class="commercials-media-tag">{mode}</span>
+                        <span class="commercials-media-tag">Commercial</span>
+                      </div>
+                      <div class="commercials-media-overlay" aria-hidden="true">
+                        <h4>{mode} 02</h4>
+                        <p>Frame dal progetto {mode.toLowerCase()}.</p>
+                      </div>
+                    </article>
                   </div>
                   <div class="col-12 col-md-5">
-                    <img
-                      class="img-fluid w-100 rounded-4"
-                      src={scenes[2]}
-                      alt={`${mode} scena 3`}
-                      style="height: 240px; object-fit: cover;"
-                    />
+                    <article class="commercials-media-card" tabindex="0" aria-label={`${mode} scena 3`}>
+                      <img
+                        class="img-fluid w-100"
+                        src={scenes[2]}
+                        alt={`${mode} scena 3`}
+                        style="height: 240px; object-fit: cover;"
+                      />
+                      <div class="commercials-media-tags" aria-hidden="true">
+                        <span class="commercials-media-tag">{mode}</span>
+                        <span class="commercials-media-tag">Commercial</span>
+                      </div>
+                      <div class="commercials-media-overlay" aria-hidden="true">
+                        <h4>{mode} 03</h4>
+                        <p>Frame dal progetto {mode.toLowerCase()}.</p>
+                      </div>
+                    </article>
                   </div>
                   <div class="col-12 col-md-7">
-                    <img
-                      class="img-fluid w-100 rounded-4"
-                      src={scenes[3]}
-                      alt={`${mode} scena 4`}
-                      style="height: 240px; object-fit: cover;"
-                    />
+                    <article class="commercials-media-card" tabindex="0" aria-label={`${mode} scena 4`}>
+                      <img
+                        class="img-fluid w-100"
+                        src={scenes[3]}
+                        alt={`${mode} scena 4`}
+                        style="height: 240px; object-fit: cover;"
+                      />
+                      <div class="commercials-media-tags" aria-hidden="true">
+                        <span class="commercials-media-tag">{mode}</span>
+                        <span class="commercials-media-tag">Commercial</span>
+                      </div>
+                      <div class="commercials-media-overlay" aria-hidden="true">
+                        <h4>{mode} 04</h4>
+                        <p>Frame dal progetto {mode.toLowerCase()}.</p>
+                      </div>
+                    </article>
                   </div>
                 </div>
               </article>
