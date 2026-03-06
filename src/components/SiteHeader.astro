@@ -1,29 +1,43 @@
 ---
+import logoDark from "../../public/images/panebarco-logo-dark.png";
+import logoLight from "../../public/images/panebarco-logo-light.png";
+import menuWhite from "../../public/images/hamburger-menu-bianco.png";
+import menuBlack from "../../public/images/hamburger-menu-nero.png";
+
 interface Props {
   logoSrc?: string;
   logoHref?: string;
   logoAlt?: string;
+  darkmode?: boolean;
   containerClass?: string;
   showLogo?: boolean;
   menuIconSrc?: string;
 }
 
 const {
-  logoSrc = "/images/panebarco logo dark.png",
+  logoSrc,
   logoHref = "/",
+  darkmode = true,
   logoAlt = "Panebarco",
   containerClass = "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
   showLogo = true,
-  menuIconSrc = "/images/hamburger-menu-bianco.png",
+  menuIconSrc,
 } = Astro.props;
+
+// darkmode=true  -> logo chiaro + hamburger bianco (per sfondi scuri) [default]
+// darkmode=false -> logo scuro  + hamburger nero  (per sfondi chiari)
+const imgLogo = logoSrc ?? (darkmode ? logoLight.src : logoDark.src);
+const menuIcon = menuIconSrc ?? (darkmode ? menuWhite.src : menuBlack.src);
+
+
 ---
 
 <header class="top-header fixed-top">
   <div class={containerClass}>
     <div class="hero-nav">
       <button class="menu-trigger" type="button" aria-label="Apri menu">
-        {menuIconSrc ? (
-          <img class="menu-trigger-icon" src={menuIconSrc} alt="" aria-hidden="true" />
+        {menuIcon ? (
+          <img class="menu-trigger-icon" src={menuIcon} alt="" aria-hidden="true" />
         ) : (
           <>
             <span></span>
@@ -33,8 +47,8 @@ const {
         )}
       </button>
       {showLogo && (
-        <a href={logoHref} class="hero-logo text-decoration-none" aria-label="Panebarco">
-          <img src={logoSrc} alt={logoAlt} />
+        <a href={logoHref} class="hero-logo text-decoration-none" aria-label={logoAlt}>
+          <img src={imgLogo} alt={logoAlt} />
         </a>
       )}
     </div>

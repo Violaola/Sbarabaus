@@ -28,18 +28,17 @@ const { project } = Astro.props;
   useInnerStyles={true}
 >
   <SiteHeader
-    logoSrc="/images/panebarco logo light.png"
     containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
-    menuIconSrc="/images/hamburger-menu-bianco.png"
   />
   <MenuOverlay />
 
-  <main class="original-detail-page pb-5">
-    <section class="original-detail-hero" aria-label={`Hero progetto ${project.title}`}>
-      <div class="original-detail-hero__frame">
+  <main class="original-detail-page pb-5 bg-black text-white">
+    <!-- Hero dettaglio: solo immagine full-bleed -->
+    <section class="page-hero page-hero--studio originals-hero py-0" aria-label={`Hero progetto ${project.title}`}>
+      <div class="ratio ratio-16x9 overflow-hidden originals-hero__media">
         <img
-          class="original-detail-hero__image"
-          src="/images/hero-dettaglio-originals.jpg"
+          class="w-100 h-100 object-fit-cover"
+          src="https://placehold.co/1920x1080/png?text=Frame+Hero"
           alt={`Frame progetto ${project.title}`}
           loading="eager"
           decoding="async"
@@ -47,31 +46,258 @@ const { project } = Astro.props;
       </div>
     </section>
 
-    <section class="pb-4 pt-1">
+    <!-- Sinossi -->
+    <section class="section-space section-space--soft">
       <div class="container">
-        <h1 class="mt-5">Caramelle</h1>
-        <p>“Caramelle” è stato proiettato in anteprima ad ottobre all’interno di Alice nella Città, sezione parallela della Festa del Cinema di Roma aggiudicandosi il Premio del Pubblico come Miglior Corto. </p>
-          <p>“Caramelle” narra di un legame affettivo fortissimo che unisce tre generazioni: padre/nonno, figlia/madre, nipote/figlio. Una relazione talmente forte da superare i confini tra la vita e la morte, il mondo terreno e l’aldilà, in un’atmosfera di affascinante realismo magico. La storia è semplice: Lucia è una donna di 40 anni che saltuariamente fa visita alla tomba del padre nel cimitero cittadino. Un giorno trova sulla tomba una carta colorata di caramella tutta appallottolata. Il curioso episodio si ripeterà più volte, fino a quando Lucia scoprirà che… e poi vabbè, il finale non ve lo raccontiamo ma vi anticipiamo che il pivot della storia sono le caramelle del titolo, una sorta di rivisitazione in chiave pop della madeleine proustiana!</p>
+        <div class="row">
+          <div class="col-12 col-xl-12">
+            <p class="lead text-white mb-3 fw-bold">
+              “Caramelle” è stato proiettato in anteprima ad ottobre all’interno di Alice nella Città
+              vincendo il Premio del Pubblico come Miglior Corto. Racconta un legame familiare capace di
+              superare la vita e la morte, in un’atmosfera di realismo magico.
+            </p>
+            <p class="text-white mb-0 fw-bold">
+              Lucia visita la tomba del padre e trova misteriose carte di caramelle. Il curioso episodio si ripete,
+              finché scoprirà che il pivot della storia sono proprio quelle caramelle, madeleine pop che riannodano
+              tre generazioni.
+            </p>
+          </div>
+        </div>
       </div>
-        <img src="" alt="">
     </section>
+
+    <!-- Still principale -->
+    <section id="guarda-il-corto" class="section-space section-space--tight">
+      <div class="container">
+        <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+          <img
+            class="w-100 h-100 object-fit-cover"
+            src="https://placehold.co/1400x788/png?text=Still+01"
+            alt={`Still principale ${project.title}`}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Personaggi -->
+    <section class="section-space">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-4">Personaggi</h2>
+        <p class="mb-4 text-white-50">Design e caratterizzazione dei protagonisti.</p>
+        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 originals-characters-grid">
+          <div class="col">
+            <div class="char-card ratio-square no-radius">
+              <img src="https://placehold.co/620x620/png?text=Char+01" alt="Character 1" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="char-card ratio-square no-radius">
+              <img src="https://placehold.co/620x620/png?text=Char+02" alt="Character 2" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="char-card ratio-square no-radius">
+              <img src="https://placehold.co/620x620/png?text=Char+03" alt="Character 3" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="char-card ratio-wide-short no-radius">
+              <img src="https://placehold.co/740x420/png?text=Cab+Still" alt="Cab still" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="char-card ratio-tall no-radius">
+              <img src="https://placehold.co/520x680/png?text=Lineup" alt="Lineup" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="char-card ratio-wide no-radius">
+              <img src="https://placehold.co/640x420/png?text=Turnarounds" alt="Turnarounds" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Background e Props -->
+    <section class="section-space section-space--soft">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-4">Background e Props</h2>
+        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/520x320/png?text=BG+01" alt="Background 1" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/520x320/png?text=Props" alt="Props" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/520x320/png?text=BG+02" alt="Background 2" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Storyboard & Animatic -->
+    <section class="section-space section-space--tight">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-4">Storyboard &amp; Animatic</h2>
+        <p class="mb-3 text-white-50">Storyboard, animatic e timing.</p>
+        <div class="row g-3 row-cols-2 row-cols-md-3">
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x240/png?text=Storyboard+1" alt="Storyboard 1" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x240/png?text=Storyboard+2" alt="Storyboard 2" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x240/png?text=Storyboard+3" alt="Storyboard 3" /></div>
+        </div>
+        <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden mt-3">
+          <img class="w-100 h-100 object-fit-cover" src="https://placehold.co/1200x675/png?text=Animatic+Preview" alt="Animatic preview" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Rendering a livelli -->
+    <section class="section-space section-space--tight">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-4">Rendering a livelli</h2>
+        <div class="row g-3 row-cols-1 row-cols-md-3">
+          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Layer+01" class="w-100 h-100 object-fit-cover" alt="Layer 1" /></div></div>
+          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Layer+02" class="w-100 h-100 object-fit-cover" alt="Layer 2" /></div></div>
+          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Layer+03" class="w-100 h-100 object-fit-cover" alt="Layer 3" /></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compositing e Visual Effects -->
+    <section class="section-space section-space--tight">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-4">Compositing e Visual Effects</h2>
+        <div class="row g-3 row-cols-1 row-cols-md-3">
+          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Comp+01" class="w-100 h-100 object-fit-cover" alt="Comp 1" /></div></div>
+          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Comp+02" class="w-100 h-100 object-fit-cover" alt="Comp 2" /></div></div>
+          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Comp+03" class="w-100 h-100 object-fit-cover" alt="Comp 3" /></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rendering finale -->
+    <section class="section-space section-space--soft">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-12 col-lg-7">
+            <h2 class="page-title-uniform text-white mb-3">Rendering finale</h2>
+            <p class="text-white-50 mb-4">Descrizione della resa finale e del mood visivo.</p>
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img src="https://placehold.co/960x540/png?text=Final+Shot" class="w-100 h-100 object-fit-cover" alt="Final shot" />
+            </div>
+          </div>
+          <div class="col-12 col-lg-5">
+            <div class="d-flex flex-wrap gap-2">
+              <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden" style="width: 48%;">
+                <img src="https://placehold.co/440x248/png?text=Final+02" class="w-100 h-100 object-fit-cover" alt="Final 02" />
+              </div>
+              <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden" style="width: 48%;">
+                <img src="https://placehold.co/440x248/png?text=Final+03" class="w-100 h-100 object-fit-cover" alt="Final 03" />
+              </div>
+              <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden" style="width: 100%;">
+                <img src="https://placehold.co/640x360/png?text=Final+04" class="w-100 h-100 object-fit-cover" alt="Final 04" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Distribuzione -->
+    <section class="section-space section-space--tight">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-3">Distribuzione</h2>
+        <p class="text-white-50 mb-4">Festival, piattaforme, risultati.</p>
+        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x500/png?text=Poster+Festival" alt="Poster festival" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x500/png?text=Still+Festival" alt="Still festival" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x500/png?text=Audience" alt="Audience" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curiosità -->
+    <section class="section-space section-space--tight">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-3">Curiosità</h2>
+        <p class="text-white-50 mb-4">Note di produzione, easter egg, numeri.</p>
+        <div class="row g-3 row-cols-2 row-cols-md-4">
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+1" alt="Curiosità 1" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+2" alt="Curiosità 2" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+3" alt="Curiosità 3" /></div>
+          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+4" alt="Curiosità 4" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credits -->
+    <section class="section-space section-space--soft">
+      <div class="container">
+        <h2 class="page-title-uniform text-white mb-3">Credits</h2>
+        <ul class="list-unstyled text-white-75 small mb-0">
+          <li><strong>Regia:</strong> Nome Cognome</li>
+          <li><strong>Produzione:</strong> Panebarco &amp; C.</li>
+          <li><strong>Musica:</strong> Nome Cognome</li>
+          <li><strong>Distribuzione:</strong> Nome</li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <SiteFooter />
 </BaseLayout>
 
-<style>
-  .original-detail-page {
-    background: #141414;
-    color: #fff;
+<style lang="scss">
+  /* Override hero defaults: full-bleed image only */
+  .originals-hero {
+    display: block !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    align-items: flex-start !important;
   }
 
-  .original-detail-page h1{
-    color: #009FE3
+  .originals-hero__media {
+    width: 100%;
+    height: clamp(16rem, 52vh, 28rem);
+    border-radius: 0;
   }
 
-  .original-detail-page h2,
-  .original-detail-page p {
-    color: #fff;
+  @media (min-width: 768px) {
+    .originals-hero__media {
+      border-radius: 0.5rem;
+    }
+  }
+
+  /* Personaggi cards */
+  .originals-characters-grid .char-card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .originals-characters-grid .char-card.no-radius {
+    border-radius: 0;
+  }
+
+  .originals-characters-grid .char-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .originals-characters-grid .ratio-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .originals-characters-grid .ratio-wide {
+    aspect-ratio: 4 / 3;
+  }
+
+  .originals-characters-grid .ratio-wide-short {
+    aspect-ratio: 16 / 9;
+  }
+
+  .originals-characters-grid .ratio-tall {
+    aspect-ratio: 3 / 4;
   }
 </style>
