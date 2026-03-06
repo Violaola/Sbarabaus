@@ -1,13 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import MenuOverlay from "../components/MenuOverlay.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 ---
 
 <BaseLayout title="Paneblog - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
   <SiteHeader containerClass="hero-fluid" />
-  <MenuOverlay />
     <main>
       <section class="page-hero">
         <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
