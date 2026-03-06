@@ -6,6 +6,11 @@ interface Props {
   heroClass?: string;
   id?: string;
   show?: boolean;
+  videoSrc?: string;
+  title?: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 const {
@@ -15,6 +20,11 @@ const {
   containerClass = "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
   heroClass = "hero-card",
   id,
+  videoSrc = "/images/1021768637.mp4",
+  title = "Ciao!",
+  subtitle = "Animazione, creatività e un pizzico di magia digitale.",
+  ctaLabel = "Scopri cosa facciamo",
+  ctaHref = "#",
 } = Astro.props;
 ---
 
@@ -22,11 +32,52 @@ const {
 <section class={className} id={id}>
   <div class={containerClass}>
     <div class={heroClass}>
-      <slot name="media" />
+      {videoSrc && (
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      )}
       <div class="hero-sty-home__body">
-        <slot />
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+        <a href={ctaHref} class="btn btn-cta btn-cta--blue hero-cta">
+          <i class="bi bi-play-fill" aria-hidden="true"></i> {ctaLabel}
+        </a>
       </div>
-      {showSlider && <slot name="slider" />}
+      {showSlider && (
+        <div class="chat-pop" role="region" aria-label="Anteprima chat">
+          <div class="chat-header">
+            <span id="chatSliderDate" class="chat-date">15/01/2026</span>
+            <div class="chat-fixed">
+              <span class="chat-chip">che fate?</span>
+              <span class="chat-avatar chat-avatar--fixed">
+                <img src="/images/avatar-che-fate-00.png" alt="Avatar fisso" />
+              </span>
+            </div>
+          </div>
+          <div class="chat-message-row">
+            <span class="chat-avatar chat-avatar--slider">
+              <img id="chatSliderAvatarImg" src="https://picsum.photos/seed/chat-slider-1/140/140" alt="Avatar personaggio" />
+            </span>
+            <div class="chat-body">
+              <strong id="chatSliderTitle">Titolo del messaggio</strong>
+              <p id="chatSliderText">
+                Aenean vel tortor aliquet, lobortis ligula a, tempus metus.
+                Vestibulum aliquet, ante sit amet.
+              </p>
+            </div>
+          </div>
+          <div class="chat-controls">
+            <button id="chatSliderPrev" class="chat-nav" type="button" aria-label="Messaggio precedente">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <div id="chatSliderDots" class="chat-dots" aria-label="Navigazione messaggi"></div>
+            <button id="chatSliderNext" class="chat-nav" type="button" aria-label="Messaggio successivo">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   </div>
 </section>

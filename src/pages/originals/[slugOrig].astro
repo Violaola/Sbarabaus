@@ -6,13 +6,13 @@ export function getStaticPaths() {
   const originals = [
     {
       slugOrig: "caramelle",
-      title: "Caramelle"
+      title: "Caramelle",
     },
   ] as const;
 
   return originals.map((project) => ({
     params: { slugOrig: project.slugOrig },
-    props: { project }
+    props: { project },
   }));
 }
 
@@ -24,32 +24,34 @@ const { project } = Astro.props;
   description={`Dettaglio progetto Originals: ${project.title}`}
   useInnerPagesScript={false}
   useInnerStyles={true}
-  headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
+  headerProps={{
+    containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
+  }}
 >
+  <HeroStyDettaglio
+    className="originals-hero"
+    imageSrc="https://placehold.co/1920x1080/png?text=Frame+Hero"
+    imageAlt={`Frame progetto ${project.title}`}
+    caption={project.title}
+  />
 
   <main class="original-detail-page pb-5 bg-black text-white">
-    <HeroStyDettaglio
-      className="page-hero originals-hero"
-      aspectRatio="16 / 9"
-      imageSrc="https://placehold.co/1920x1080/png?text=Frame+Hero"
-      imageAlt={`Frame progetto ${project.title}`}
-      caption={project.title}
-    />
-
     <!-- Sinossi -->
     <section class="section-space section-space--soft">
       <div class="container">
         <div class="row">
           <div class="col-12 col-xl-12">
             <p class="lead text-white mb-3 fw-bold">
-              “Caramelle” è stato proiettato in anteprima ad ottobre all’interno di Alice nella Città
-              vincendo il Premio del Pubblico come Miglior Corto. Racconta un legame familiare capace di
-              superare la vita e la morte, in un’atmosfera di realismo magico.
+              “Caramelle” è stato proiettato in anteprima ad ottobre all’interno
+              di Alice nella Città vincendo il Premio del Pubblico come Miglior
+              Corto. Racconta un legame familiare capace di superare la vita e
+              la morte, in un’atmosfera di realismo magico.
             </p>
             <p class="text-white mb-0 fw-bold">
-              Lucia visita la tomba del padre e trova misteriose carte di caramelle. Il curioso episodio si ripete,
-              finché scoprirà che il pivot della storia sono proprio quelle caramelle, madeleine pop che riannodano
-              tre generazioni.
+              Lucia visita la tomba del padre e trova misteriose carte di
+              caramelle. Il curioso episodio si ripete, finché scoprirà che il
+              pivot della storia sono proprio quelle caramelle, madeleine pop
+              che riannodano tre generazioni.
             </p>
           </div>
         </div>
@@ -73,36 +75,58 @@ const { project } = Astro.props;
     <section class="section-space">
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">Personaggi</h2>
-        <p class="mb-4 text-white-50">Design e caratterizzazione dei protagonisti.</p>
-        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 originals-characters-grid">
+        <p class="mb-4 text-white-50">
+          Design e caratterizzazione dei protagonisti.
+        </p>
+        <div
+          class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 originals-characters-grid"
+        >
           <div class="col">
             <div class="char-card ratio-square no-radius">
-              <img src="https://placehold.co/620x620/png?text=Char+01" alt="Character 1" />
+              <img
+                src="https://placehold.co/620x620/png?text=Char+01"
+                alt="Character 1"
+              />
             </div>
           </div>
           <div class="col">
             <div class="char-card ratio-square no-radius">
-              <img src="https://placehold.co/620x620/png?text=Char+02" alt="Character 2" />
+              <img
+                src="https://placehold.co/620x620/png?text=Char+02"
+                alt="Character 2"
+              />
             </div>
           </div>
           <div class="col">
             <div class="char-card ratio-square no-radius">
-              <img src="https://placehold.co/620x620/png?text=Char+03" alt="Character 3" />
+              <img
+                src="https://placehold.co/620x620/png?text=Char+03"
+                alt="Character 3"
+              />
             </div>
           </div>
           <div class="col">
             <div class="char-card ratio-wide-short no-radius">
-              <img src="https://placehold.co/740x420/png?text=Cab+Still" alt="Cab still" />
+              <img
+                src="https://placehold.co/740x420/png?text=Cab+Still"
+                alt="Cab still"
+              />
             </div>
           </div>
           <div class="col">
             <div class="char-card ratio-tall no-radius">
-              <img src="https://placehold.co/520x680/png?text=Lineup" alt="Lineup" />
+              <img
+                src="https://placehold.co/520x680/png?text=Lineup"
+                alt="Lineup"
+              />
             </div>
           </div>
           <div class="col">
             <div class="char-card ratio-wide no-radius">
-              <img src="https://placehold.co/640x420/png?text=Turnarounds" alt="Turnarounds" />
+              <img
+                src="https://placehold.co/640x420/png?text=Turnarounds"
+                alt="Turnarounds"
+              />
             </div>
           </div>
         </div>
@@ -114,9 +138,27 @@ const { project } = Astro.props;
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">Background e Props</h2>
         <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3">
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/520x320/png?text=BG+01" alt="Background 1" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/520x320/png?text=Props" alt="Props" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/520x320/png?text=BG+02" alt="Background 2" /></div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/520x320/png?text=BG+01"
+              alt="Background 1"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/520x320/png?text=Props"
+              alt="Props"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/520x320/png?text=BG+02"
+              alt="Background 2"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -124,15 +166,39 @@ const { project } = Astro.props;
     <!-- Storyboard & Animatic -->
     <section class="section-space section-space--tight">
       <div class="container">
-        <h2 class="page-title-uniform text-white mb-4">Storyboard &amp; Animatic</h2>
+        <h2 class="page-title-uniform text-white mb-4">
+          Storyboard &amp; Animatic
+        </h2>
         <p class="mb-3 text-white-50">Storyboard, animatic e timing.</p>
         <div class="row g-3 row-cols-2 row-cols-md-3">
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x240/png?text=Storyboard+1" alt="Storyboard 1" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x240/png?text=Storyboard+2" alt="Storyboard 2" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x240/png?text=Storyboard+3" alt="Storyboard 3" /></div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/360x240/png?text=Storyboard+1"
+              alt="Storyboard 1"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/360x240/png?text=Storyboard+2"
+              alt="Storyboard 2"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/360x240/png?text=Storyboard+3"
+              alt="Storyboard 3"
+            />
+          </div>
         </div>
         <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden mt-3">
-          <img class="w-100 h-100 object-fit-cover" src="https://placehold.co/1200x675/png?text=Animatic+Preview" alt="Animatic preview" />
+          <img
+            class="w-100 h-100 object-fit-cover"
+            src="https://placehold.co/1200x675/png?text=Animatic+Preview"
+            alt="Animatic preview"
+          />
         </div>
       </div>
     </section>
@@ -142,9 +208,33 @@ const { project } = Astro.props;
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">Rendering a livelli</h2>
         <div class="row g-3 row-cols-1 row-cols-md-3">
-          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Layer+01" class="w-100 h-100 object-fit-cover" alt="Layer 1" /></div></div>
-          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Layer+02" class="w-100 h-100 object-fit-cover" alt="Layer 2" /></div></div>
-          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Layer+03" class="w-100 h-100 object-fit-cover" alt="Layer 3" /></div></div>
+          <div class="col">
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img
+                src="https://placehold.co/480x270/png?text=Layer+01"
+                class="w-100 h-100 object-fit-cover"
+                alt="Layer 1"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img
+                src="https://placehold.co/480x270/png?text=Layer+02"
+                class="w-100 h-100 object-fit-cover"
+                alt="Layer 2"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img
+                src="https://placehold.co/480x270/png?text=Layer+03"
+                class="w-100 h-100 object-fit-cover"
+                alt="Layer 3"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -152,11 +242,37 @@ const { project } = Astro.props;
     <!-- Compositing e Visual Effects -->
     <section class="section-space section-space--tight">
       <div class="container">
-        <h2 class="page-title-uniform text-white mb-4">Compositing e Visual Effects</h2>
+        <h2 class="page-title-uniform text-white mb-4">
+          Compositing e Visual Effects
+        </h2>
         <div class="row g-3 row-cols-1 row-cols-md-3">
-          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Comp+01" class="w-100 h-100 object-fit-cover" alt="Comp 1" /></div></div>
-          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Comp+02" class="w-100 h-100 object-fit-cover" alt="Comp 2" /></div></div>
-          <div class="col"><div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"><img src="https://placehold.co/480x270/png?text=Comp+03" class="w-100 h-100 object-fit-cover" alt="Comp 3" /></div></div>
+          <div class="col">
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img
+                src="https://placehold.co/480x270/png?text=Comp+01"
+                class="w-100 h-100 object-fit-cover"
+                alt="Comp 1"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img
+                src="https://placehold.co/480x270/png?text=Comp+02"
+                class="w-100 h-100 object-fit-cover"
+                alt="Comp 2"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+              <img
+                src="https://placehold.co/480x270/png?text=Comp+03"
+                class="w-100 h-100 object-fit-cover"
+                alt="Comp 3"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -167,21 +283,48 @@ const { project } = Astro.props;
         <div class="row g-4 align-items-start">
           <div class="col-12 col-lg-7">
             <h2 class="page-title-uniform text-white mb-3">Rendering finale</h2>
-            <p class="text-white-50 mb-4">Descrizione della resa finale e del mood visivo.</p>
+            <p class="text-white-50 mb-4">
+              Descrizione della resa finale e del mood visivo.
+            </p>
             <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
-              <img src="https://placehold.co/960x540/png?text=Final+Shot" class="w-100 h-100 object-fit-cover" alt="Final shot" />
+              <img
+                src="https://placehold.co/960x540/png?text=Final+Shot"
+                class="w-100 h-100 object-fit-cover"
+                alt="Final shot"
+              />
             </div>
           </div>
           <div class="col-12 col-lg-5">
             <div class="d-flex flex-wrap gap-2">
-              <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden" style="width: 48%;">
-                <img src="https://placehold.co/440x248/png?text=Final+02" class="w-100 h-100 object-fit-cover" alt="Final 02" />
+              <div
+                class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"
+                style="width: 48%;"
+              >
+                <img
+                  src="https://placehold.co/440x248/png?text=Final+02"
+                  class="w-100 h-100 object-fit-cover"
+                  alt="Final 02"
+                />
               </div>
-              <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden" style="width: 48%;">
-                <img src="https://placehold.co/440x248/png?text=Final+03" class="w-100 h-100 object-fit-cover" alt="Final 03" />
+              <div
+                class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"
+                style="width: 48%;"
+              >
+                <img
+                  src="https://placehold.co/440x248/png?text=Final+03"
+                  class="w-100 h-100 object-fit-cover"
+                  alt="Final 03"
+                />
               </div>
-              <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden" style="width: 100%;">
-                <img src="https://placehold.co/640x360/png?text=Final+04" class="w-100 h-100 object-fit-cover" alt="Final 04" />
+              <div
+                class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"
+                style="width: 100%;"
+              >
+                <img
+                  src="https://placehold.co/640x360/png?text=Final+04"
+                  class="w-100 h-100 object-fit-cover"
+                  alt="Final 04"
+                />
               </div>
             </div>
           </div>
@@ -195,9 +338,27 @@ const { project } = Astro.props;
         <h2 class="page-title-uniform text-white mb-3">Distribuzione</h2>
         <p class="text-white-50 mb-4">Festival, piattaforme, risultati.</p>
         <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3">
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x500/png?text=Poster+Festival" alt="Poster festival" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x500/png?text=Still+Festival" alt="Still festival" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/360x500/png?text=Audience" alt="Audience" /></div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/360x500/png?text=Poster+Festival"
+              alt="Poster festival"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/360x500/png?text=Still+Festival"
+              alt="Still festival"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/360x500/png?text=Audience"
+              alt="Audience"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -206,12 +367,38 @@ const { project } = Astro.props;
     <section class="section-space section-space--tight">
       <div class="container">
         <h2 class="page-title-uniform text-white mb-3">Curiosità</h2>
-        <p class="text-white-50 mb-4">Note di produzione, easter egg, numeri.</p>
+        <p class="text-white-50 mb-4">
+          Note di produzione, easter egg, numeri.
+        </p>
         <div class="row g-3 row-cols-2 row-cols-md-4">
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+1" alt="Curiosità 1" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+2" alt="Curiosità 2" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+3" alt="Curiosità 3" /></div>
-          <div class="col"><img class="img-fluid rounded-3 shadow-lg" src="https://placehold.co/260x160/png?text=Curio+4" alt="Curiosità 4" /></div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/260x160/png?text=Curio+1"
+              alt="Curiosità 1"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/260x160/png?text=Curio+2"
+              alt="Curiosità 2"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/260x160/png?text=Curio+3"
+              alt="Curiosità 3"
+            />
+          </div>
+          <div class="col">
+            <img
+              class="img-fluid rounded-3 shadow-lg"
+              src="https://placehold.co/260x160/png?text=Curio+4"
+              alt="Curiosità 4"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -228,20 +415,10 @@ const { project } = Astro.props;
         </ul>
       </div>
     </section>
-
   </main>
 </Layout>
 
 <style lang="scss">
-  /* Override hero defaults: full-bleed image only */
-  .originals-hero {
-    display: block !important;
-    min-height: auto !important;
-    padding: 0 !important;
-    background: transparent !important;
-    align-items: flex-start !important;
-  }
-
   .originals-hero__media {
     width: 100%;
     height: clamp(16rem, 52vh, 28rem);

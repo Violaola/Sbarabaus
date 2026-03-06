@@ -1,29 +1,60 @@
 ---
 interface Props {
-  showSideImage?: boolean;
   className?: string;
-  show?: boolean;
+  backgroundVideoSrc?: string;
+  bgWord?: string;
+  title?: string;
+  subtitle?: string;
+  sideImageSrc?: string;
+  sideImageAlt?: string;
 }
 
 const {
-  show = true,
-  showSideImage = true,
-  className = "hero-sty-studio",
+  className = "hero-sty-studio page-hero page-hero--studio",
+  backgroundVideoSrc = "/images/panebarco-studio-video.mp4",
+  bgWord = "LA TANA",
+  title = "LO STUDIO",
+  subtitle = "Idee al confine tra cartoon e realtà",
+  sideImageSrc = "/images/lo-studio-panebarco-teams.png",
+  sideImageAlt = "Team Panebarco",
 } = Astro.props;
 ---
 
-{show && (
-  <section class={className}>
-    <slot name="background" />
-    <slot />
-    {showSideImage && <slot name="side-image" />}
-  </section>
-)}
+<section class={className}>
+  {backgroundVideoSrc && (
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src={backgroundVideoSrc} type="video/mp4" />
+    </video>
+  )}
+
+  <div class="container page-hero-content page-hero-content--studio">
+    <div class="row g-4 g-lg-5 align-items-end">
+      <div class="col-12 col-lg-7 col-xl-6">
+        <div class="page-hero-text">
+          <p class="page-hero-bgword">{bgWord}</p>
+          <h1 class="page-hero-title">{title}</h1>
+          <p class="page-hero-subtitle">{subtitle}</p>
+        </div>
+      </div>
+      {sideImageSrc && (
+        <div class="col-12 col-lg-5 col-xl-6 text-lg-end">
+          <div class="page-hero-media">
+            <img
+              class="img-fluid d-block ms-lg-auto"
+              src={sideImageSrc}
+              alt={sideImageAlt}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
 
 <style>
   .hero-sty-studio {
     position: relative;
     overflow: hidden;
   }
-  /* Content styling is supplied by the consumer (e.g., bootstrap grid). */
+ 
 </style>

@@ -64,8 +64,12 @@ body.inner-page {
   .page-hero-content {
     margin-inline: auto;
     width: 100%;
-    padding: clamp(5.2rem, 12vh, 7.2rem) clamp(#{$spacer}, 3.5vw, #{$spacer * 2.5}) clamp(5.4rem, 12vh, 7rem);
+    padding: 0 clamp(#{$spacer}, 3.5vw, #{$spacer * 2.5})
+      clamp(5.4rem, 12vh, 7rem);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .page-hero-content:not(.container) {
@@ -157,7 +161,7 @@ body.inner-page {
   }
 
   .studio-page .page-hero--studio .page-hero-content {
-    padding-top: clamp(6.2rem, 12vh, 8rem);
+    padding-top: 0;
     padding-bottom: clamp(8rem, 12vw, 10rem);
   }
 
@@ -208,7 +212,12 @@ body.inner-page {
   .studio-page .studio-timeline {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(180deg, $black 0%, rgba($black, 0.85) 50.48%, $black 100%);
+    background: linear-gradient(
+      180deg,
+      $black 0%,
+      rgba($black, 0.85) 50.48%,
+      $black 100%
+    );
   }
 
   .studio-page .studio-timeline::before,
@@ -220,12 +229,22 @@ body.inner-page {
   }
 
   .studio-page .studio-timeline::before {
-    background: radial-gradient(55% 60% at 50% 50%, rgba($white, 0.16) 0%, rgba($white, 0.06) 38%, rgba($white, 0) 74%);
+    background: radial-gradient(
+      55% 60% at 50% 50%,
+      rgba($white, 0.16) 0%,
+      rgba($white, 0.06) 38%,
+      rgba($white, 0) 74%
+    );
     opacity: 0.9;
   }
 
   .studio-page .studio-timeline::after {
-    background: linear-gradient(180deg, rgba($black, 0.34) 0%, rgba($black, 0) 45%, rgba($black, 0.34) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba($black, 0.34) 0%,
+      rgba($black, 0) 45%,
+      rgba($black, 0.34) 100%
+    );
   }
 
   .studio-page .studio-timeline .container {
@@ -260,7 +279,9 @@ body.inner-page {
     place-items: center;
     padding: $spacer * 0.35 $spacer * 0.4;
     line-height: 0;
-    transition: transform 0.24s ease, opacity 0.24s ease;
+    transition:
+      transform 0.24s ease,
+      opacity 0.24s ease;
     cursor: pointer;
   }
 
@@ -268,7 +289,9 @@ body.inner-page {
     width: clamp(2.25rem, 5.1vw, 3.15rem);
     height: auto;
     display: block;
-    transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.24s ease;
+    transition:
+      transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0.24s ease;
   }
 
   .studio-page .studio-timeline-arrow--prev:hover img,
@@ -334,7 +357,12 @@ body.inner-page {
     line-height: 0.88;
     font-weight: 900;
     letter-spacing: -0.03em;
-    background: linear-gradient(180deg, tint-color($primary, 35%) 0%, #fff07a 52%, #ff8641 100%);
+    background: linear-gradient(
+      180deg,
+      tint-color($primary, 35%) 0%,
+      #fff07a 52%,
+      #ff8641 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -380,7 +408,9 @@ body.inner-page {
     border-radius: $border-radius-pill;
     padding: 0;
     background: rgba(var(--bs-primary-rgb), 0.34);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
     cursor: pointer;
   }
 
@@ -469,7 +499,9 @@ body.inner-page {
     max-width: calc(100% - 1.8rem);
     opacity: 0;
     transform: translateY(-0.4rem);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
     pointer-events: none;
   }
 
@@ -502,7 +534,9 @@ body.inner-page {
     -webkit-backdrop-filter: blur(6px);
     opacity: 0;
     transform: translateY(0.55rem);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
     pointer-events: none;
   }
 
@@ -527,13 +561,17 @@ body.inner-page {
   }
 
   .commercials-page .commercials-media-card:hover .commercials-media-tags,
-  .commercials-page .commercials-media-card:focus-visible .commercials-media-tags {
+  .commercials-page
+    .commercials-media-card:focus-visible
+    .commercials-media-tags {
     opacity: 1;
     transform: translateY(0);
   }
 
   .commercials-page .commercials-media-card:hover .commercials-media-overlay,
-  .commercials-page .commercials-media-card:focus-visible .commercials-media-overlay {
+  .commercials-page
+    .commercials-media-card:focus-visible
+    .commercials-media-overlay {
     opacity: 1;
     transform: translateY(0);
   }
@@ -560,21 +598,24 @@ body.inner-page {
     pointer-events: none;
     transform: translateY(0.25rem) rotate(-7deg) scale(0.9);
     transform-origin: 50% 50%;
-    transition: opacity 0.28s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      opacity 0.28s ease,
+      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
     filter: drop-shadow(0 0.42rem 0.68rem rgba(0, 0, 0, 0.22));
   }
 
-  .commercials-page .commercial-mode-heading.is-in-view .commercial-mode-bubble {
+  .commercials-page
+    .commercial-mode-heading.is-in-view
+    .commercial-mode-bubble {
     opacity: 1;
     transform: translateY(0) rotate(-7deg) scale(1);
   }
-
 
   /* Breakpoint tablet */
   @include media-breakpoint-down(lg) {
     .page-hero-content {
       text-align: left;
-      padding-top: $spacer * 6.2;
+      padding-top: 0;
       padding-bottom: $spacer * 3;
     }
 
@@ -589,7 +630,7 @@ body.inner-page {
     }
 
     .studio-page .page-hero--studio .page-hero-content {
-      padding-top: clamp(5.3rem, 10vw, 6.3rem);
+      padding-top: 0;
       padding-bottom: clamp(10.5rem, 24vw, 13rem);
     }
 
@@ -657,7 +698,7 @@ body.inner-page {
     }
 
     .page-hero-content {
-      padding-top: $spacer * 5.5;
+      padding-top: 0;
     }
 
     .hero-logo img {
@@ -730,10 +771,7 @@ body.inner-page {
 
     .commercials-page .commercials-cta-card {
       min-height: clamp(6.8rem, 25vw, 8.5rem);
-      padding:
-        $spacer * 0.8
-        $spacer
-        $spacer * 0.8
+      padding: $spacer * 0.8 $spacer $spacer * 0.8
         clamp(#{$spacer * 5.2}, 24vw, #{$spacer * 7.2});
       justify-content: center;
     }
@@ -788,10 +826,10 @@ body.inner-page {
       transform: translateY(0.28rem) rotate(-7deg) scale(0.92);
     }
 
-    .commercials-page .commercial-mode-heading.is-in-view .commercial-mode-bubble {
+    .commercials-page
+      .commercial-mode-heading.is-in-view
+      .commercial-mode-bubble {
       transform: translateY(0) rotate(-7deg) scale(1);
     }
-
   }
-
 }
