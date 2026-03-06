@@ -1,11 +1,13 @@
 ---
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/Layout.astro";
+import MenuOverlay from "../components/MenuOverlay.astro";
 ---
-<BaseLayout>
+<Layout>
     <SiteHeader containerClass="hero-fluid"/>
+  <MenuOverlay />
 
     <SiteFooter/>
 
-</BaseLayout>
+</Layout>

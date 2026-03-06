@@ -1,14 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import MenuOverlay from "../components/MenuOverlay.astro";
 ---
 
-<BaseLayout title="Studio - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+<Layout title="Studio - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
   <!-- Header pagina + overlay menu -->
   <SiteHeader
     containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
   />
+  <MenuOverlay />
     <main class="studio-page">
       <!-- Hero dello Studio -->
       <section class="page-hero page-hero--studio">
@@ -215,4 +217,4 @@ import SiteFooter from "../components/SiteFooter.astro";
     </main>
       <!-- Footer globale -->
       <SiteFooter />
-</BaseLayout>
+</Layout>

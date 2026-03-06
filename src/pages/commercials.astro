@@ -1,7 +1,8 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import MenuOverlay from "../components/MenuOverlay.astro";
 
 // I 4 cluster narrativi mostrati nella sezione "modi per comunicare".
 const communicationModes = [
@@ -48,10 +49,11 @@ const modeBubbleSets = {
 } as const;
 ---
 
-<BaseLayout title="Commercials - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+<Layout title="Commercials - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
   <SiteHeader
     containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
   />
+  <MenuOverlay />
   <main class="commercials-page studio-page">
     <!-- Hero di pagina con video background e visual dedicato -->
     <section class="page-hero page-hero--studio">
@@ -234,4 +236,4 @@ const modeBubbleSets = {
     </section>
   </main>
   <SiteFooter />
-</BaseLayout>
+</Layout>

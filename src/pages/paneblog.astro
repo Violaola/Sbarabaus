@@ -1,11 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import MenuOverlay from "../components/MenuOverlay.astro";
 ---
 
-<BaseLayout title="Paneblog - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
+<Layout title="Paneblog - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
   <SiteHeader containerClass="hero-fluid" />
+  <MenuOverlay />
     <main>
       <section class="page-hero">
         <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -30,4 +32,4 @@ import SiteFooter from "../components/SiteFooter.astro";
       </section>
     </main>
       <SiteFooter />
-</BaseLayout>
+</Layout>

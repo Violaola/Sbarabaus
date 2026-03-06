@@ -1,7 +1,8 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
+import MenuOverlay from "../../components/MenuOverlay.astro";
 
 export function getStaticPaths() {
   const originals = [
@@ -20,7 +21,7 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 ---
 
-<BaseLayout
+<Layout
   title={`${project.title} - Panebarco Originals`}
   description={`Dettaglio progetto Originals: ${project.title}`}
   useInnerPagesScript={false}
@@ -29,6 +30,7 @@ const { project } = Astro.props;
   <SiteHeader
     containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
   />
+  <MenuOverlay />
 
   <main class="original-detail-page pb-5 bg-black text-white">
     <!-- Hero dettaglio: solo immagine full-bleed -->
@@ -240,7 +242,7 @@ const { project } = Astro.props;
   </main>
 
   <SiteFooter />
-</BaseLayout>
+</Layout>
 
 <style lang="scss">
   /* Override hero defaults: full-bleed image only */
