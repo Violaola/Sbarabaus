@@ -1,0 +1,76 @@
+---
+interface Props {
+  imageSrc: string;
+  imageAlt?: string;
+  caption?: string;
+  className?: string;
+  aspectRatio?: string;
+  objectPosition?: string;
+  show?: boolean;
+}
+
+const {
+  imageSrc,
+  imageAlt = "",
+  caption,
+  className = "hero-sty-dettaglio",
+  aspectRatio = "21 / 9",
+  objectPosition = "center",
+  show = true,
+} = Astro.props;
+---
+
+{show && (
+  <section class={className} style={`--hero-ratio:${aspectRatio}; --hero-obj-pos:${objectPosition};`}>
+    <div class="hero-sty-dettaglio__media">
+      <img src={imageSrc} alt={imageAlt} loading="eager" />
+    </div>
+    {caption && <p class="hero-sty-dettaglio__caption">{caption}</p>}
+  </section>
+)}
+
+<style>
+  .hero-sty-dettaglio {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(0.5rem, 2vw, 1.5rem) clamp(0.75rem, 3vw, 2rem);
+  }
+
+  .hero-sty-dettaglio__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--hero-ratio);
+    overflow: hidden;
+    border-radius: clamp(12px, 2vw, 22px);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+    background: #0b0b0b;
+  }
+
+  .hero-sty-dettaglio__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--hero-obj-pos);
+    display: block;
+  }
+
+  .hero-sty-dettaglio__caption {
+    margin: clamp(0.75rem, 2vw, 1.4rem) 0 0;
+    text-align: center;
+    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+    color: #3c3c3c;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .hero-sty-dettaglio {
+      padding: clamp(0.25rem, 4vw, 1rem) 0;
+    }
+
+    .hero-sty-dettaglio__media {
+      border-radius: clamp(8px, 3vw, 14px);
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

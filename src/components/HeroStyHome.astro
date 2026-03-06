@@ -1,0 +1,44 @@
+---
+interface Props {
+  showSlider?: boolean;
+  className?: string;
+  containerClass?: string;
+  heroClass?: string;
+  id?: string;
+  show?: boolean;
+}
+
+const {
+  show = true,
+  showSlider = true,
+  className = "hero-sty-home",
+  containerClass = "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
+  heroClass = "hero-card",
+  id,
+} = Astro.props;
+---
+
+{show && (
+<section class={className} id={id}>
+  <div class={containerClass}>
+    <div class={heroClass}>
+      <slot name="media" />
+      <div class="hero-sty-home__body">
+        <slot />
+      </div>
+      {showSlider && <slot name="slider" />}
+    </div>
+  </div>
+</section>
+)}
+
+<style>
+  .hero-sty-home {
+    position: relative;
+  }
+
+  .hero-sty-home__body {
+    position: relative;
+    z-index: 1;
+  }
+</style>

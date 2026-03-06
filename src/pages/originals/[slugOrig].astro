@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import SiteHeader from "../../components/SiteHeader.astro";
-import SiteFooter from "../../components/SiteFooter.astro";
+import HeroStyDettaglio from "../../components/HeroStyDettaglio.astro";
 
 export function getStaticPaths() {
   const originals = [
@@ -25,24 +24,17 @@ const { project } = Astro.props;
   description={`Dettaglio progetto Originals: ${project.title}`}
   useInnerPagesScript={false}
   useInnerStyles={true}
+  headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
 >
-  <SiteHeader
-    containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
-  />
 
   <main class="original-detail-page pb-5 bg-black text-white">
-    <!-- Hero dettaglio: solo immagine full-bleed -->
-    <section class="page-hero page-hero--studio originals-hero py-0" aria-label={`Hero progetto ${project.title}`}>
-      <div class="ratio ratio-16x9 overflow-hidden originals-hero__media">
-        <img
-          class="w-100 h-100 object-fit-cover"
-          src="https://placehold.co/1920x1080/png?text=Frame+Hero"
-          alt={`Frame progetto ${project.title}`}
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-    </section>
+    <HeroStyDettaglio
+      className="page-hero originals-hero"
+      aspectRatio="16 / 9"
+      imageSrc="https://placehold.co/1920x1080/png?text=Frame+Hero"
+      imageAlt={`Frame progetto ${project.title}`}
+      caption={project.title}
+    />
 
     <!-- Sinossi -->
     <section class="section-space section-space--soft">
@@ -238,8 +230,6 @@ const { project } = Astro.props;
     </section>
 
   </main>
-
-  <SiteFooter />
 </Layout>
 
 <style lang="scss">

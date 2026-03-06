@@ -1,0 +1,29 @@
+---
+interface Props {
+  showSideImage?: boolean;
+  className?: string;
+  show?: boolean;
+}
+
+const {
+  show = true,
+  showSideImage = true,
+  className = "hero-sty-studio",
+} = Astro.props;
+---
+
+{show && (
+  <section class={className}>
+    <slot name="background" />
+    <slot />
+    {showSideImage && <slot name="side-image" />}
+  </section>
+)}
+
+<style>
+  .hero-sty-studio {
+    position: relative;
+    overflow: hidden;
+  }
+  /* Content styling is supplied by the consumer (e.g., bootstrap grid). */
+</style>

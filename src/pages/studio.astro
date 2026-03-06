@@ -1,18 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/SiteHeader.astro";
-import SiteFooter from "../components/SiteFooter.astro";
+import HeroStyStudio from "../components/HeroStyStudio.astro";
 ---
 
-<Layout title="Studio - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
-  <!-- Header pagina + overlay menu -->
-  <SiteHeader
-    containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
-  />
+<Layout
+  title="Studio - Panebarco"
+  useInnerPagesScript={true}
+  useInnerStyles={true}
+  headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
+>
     <main class="studio-page">
-      <!-- Hero dello Studio -->
-      <section class="page-hero page-hero--studio">
-        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <!-- Hero dello Studio (componentizzata) -->
+      <HeroStyStudio className="page-hero page-hero--studio" showSideImage={false}>
+        <video slot="background" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
           <source src="/images/panebarco-studio-video.mp4" type="video/mp4" />
         </video>
         <div class="container page-hero-content page-hero-content--studio">
@@ -31,7 +31,7 @@ import SiteFooter from "../components/SiteFooter.astro";
             </div>
           </div>
         </div>
-      </section>
+      </HeroStyStudio>
   
       <!-- Blocco storia introduttivo -->
       <section class="page-main page-main--studio">
@@ -213,6 +213,4 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
     </main>
-      <!-- Footer globale -->
-      <SiteFooter />
 </Layout>

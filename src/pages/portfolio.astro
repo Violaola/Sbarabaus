@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/SiteHeader.astro";
-import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<Layout title="Portfolio - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
-  <SiteHeader containerClass="hero-fluid" />
+<Layout
+  title="Portfolio - Panebarco"
+  useInnerPagesScript={true}
+  useInnerStyles={true}
+  headerProps={{ containerClass: "hero-fluid" }}
+>
     <main>
       <section class="page-hero">
         <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -29,5 +31,4 @@ import SiteFooter from "../components/SiteFooter.astro";
         </div>
       </section>
     </main>
-      <SiteFooter />
 </Layout>

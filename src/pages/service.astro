@@ -1,15 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/SiteHeader.astro";
-import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<Layout title="Service - Panebarco" useInnerPagesScript={true} useInnerStyles={true}>
-  <SiteHeader containerClass="hero-fluid" />
+<Layout
+  title="Service - Panebarco"
+  useInnerPagesScript={true}
+  useInnerStyles={true}
+  headerProps={{ containerClass: "hero-fluid" }}
+>
     <main>
       <h1>Service</h1>
       <p>Work in progress</p>
       <a href="index.html">Torna alla home</a>
     </main>
-    <SiteFooter />
 </Layout>

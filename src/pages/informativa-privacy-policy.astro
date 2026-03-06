@@ -1,11 +1,5 @@
 ---
-import SiteFooter from "../components/SiteFooter.astro";
-import SiteHeader from "../components/SiteHeader.astro";
 import Layout from "../layouts/Layout.astro";
 ---
-<Layout>
-    <SiteHeader containerClass="hero-fluid"/>
-
-    <SiteFooter/>
-
+<Layout headerProps={{ containerClass: "hero-fluid" }}>
 </Layout>
