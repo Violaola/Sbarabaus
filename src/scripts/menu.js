@@ -18,7 +18,6 @@
     if (!topHeader) return;
     const isScrolled = window.scrollY > 8;
     topHeader.classList.toggle("is-scrolled", isScrolled);
-    topHeader.classList.toggle("bg-success", isScrolled);
     topHeader.classList.toggle("shadow", isScrolled);
   }
 

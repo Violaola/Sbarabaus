@@ -11,6 +11,9 @@ interface Props {
   subtitle?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  showTitle?: boolean;
+  showSubtitle?: boolean;
+  showCta?: boolean;
 }
 
 const {
@@ -25,63 +28,113 @@ const {
   subtitle = "Animazione, creatività e un pizzico di magia digitale.",
   ctaLabel = "Scopri cosa facciamo",
   ctaHref = "#",
+  showTitle = true,
+  showSubtitle = true,
+  showCta = true,
 } = Astro.props;
+
+const normalizeBool = (value: any, fallback: boolean) => {
+  if (value === undefined || value === null) return fallback;
+  if (typeof value === "string") return value.toLowerCase() === "true";
+  return Boolean(value);
+};
+
+const isVisible = normalizeBool(show, true);
+const hasSlider = normalizeBool(showSlider, true);
+const hasTitle = normalizeBool(showTitle, true);
+const hasSubtitle = normalizeBool(showSubtitle, true);
+const hasCta = normalizeBool(showCta, true);
 ---
 
-{show && (
-<section class={className} id={id}>
-  <div class={containerClass}>
-    <div class={heroClass}>
-      {videoSrc && (
-        <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-          <source src={videoSrc} type="video/mp4" />
-        </video>
-      )}
-      <div class="hero-sty-home__body">
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
-        <a href={ctaHref} class="btn btn-cta btn-cta--blue hero-cta">
-          <i class="bi bi-play-fill" aria-hidden="true"></i> {ctaLabel}
-        </a>
-      </div>
-      {showSlider && (
-        <div class="chat-pop" role="region" aria-label="Anteprima chat">
-          <div class="chat-header">
-            <span id="chatSliderDate" class="chat-date">15/01/2026</span>
-            <div class="chat-fixed">
-              <span class="chat-chip">che fate?</span>
-              <span class="chat-avatar chat-avatar--fixed">
-                <img src="/images/avatar-che-fate-00.png" alt="Avatar fisso" />
-              </span>
+{
+  isVisible && (
+    <section class={className} id={id}>
+      <div class={containerClass}>
+        <div class={heroClass}>
+          {videoSrc && (
+            <video
+              class="hero-bg-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-hidden="true"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
+          <div class="hero-sty-home__body">
+            {hasTitle && <h1>{title}</h1>}
+            {hasSubtitle && <p>{subtitle}</p>}
+            {hasCta && (
+              <a href={ctaHref} class="btn btn-cta btn-cta--blue hero-cta">
+                <i class="bi bi-play-fill" aria-hidden="true" /> {ctaLabel}
+              </a>
+            )}
+          </div>
+          {hasSlider && (
+            <div class="chat-pop" role="region" aria-label="Anteprima chat">
+              <div class="chat-header">
+                <span id="chatSliderDate" class="chat-date">
+                  15/01/2026
+                </span>
+                <div class="chat-fixed">
+                  <span class="chat-chip">che fate?</span>
+                  <span class="chat-avatar chat-avatar--fixed">
+                    <img
+                      src="/images/avatar-che-fate-00.png"
+                      alt="Avatar fisso"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div class="chat-message-row">
+                <span class="chat-avatar chat-avatar--slider">
+                  <img
+                    id="chatSliderAvatarImg"
+                    src="https://picsum.photos/seed/chat-slider-1/140/140"
+                    alt="Avatar personaggio"
+                  />
+                </span>
+                <div class="chat-body">
+                  <strong id="chatSliderTitle">Titolo del messaggio</strong>
+                  <p id="chatSliderText">
+                    Aenean vel tortor aliquet, lobortis ligula a, tempus metus.
+                    Vestibulum aliquet, ante sit amet.
+                  </p>
+                </div>
+              </div>
+              <div class="chat-controls">
+                <button
+                  id="chatSliderPrev"
+                  class="chat-nav"
+                  type="button"
+                  aria-label="Messaggio precedente"
+                >
+                  <i class="bi bi-chevron-left" />
+                </button>
+                <div
+                  id="chatSliderDots"
+                  class="chat-dots"
+                  aria-label="Navigazione messaggi"
+                />
+                <button
+                  id="chatSliderNext"
+                  class="chat-nav"
+                  type="button"
+                  aria-label="Messaggio successivo"
+                >
+                  <i class="bi bi-chevron-right" />
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="chat-message-row">
-            <span class="chat-avatar chat-avatar--slider">
-              <img id="chatSliderAvatarImg" src="https://picsum.photos/seed/chat-slider-1/140/140" alt="Avatar personaggio" />
-            </span>
-            <div class="chat-body">
-              <strong id="chatSliderTitle">Titolo del messaggio</strong>
-              <p id="chatSliderText">
-                Aenean vel tortor aliquet, lobortis ligula a, tempus metus.
-                Vestibulum aliquet, ante sit amet.
-              </p>
-            </div>
-          </div>
-          <div class="chat-controls">
-            <button id="chatSliderPrev" class="chat-nav" type="button" aria-label="Messaggio precedente">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-            <div id="chatSliderDots" class="chat-dots" aria-label="Navigazione messaggi"></div>
-            <button id="chatSliderNext" class="chat-nav" type="button" aria-label="Messaggio successivo">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-          </div>
+          )}
         </div>
-      )}
-    </div>
-  </div>
-</section>
-)}
+      </div>
+    </section>
+  )
+}
 
 <style>
   .hero-sty-home {
@@ -91,5 +144,6 @@ const {
   .hero-sty-home__body {
     position: relative;
     z-index: 1;
+    color: white;
   }
 </style>

@@ -6,14 +6,13 @@
 body.inner-page {
   color-scheme: light;
 
-  /* Header inner pages (menu icon su fondo scuro) */
+  /* Header inner pages */
   .top-header {
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: $zindex-sticky;
     padding: $spacer 0;
-    background: transparent;
+
+    &:not(.is-scrolled) {
+      background: transparent;
+    }
   }
 
   .hero-fluid {
