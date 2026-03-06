@@ -2,13 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import MenuOverlay from "../components/MenuOverlay.astro";
 ---
 
 <Layout title="Panebarco - Homepage" description="Homepage Panebarco" useInnerPagesScript={false}>
   <!-- Header globale + overlay menu -->
   <SiteHeader darkmode={false} />
-  <MenuOverlay />
     <main>
       <!-- Hero principale con video e card chat -->
       <section id="studio" class="hero-wrap">

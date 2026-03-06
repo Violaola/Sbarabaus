@@ -1,4 +1,5 @@
 ---
+import MenuOverlay from "./MenuOverlay.astro";
 import logoDark from "../../public/images/panebarco-logo-dark.png";
 import logoLight from "../../public/images/panebarco-logo-light.png";
 import menuWhite from "../../public/images/hamburger-menu-bianco.png";
@@ -54,3 +55,4 @@ const menuIcon = menuIconSrc ?? (darkmode ? menuWhite.src : menuBlack.src);
     </div>
   </div>
 </header>
+<MenuOverlay />

@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import MenuOverlay from "../../components/MenuOverlay.astro";
 
 export function getStaticPaths() {
   const originals = [
@@ -30,7 +29,6 @@ const { project } = Astro.props;
   <SiteHeader
     containerClass="container-fluid hero-fluid px-3 px-md-4 px-lg-5"
   />
-  <MenuOverlay />
 
   <main class="original-detail-page pb-5 bg-black text-white">
     <!-- Hero dettaglio: solo immagine full-bleed -->
