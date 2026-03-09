@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroStyStudio from "../components/HeroStyStudio.astro";
 ---
 
 <Layout
@@ -8,9 +9,22 @@ import Layout from "../layouts/Layout.astro";
   useInnerStyles={true}
   headerProps={{ containerClass: "hero-fluid" }}
 >
-    <main>
-      <h1>E tanto altro</h1>
-      <p>Work in progress</p>
-      <a href="index.html">Torna alla home</a>
+    <main class="studio-page">
+      <HeroStyStudio
+        backgroundVideoSrc="/images/1021768637.mp4"
+        bgWord="ALTRE STORIE"
+        title="...E TANTO ALTRO"
+        subtitle="Side projects, curiosità e cose che ci divertono"
+        sideImageSrc="/images/lo-studio-panebarco-teams.png"
+        sideImageAlt="Team Panebarco"
+        className="hero-sty-studio page-hero page-hero--studio"
+      />
+
+     <section class="page-main page-main--studio">
+        <div class="container">
+          <h2>Universi originali Panebarco</h2>
+        </div>
+      </section>
+
     </main>
 </Layout>
