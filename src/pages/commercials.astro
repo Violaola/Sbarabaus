@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroStyStudio from "../components/HeroStyStudio.astro";
 
 // I 4 cluster narrativi mostrati nella sezione "modi per comunicare".
 const communicationModes = [
@@ -53,28 +54,15 @@ const modeBubbleSets = {
   headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
 >
   <main class="commercials-page studio-page">
-    <!-- Hero di pagina con video background e visual dedicato -->
-    <section class="page-hero page-hero--studio">
-      <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src="/images/panebarco-commercial-video.mp4" type="video/mp4" />
-      </video>
-      <div class="container page-hero-content page-hero-content--studio">
-        <div class="row g-4 g-lg-5 align-items-end">
-          <div class="col-12 col-lg-7 col-xl-6">
-            <div class="page-hero-text">
-              <p class="page-hero-bgword">SERVIZI</p>
-              <h1 class="page-hero-title">COMMERCIALS</h1>
-              <p class="page-hero-subtitle">Lorem ipsum dolor sit amet</p>
-            </div>
-          </div>
-          <div class="col-12 col-lg-5 col-xl-6 text-lg-end">
-            <div class="page-hero-media">
-              <img class="img-fluid d-block ms-lg-auto" src="/images/hero-commercials.png" alt="Hero commercials">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Hero di pagina con componente riutilizzabile -->
+    <HeroStyStudio
+      backgroundVideoSrc="/images/panebarco-commercial-video.mp4"
+      bgWord="SERVIZI"
+      title="COMMERCIALS"
+      subtitle="Lorem ipsum dolor sit amet"
+      sideImageSrc="/images/hero-commercials.png"
+      sideImageAlt="Hero commercials"
+    />
 
     <!-- Intro editoriale della sezione commercials -->
     <section class="page-main page-main--studio">

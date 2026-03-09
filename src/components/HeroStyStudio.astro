@@ -56,5 +56,14 @@ const {
     position: relative;
     overflow: hidden;
   }
- 
+
+  .page-hero-media img {
+    transform: translateY(clamp(6%, 8vw, 14%));
+  }
+
+  @media (max-width: 575.98px) {
+    .page-hero-media img {
+      transform: translateY(0);
+    }
+  }
 </style>

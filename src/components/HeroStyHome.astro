@@ -6,7 +6,8 @@ interface Props {
   heroClass?: string;
   id?: string;
   show?: boolean;
-  videoSrc?: string;
+  videoSrc?: string | null | false;
+  imageSrc?: string;
   title?: string;
   subtitle?: string;
   ctaLabel?: string;
@@ -23,7 +24,8 @@ const {
   containerClass = "container-fluid hero-fluid px-3 px-md-4 px-lg-5",
   heroClass = "hero-card",
   id,
-  videoSrc = "/images/1021768637.mp4",
+  videoSrc,
+  imageSrc,
   title = "Ciao!",
   subtitle = "Animazione, creatività e un pizzico di magia digitale.",
   ctaLabel = "Scopri cosa facciamo",
@@ -39,6 +41,19 @@ const normalizeBool = (value: any, fallback: boolean) => {
   return Boolean(value);
 };
 
+const resolvedVideoSrc =
+  typeof videoSrc === "string" && videoSrc.trim() !== ""
+    ? videoSrc
+    : videoSrc === false || videoSrc === null
+      ? undefined
+      : imageSrc
+        ? undefined
+        : "/images/1021768637.mp4";
+
+const resolvedImageSrc = imageSrc ?? "/images/hero-dettaglio-fallback.jpg";
+
+const hasVideo = Boolean(resolvedVideoSrc);
+const hasImage = !hasVideo && Boolean(resolvedImageSrc);
 const isVisible = normalizeBool(show, true);
 const hasSlider = normalizeBool(showSlider, true);
 const hasTitle = normalizeBool(showTitle, true);
@@ -51,7 +66,7 @@ const hasCta = normalizeBool(showCta, true);
     <section class={className} id={id}>
       <div class={containerClass}>
         <div class={heroClass}>
-          {videoSrc && (
+          {hasVideo && (
             <video
               class="hero-bg-video"
               autoplay
@@ -61,8 +76,17 @@ const hasCta = normalizeBool(showCta, true);
               preload="metadata"
               aria-hidden="true"
             >
-              <source src={videoSrc} type="video/mp4" />
+              <source src={resolvedVideoSrc} type="video/mp4" />
             </video>
+          )}
+          {hasImage && (
+            <img
+              class="hero-bg-video hero-bg-image"
+              src={resolvedImageSrc}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            />
           )}
           <div class="hero-sty-home__body">
             {hasTitle && <h1>{title}</h1>}
@@ -145,5 +169,9 @@ const hasCta = normalizeBool(showCta, true);
     position: relative;
     z-index: 1;
     color: white;
+  }
+
+  .hero-bg-image {
+    object-position: center;
   }
 </style>

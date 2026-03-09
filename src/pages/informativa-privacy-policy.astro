@@ -1,6 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroStyHome from "../components/HeroStyHome.astro";
 ---
-<Layout headerProps={{ containerClass: "hero-fluid" }}>
-    
+<Layout headerProps={{ containerClass: "hero-fluid" }}  useInnerPagesScript={true}
+  useInnerStyles={true} headerProps={{ darkmode: false }}>
+  <main class="section-space">
+    <!-- Solo immagine -->
+    <HeroStyHome
+      id="privacy-hero"
+      className="hero-wrap"
+      videoSrc={false}
+      showSlider={false}
+      showTitle={false}
+      showSubtitle={false}
+      showCta={false}
+    />
+  </main>
 </Layout>
