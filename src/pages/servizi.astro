@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroStyStudio from "../components/HeroStyStudio.astro";
 ---
 
 <Layout
@@ -8,22 +9,16 @@ import Layout from "../layouts/Layout.astro";
   useInnerStyles={true}
   headerProps={{ containerClass: "hero-fluid" }}
 >
-    <main>
-      <section class="page-hero">
-        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-          <source src="/images/1021768637.mp4" type="video/mp4">
-        </video>
-        <div class="page-hero-content">
-          <div class="page-hero-text">
-            <p class="page-hero-bgword">COSA SAPPIAMO FARE</p>
-            <h1 class="page-hero-title">SERVIZI</h1>
-            <p class="page-hero-subtitle">Soluzioni creative dalla regia alla post-produzione</p>
-          </div>
-          <div class="page-hero-media">
-            <img src="/images/testata img.png" alt="Servizi">
-          </div>
-        </div>
-      </section>
+    <main class="studio-page">
+      <HeroStyStudio
+        backgroundVideoSrc="/images/1021768637.mp4"
+        bgWord="COSA SAPPIAMO FARE"
+        title="SERVIZI"
+        subtitle="Soluzioni creative dalla regia alla post-produzione"
+        sideImageSrc="/images/lo-studio-panebarco-teams.png"
+        sideImageAlt="Team Panebarco"
+        className="hero-sty-studio page-hero page-hero--studio"
+      />
   
       <section class="page-main">
         <div class="container">
