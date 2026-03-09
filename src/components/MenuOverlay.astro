@@ -46,7 +46,25 @@
 
     <a class="menu-overlay-link" href="/portfolio" data-bubble="/images/portfolio cose belle.png">Portfolio</a>
     <a class="menu-overlay-link" href="/originals" data-bubble="/images/originals produzioni indipendenti.png">Originals</a>
-    <a class="menu-overlay-link" href="/paneblog" data-bubble="/images/paneblog pensieri.png">Paneblog</a>
+
+    <div class="menu-item">
+      <div class="menu-item-head">
+        <a class="menu-overlay-link" href="/paneblog" data-bubble="/images/paneblog pensieri.png">Paneblog</a>
+        <button
+          class="menu-submenu-toggle"
+          type="button"
+          aria-label="Mostra sottovoci Paneblog"
+          aria-controls="submenu-paneblog"
+          aria-expanded="false"
+        >
+          <i class="bi bi-chevron-down" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="submenu-paneblog" class="menu-submenu" aria-label="Sottovoci Paneblog">
+        <a class="menu-submenu-link" href="/diario-di-viaggio">diario di viaggio</a>
+      </div>
+    </div>
+
     <a class="menu-overlay-link" href="/contatti" data-bubble="/images/contatti raccontaci.png">Contatti</a>
 
     <div class="menu-lang" aria-label="Cambio lingua">
