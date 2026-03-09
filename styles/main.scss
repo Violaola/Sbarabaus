@@ -75,6 +75,16 @@ h2 {
   text-transform: uppercase;
 }
 
+.heading-detail {
+  font-family: "Sofia Sans Semi Condensed", "Sofia Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(#{$h1-font-size}, 5vw, #{$h1-font-size * 2});
+  letter-spacing: -0.01em;
+  color: #009fe3;
+  text-transform: none;
+}
+
 .page-title-uniform,
 .page-main h2.page-title-uniform {
   font-family: "Sofia Sans Semi Condensed", "Sofia Sans", sans-serif;
@@ -88,6 +98,57 @@ h2 {
 .display-font {
   font-family: "Sofia Sans", sans-serif;
   letter-spacing: 0.01em;
+}
+
+.frecce-slider-dettaglio .carousel-control-prev,
+.frecce-slider-dettaglio .carousel-control-next {
+  width: 12%;
+  z-index: 6;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.frecce-slider-dettaglio .carousel-control-prev-icon,
+.frecce-slider-dettaglio .carousel-control-next-icon {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1.2rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+.frecce-slider-dettaglio .carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23009FE3'%3E%3Cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+}
+
+.frecce-slider-dettaglio .carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23009FE3'%3E%3Cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+.frecce-slider-dettaglio .carousel-control-prev:hover .carousel-control-prev-icon {
+  transform: translate(-2px, -1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+.frecce-slider-dettaglio .carousel-control-next:hover .carousel-control-next-icon {
+  transform: translate(2px, -1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+.frecce-slider-dettaglio .carousel-control-prev:active .carousel-control-prev-icon,
+.frecce-slider-dettaglio .carousel-control-next:active .carousel-control-next-icon {
+  transform: translateY(0);
+}
+
+.frecce-slider-dettaglio .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.frecce-slider-dettaglio .carousel-indicators .active {
+  background-color: #fff;
 }
 
     /* Header e trigger menu */

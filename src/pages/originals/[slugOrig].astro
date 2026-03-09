@@ -17,6 +17,39 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+const sliderExtraSlides = [
+  [
+    { src: "https://placehold.co/900x675/png?text=Sketch+01", alt: "Sketch 1" },
+    { src: "https://placehold.co/900x675/png?text=Sketch+02", alt: "Sketch 2" },
+    { src: "https://placehold.co/900x675/png?text=Sketch+03", alt: "Sketch 3" },
+  ],
+  [
+    { src: "https://placehold.co/900x675/png?text=Prop+01", alt: "Prop 1" },
+    { src: "https://placehold.co/900x675/png?text=Prop+02", alt: "Prop 2" },
+    { src: "https://placehold.co/900x675/png?text=Prop+03", alt: "Prop 3" },
+  ],
+];
+
+const backgroundPropsSlides = [
+  [
+    { src: "/images/background-e-props-01.jpg", alt: "Background e Props 1" },
+    { src: "/images/background-e-props-02.jpg", alt: "Background e Props 2" },
+    { src: "/images/background-e-props-03.jpg", alt: "Background e Props 3" },
+  ],
+  ...sliderExtraSlides,
+];
+const backgroundPropsCards = backgroundPropsSlides.flat();
+
+const renderingLevelsSlides = [
+  [
+    { src: "/images/rendering-a-livelli-01.jpg", alt: "Rendering a livelli 1" },
+    { src: "/images/rendering-a-livelli-02.jpg", alt: "Rendering a livelli 2" },
+    { src: "/images/rendering-a-livelli-03.jpg", alt: "Rendering a livelli 3" },
+  ],
+  ...sliderExtraSlides,
+];
+const renderingLevelsCards = renderingLevelsSlides.flat();
 ---
 
 <Layout
@@ -30,12 +63,27 @@ const { project } = Astro.props;
 >
   <HeroStyDettaglio
     className="originals-hero"
-    imageSrc="https://placehold.co/1920x1080/png?text=Frame+Hero"
+    imageSrc="/images/caramelle-intro.jpg"
     imageAlt={`Frame progetto ${project.title}`}
-    caption={project.title}
   />
 
-  <main class="original-detail-page pb-5 bg-black text-white">
+  <section class="section-space section-space--soft intro-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-8 col-xl-7">
+          <p class="hero-eyebrow mb-1">CINEMA E AUDIOVISIVO</p>
+          <h1 class="heading-detail mb-1">Caramelle</h1>
+          <p class="hero-meta mb-3">INIZIO PRODUZIONE 2025 · 12'</p>
+          <div class="d-flex flex-wrap gap-2 align-items-center">
+            <span class="pill pill-primary">Panebarco Originals</span>
+            <span class="pill pill-neutral">3D</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="original-detail-page pb-5">
     <!-- Sinossi -->
     <section class="section-space section-space--soft">
       <div class="container">
@@ -43,15 +91,27 @@ const { project } = Astro.props;
           <div class="col-12 col-xl-12">
             <p class="lead text-white mb-3 fw-bold">
               “Caramelle” è stato proiettato in anteprima ad ottobre all’interno
-              di Alice nella Città vincendo il Premio del Pubblico come Miglior
-              Corto. Racconta un legame familiare capace di superare la vita e
-              la morte, in un’atmosfera di realismo magico.
+              di Alice nella Città, sezione parallela della Festa del Cinema di
+              Roma aggiudicandosi il Premio del Pubblico come Miglior Corto.
+            </p>
+            <p class="text-white mb-3 fw-bold">
+              “Caramelle” nasce da una leggenda di Rimini. La storia parla di un
+              padre che scompare all’improvviso e la famiglia resta divisa fra
+              nostalgia, rabbia e incredulità, ma la figlia non smette di
+              trovare caramelle, proprio come quando lui era vivo e gliele
+              nascondeva in casa.
             </p>
             <p class="text-white mb-0 fw-bold">
-              Lucia visita la tomba del padre e trova misteriose carte di
-              caramelle. Il curioso episodio si ripete, finché scoprirà che il
-              pivot della storia sono proprio quelle caramelle, madeleine pop
-              che riannodano tre generazioni.
+              La storia parla di un uomo che scompare all’improvviso e la
+              famiglia resta divisa fra nostalgia, rabbia e incredulità, ma la
+              figlia non smette di trovare caramelle in tutta la casa. Le trova
+              anche al mare, in mezzo alle conchiglie. Proprio come quando lui
+              era vivo e gliele nascondeva dappertutto. Un misterioso tappeto di
+              caramelle porta la bambina a scoprire cosa è accaduto. Il finale è
+              sorprendente e commovente, un crescendo emotivo che catapulta lo
+              spettatore all’interno di quel tappeto di caramelle colorate, fino
+              a scoprire che il mistero è l’intuizione che richiama cioè la
+              memoria affettiva personale.
             </p>
           </div>
         </div>
@@ -61,10 +121,10 @@ const { project } = Astro.props;
     <!-- Still principale -->
     <section id="guarda-il-corto" class="section-space section-space--tight">
       <div class="container">
-        <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+        <div class="ratio ratio-16x9  shadow-lg overflow-hidden">
           <img
             class="w-100 h-100 object-fit-cover"
-            src="https://placehold.co/1400x788/png?text=Still+01"
+            src="/images/caramelle-intro.jpg"
             alt={`Still principale ${project.title}`}
           />
         </div>
@@ -75,58 +135,38 @@ const { project } = Astro.props;
     <section class="section-space">
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">Personaggi</h2>
-        <p class="mb-4 text-white-50">
-          Design e caratterizzazione dei protagonisti.
+        <p class="mb-4 text-white mb-0 fw-bold">
+          Voluptatem laudantium in in. Nam natus magni quaerat et dolores facere deserunt. Ut consequatur perspiciatis eaque dolor et. Dolor natus voluptatem nobis similique. Suscipit molestiae vel vel sint sint earum fuga. Amet recusandae sunt. Voluptatum tempora voluptatem odit id harum aut quo perferendis. Sit voluptas similique.
         </p>
-        <div
-          class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 originals-characters-grid"
-        >
+        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3 originals-characters-grid">
           <div class="col">
-            <div class="char-card ratio-square no-radius">
-              <img
-                src="https://placehold.co/620x620/png?text=Char+01"
-                alt="Character 1"
-              />
+            <div class="ratio ratio-4x3 char-card">
+              <img class="w-100 h-100 object-fit-cover" src="/images/personaggi-01.jpg" alt="Personaggio 1" />
             </div>
           </div>
           <div class="col">
-            <div class="char-card ratio-square no-radius">
-              <img
-                src="https://placehold.co/620x620/png?text=Char+02"
-                alt="Character 2"
-              />
+            <div class="ratio ratio-4x3 char-card">
+              <img class="w-100 h-100 object-fit-cover" src="/images/personaggi-02.jpg" alt="Personaggio 2" />
             </div>
           </div>
           <div class="col">
-            <div class="char-card ratio-square no-radius">
-              <img
-                src="https://placehold.co/620x620/png?text=Char+03"
-                alt="Character 3"
-              />
+            <div class="ratio ratio-4x3 char-card">
+              <img class="w-100 h-100 object-fit-cover" src="/images/personaggi-03.jpg" alt="Personaggio 3" />
             </div>
           </div>
           <div class="col">
-            <div class="char-card ratio-wide-short no-radius">
-              <img
-                src="https://placehold.co/740x420/png?text=Cab+Still"
-                alt="Cab still"
-              />
+            <div class="ratio ratio-4x3 char-card">
+              <img class="w-100 h-100 object-fit-cover" src="/images/personaggi-04.jpg" alt="Personaggio 4" />
             </div>
           </div>
           <div class="col">
-            <div class="char-card ratio-tall no-radius">
-              <img
-                src="https://placehold.co/520x680/png?text=Lineup"
-                alt="Lineup"
-              />
+            <div class="ratio ratio-4x3 char-card">
+              <img class="w-100 h-100 object-fit-cover" src="/images/personaggi-05.jpg" alt="Personaggio 5" />
             </div>
           </div>
           <div class="col">
-            <div class="char-card ratio-wide no-radius">
-              <img
-                src="https://placehold.co/640x420/png?text=Turnarounds"
-                alt="Turnarounds"
-              />
+            <div class="ratio ratio-4x3 char-card">
+              <img class="w-100 h-100 object-fit-cover" src="/images/personaggi-06.jpg" alt="Personaggio 6" />
             </div>
           </div>
         </div>
@@ -137,28 +177,71 @@ const { project } = Astro.props;
     <section class="section-space section-space--soft">
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">Background e Props</h2>
-        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3">
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/520x320/png?text=BG+01"
-              alt="Background 1"
-            />
+        <div
+          id="renderingLevelsCarouselDesktop"
+          class="carousel slide frecce-slider-dettaglio js-bgprops-carousel d-none d-md-block"
+          data-bs-ride="false"
+          data-bs-touch="true"
+        >
+          <div class="carousel-inner">
+            {backgroundPropsSlides.map((slide, slideIndex) => (
+              <div class:list={["carousel-item px-3", slideIndex === 0 && "active"]}>
+                <div class="row g-3 mx-0">
+                  {slide.map((card) => (
+                    <div class="col-4">
+                      <div class="ratio ratio-4x3 bgprops-card rounded-0">
+                        <img src={card.src} class="w-100 h-100 object-fit-cover" alt={card.alt} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/520x320/png?text=Props"
-              alt="Props"
-            />
+          <button class="carousel-control-prev" type="button" data-bs-target="#renderingLevelsCarouselDesktop" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#renderingLevelsCarouselDesktop" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          <div class="carousel-indicators mt-3">
+            {backgroundPropsSlides.map((_, slideIndex) => (
+              <button
+                type="button"
+                data-bs-target="#renderingLevelsCarouselDesktop"
+                data-bs-slide-to={slideIndex}
+                class:list={[slideIndex === 0 && "active"]}
+                aria-label={`Slide ${slideIndex + 1}`}
+              ></button>
+            ))}
           </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/520x320/png?text=BG+02"
-              alt="Background 2"
-            />
+        </div>
+
+        <div
+          id="renderingLevelsCarouselMobile"
+          class="carousel slide frecce-slider-dettaglio js-bgprops-carousel d-md-none"
+          data-bs-ride="false"
+          data-bs-touch="true"
+        >
+          <div class="carousel-inner">
+            {backgroundPropsCards.map((card, cardIndex) => (
+              <div class:list={["carousel-item px-2", cardIndex === 0 && "active"]}>
+                <div class="ratio ratio-4x3 bgprops-card rounded-0">
+                  <img src={card.src} class="w-100 h-100 object-fit-cover" alt={card.alt} />
+                </div>
+              </div>
+            ))}
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#renderingLevelsCarouselMobile" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#renderingLevelsCarouselMobile" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </section>
@@ -167,74 +250,92 @@ const { project } = Astro.props;
     <section class="section-space section-space--tight">
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">
-          Storyboard &amp; Animatic
+          Storyboard & Animatic
         </h2>
-        <p class="mb-3 text-white-50">Storyboard, animatic e timing.</p>
-        <div class="row g-3 row-cols-2 row-cols-md-3">
+        <p>Voluptatem laudantium in in. Nam natus magni quaerat et dolores facere deserunt. Ut consequatur perspiciatis eaque dolor et. Dolor natus voluptatem nobis similique. Suscipit molestiae vel vel sint sint earum fuga.   Amet recusandae sunt. Voluptatum tempora voluptatem odit id harum aut quo perferendis. Sit voluptas similique.</p>
+        <div class="row g-3 row-cols-1 row-cols-md-3">
           <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/360x240/png?text=Storyboard+1"
-              alt="Storyboard 1"
-            />
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
+              <img
+                src="/images/storyboard-e-animatic-01.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Distribuzione 1"
+              />
+            </div>
           </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/360x240/png?text=Storyboard+2"
-              alt="Storyboard 2"
-            />
-          </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/360x240/png?text=Storyboard+3"
-              alt="Storyboard 3"
-            />
-          </div>
-        </div>
-        <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden mt-3">
-          <img
-            class="w-100 h-100 object-fit-cover"
-            src="https://placehold.co/1200x675/png?text=Animatic+Preview"
-            alt="Animatic preview"
-          />
         </div>
       </div>
     </section>
 
     <!-- Rendering a livelli -->
-    <section class="section-space section-space--tight">
+     <section class="section-space section-space--soft">
       <div class="container">
         <h2 class="page-title-uniform text-white mb-4">Rendering a livelli</h2>
-        <div class="row g-3 row-cols-1 row-cols-md-3">
-          <div class="col">
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
-              <img
-                src="https://placehold.co/480x270/png?text=Layer+01"
-                class="w-100 h-100 object-fit-cover"
-                alt="Layer 1"
-              />
-            </div>
+        <div
+          id="bgPropsCarouselDesktop"
+          class="carousel slide frecce-slider-dettaglio js-bgprops-carousel d-none d-md-block"
+          data-bs-ride="false"
+          data-bs-touch="true"
+        >
+          <div class="carousel-inner">
+            {renderingLevelsSlides.map((slide, slideIndex) => (
+              <div class:list={["carousel-item px-3", slideIndex === 0 && "active"]}>
+                <div class="row g-3 mx-0">
+                  {slide.map((card) => (
+                    <div class="col-4">
+                      <div class="ratio ratio-4x3 bgprops-card rounded-0">
+                        <img src={card.src} class="w-100 h-100 object-fit-cover" alt={card.alt} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-          <div class="col">
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
-              <img
-                src="https://placehold.co/480x270/png?text=Layer+02"
-                class="w-100 h-100 object-fit-cover"
-                alt="Layer 2"
-              />
-            </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#bgPropsCarouselDesktop" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#bgPropsCarouselDesktop" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          <div class="carousel-indicators mt-3">
+            {renderingLevelsSlides.map((_, slideIndex) => (
+              <button
+                type="button"
+                data-bs-target="#bgPropsCarouselDesktop"
+                data-bs-slide-to={slideIndex}
+                class:list={[slideIndex === 0 && "active"]}
+                aria-label={`Slide ${slideIndex + 1}`}
+              ></button>
+            ))}
           </div>
-          <div class="col">
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
-              <img
-                src="https://placehold.co/480x270/png?text=Layer+03"
-                class="w-100 h-100 object-fit-cover"
-                alt="Layer 3"
-              />
-            </div>
+        </div>
+
+        <div
+          id="bgPropsCarouselMobile"
+          class="carousel slide frecce-slider-dettaglio js-bgprops-carousel d-md-none"
+          data-bs-ride="false"
+          data-bs-touch="true"
+        >
+          <div class="carousel-inner">
+            {renderingLevelsCards.map((card, cardIndex) => (
+              <div class:list={["carousel-item px-2", cardIndex === 0 && "active"]}>
+                <div class="ratio ratio-4x3 bgprops-card rounded-0">
+                  <img src={card.src} class="w-100 h-100 object-fit-cover" alt={card.alt} />
+                </div>
+              </div>
+            ))}
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#bgPropsCarouselMobile" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#bgPropsCarouselMobile" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </section>
@@ -247,29 +348,11 @@ const { project } = Astro.props;
         </h2>
         <div class="row g-3 row-cols-1 row-cols-md-3">
           <div class="col">
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
               <img
-                src="https://placehold.co/480x270/png?text=Comp+01"
+                src="/images/compositing-e-visual-effects-01.jpg"
                 class="w-100 h-100 object-fit-cover"
                 alt="Comp 1"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
-              <img
-                src="https://placehold.co/480x270/png?text=Comp+02"
-                class="w-100 h-100 object-fit-cover"
-                alt="Comp 2"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
-              <img
-                src="https://placehold.co/480x270/png?text=Comp+03"
-                class="w-100 h-100 object-fit-cover"
-                alt="Comp 3"
               />
             </div>
           </div>
@@ -278,54 +361,29 @@ const { project } = Astro.props;
     </section>
 
     <!-- Rendering finale -->
-    <section class="section-space section-space--soft">
+    <section class="section-space section-space--tight">
       <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-12 col-lg-7">
-            <h2 class="page-title-uniform text-white mb-3">Rendering finale</h2>
-            <p class="text-white-50 mb-4">
-              Descrizione della resa finale e del mood visivo.
-            </p>
-            <div class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden">
+        <h2 class="page-title-uniform text-white mb-4">
+          Rendering finale
+        </h2>
+        <p>Eos illum cupiditate aspernatur. Distinctio porro laborum. Reiciendis ad ipsa et hic maiores consectetur quo ipsum et.   Sapiente est eveniet illo et explicabo in. Amet eligendi sequi dignissimos quo. Natus tempore suscipit nihil neque. Et praesentium consequatur similique perspiciatis ipsum cupiditate tempora et. Nemo sequi in excepturi repudiandae dicta. Dicta a reiciendis aspernatur fuga.   Deserunt illum cupiditate omnis ipsa. Ut fugit impedit ut exercitationem fugit cum recusandae quia. Hic sunt ut recusandae fugit.</p>
+        <div class="row g-3 row-cols-1 row-cols-md-3">
+          <div class="col">
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
               <img
-                src="https://placehold.co/960x540/png?text=Final+Shot"
+                src="/images/rendering-finale-01.jpg"
                 class="w-100 h-100 object-fit-cover"
-                alt="Final shot"
+                alt="Comp 1"
               />
             </div>
           </div>
-          <div class="col-12 col-lg-5">
-            <div class="d-flex flex-wrap gap-2">
-              <div
-                class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"
-                style="width: 48%;"
-              >
-                <img
-                  src="https://placehold.co/440x248/png?text=Final+02"
-                  class="w-100 h-100 object-fit-cover"
-                  alt="Final 02"
-                />
-              </div>
-              <div
-                class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"
-                style="width: 48%;"
-              >
-                <img
-                  src="https://placehold.co/440x248/png?text=Final+03"
-                  class="w-100 h-100 object-fit-cover"
-                  alt="Final 03"
-                />
-              </div>
-              <div
-                class="ratio ratio-16x9 rounded-3 shadow-lg overflow-hidden"
-                style="width: 100%;"
-              >
-                <img
-                  src="https://placehold.co/640x360/png?text=Final+04"
-                  class="w-100 h-100 object-fit-cover"
-                  alt="Final 04"
-                />
-              </div>
+          <div class="col">
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
+              <img
+                src="/images/rendering-finale-02.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Comp 2"
+              />
             </div>
           </div>
         </div>
@@ -335,29 +393,19 @@ const { project } = Astro.props;
     <!-- Distribuzione -->
     <section class="section-space section-space--tight">
       <div class="container">
-        <h2 class="page-title-uniform text-white mb-3">Distribuzione</h2>
-        <p class="text-white-50 mb-4">Festival, piattaforme, risultati.</p>
-        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+        <h2 class="page-title-uniform text-white mb-4">
+          Distribuzione
+        </h2>
+        <p>Voluptatem laudantium in in. Nam natus magni quaerat et dolores facere deserunt. Ut consequatur perspiciatis eaque dolor et. Dolor natus voluptatem nobis similique. Suscipit molestiae vel vel sint sint earum fuga.   Amet recusandae sunt. Voluptatum tempora voluptatem odit id harum aut quo perferendis. Sit voluptas similique.</p>
+        <div class="row g-3 row-cols-1 row-cols-md-3">
           <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/360x500/png?text=Poster+Festival"
-              alt="Poster festival"
-            />
-          </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/360x500/png?text=Still+Festival"
-              alt="Still festival"
-            />
-          </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/360x500/png?text=Audience"
-              alt="Audience"
-            />
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
+              <img
+                src="/images/distribuzione-01.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Comp 1"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -366,59 +414,140 @@ const { project } = Astro.props;
     <!-- Curiosità -->
     <section class="section-space section-space--tight">
       <div class="container">
-        <h2 class="page-title-uniform text-white mb-3">Curiosità</h2>
-        <p class="text-white-50 mb-4">
-          Note di produzione, easter egg, numeri.
-        </p>
-        <div class="row g-3 row-cols-2 row-cols-md-4">
+        <h2 class="page-title-uniform text-white mb-4">
+          Curiosità
+        </h2>
+        <p>Voluptatem laudantium in in. Nam natus magni quaerat et dolores facere deserunt. Ut consequatur perspiciatis eaque dolor et. Dolor natus voluptatem nobis similique. Suscipit molestiae vel vel sint sint earum fuga.   Amet recusandae sunt. Voluptatum tempora voluptatem odit id harum aut quo perferendis. Sit voluptas similique.</p>
+        <div class="row g-3 row-cols-1 row-cols-md-3">
           <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/260x160/png?text=Curio+1"
-              alt="Curiosità 1"
-            />
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
+              <img
+                src="/images/curiosita-01.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Curiosità 1"
+              />
+            </div>
           </div>
           <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/260x160/png?text=Curio+2"
-              alt="Curiosità 2"
-            />
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
+              <img
+                src="/images/curiosita-02.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Curiosità 2"
+              />
+            </div>
           </div>
           <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/260x160/png?text=Curio+3"
-              alt="Curiosità 3"
-            />
-          </div>
-          <div class="col">
-            <img
-              class="img-fluid rounded-3 shadow-lg"
-              src="https://placehold.co/260x160/png?text=Curio+4"
-              alt="Curiosità 4"
-            />
+            <div class="ratio ratio-16x9 shadow-lg overflow-hidden">
+              <img
+                src="/images/curiosita-03.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Curiosità 3"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Credits -->
-    <section class="section-space section-space--soft">
+    <section class="section-space section-space--soft credits-section">
       <div class="container">
-        <h2 class="page-title-uniform text-white mb-3">Credits</h2>
-        <ul class="list-unstyled text-white-75 small mb-0">
-          <li><strong>Regia:</strong> Nome Cognome</li>
-          <li><strong>Produzione:</strong> Panebarco &amp; C.</li>
-          <li><strong>Musica:</strong> Nome Cognome</li>
-          <li><strong>Distribuzione:</strong> Nome</li>
-        </ul>
+        <hr class="credits-divider mt-0 mb-5" />
+        <div class="row">
+          <div class="col-12 col-xl-11 credits-copy">
+            <h2 class="page-title-uniform text-white text-uppercase mb-4">Credits</h2>
+            <p class="credits-title mb-3 fst-italic">“Caramelle”</p>
+            <p class="credits-text mb-2"><strong>regia</strong> di Matteo Panebarco</p>
+            <p class="credits-text mb-2">è una produzione Panebarco in associazione con Mediterraneo Cinematografica per una WeShort Originals.</p>
+            <p class="credits-text mb-5">Una distribuzione Prem1ere film.</p>
+            <p class="credits-text mb-4 mb-md-5">Il film è sostenuto dalla Regione Emilia Romagna attraverso Emilia-Romagna Film Commission, Ministero della Cultura e Comune di Ravenna.</p>
+            <div class="row g-4 g-md-5 align-items-end">
+              <div class="col-6 col-md-3 col-lg-2">
+                <img
+                  class="img-fluid"
+                  src="/images/logo-emilia-romagna-film-commision.png"
+                  alt="Emilia-Romagna Film Commission"
+                  loading="lazy"
+                />
+              </div>
+              <div class="col-6 col-md-5 col-lg-4">
+                <img
+                  class="img-fluid"
+                  src="/images/logo-ministero-della-cultura.png"
+                  alt="Ministero della Cultura"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <script>
+    import { Carousel } from "bootstrap";
+    const el = document.getElementById("bgPropsCarousel");
+    if (el) {
+      Carousel.getOrCreateInstance(el, {
+        interval: false,
+        ride: false,
+        wrap: true,
+        touch: true,
+      });
+    }
+  </script>
 </Layout>
 
 <style lang="scss">
+  :global(body.inner-page) {
+    background: #000;
+    color: #fff;
+  }
+
+  .intro-header {
+    background: transparent;
+  }
+
+  .hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #9ca3af;
+  }
+
+  .hero-meta {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #aeb4bd;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+
+  .pill-primary {
+    background: #009FE3;
+    color: #eaf6ff;
+    box-shadow: none;
+  }
+
+  .pill-neutral {
+    background: #f5f7fb;
+    color: #0b0c0f;
+  }
+
   .originals-hero__media {
     width: 100%;
     height: clamp(16rem, 52vh, 28rem);
@@ -465,4 +594,16 @@ const { project } = Astro.props;
   .originals-characters-grid .ratio-tall {
     aspect-ratio: 3 / 4;
   }
+
+  /* Background e Props slider */
+  .bgprops-card {
+    background: #0f0f10;
+    overflow: hidden;
+  }
+
+  .bgprops-card img {
+    object-fit: cover;
+  }
+
+
 </style>
