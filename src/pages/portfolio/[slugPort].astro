@@ -1,0 +1,158 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroStyHome from "../../components/HeroStyHome.astro";
+
+export function getStaticPaths() {
+  const portfolioProjects = [
+    {
+      slugPort: "vita-dura-per-gli-orsi-marsicani",
+      title: "Vita dura per gli Orsi Marsicani!",
+      description: "Commercial Golia Activ Plus: Vita dura per gli Orsi Marsicani.",
+      category: "Commercial",
+      meta: "Inizio produzione 2025 · 12'",
+      tags: ["Service", "3D"],
+      heroImage: "/images/hero-dettaglio-fallback.jpg",
+      intro: [
+        "Tornano le disavventure dell'Orso Marsicano del noto spot Golia Activ Plus e stavolta il nostro simpatico Orso non è solo! Raddoppiano gli spot e raddoppiano gli orsi!",
+        "Squadra che vince non si cambia: anche in questo doppio spot abbiamo avuto il piacere di dare il nostro contributo digitale come Panebarco, coordinati da Spook, società di post-produzione di Milano. In particolare, il nostro Matteo ha realizzato e animato gli orsi in 3D insieme ai nostri fidati collaboratori: Simone Nastagi, Ahmed Shalaby, Regis Rodriguez.",
+        "La regia è stata affidata ad Alessandro Carloni, noto per aver diretto Kung Fu Panda 3 e altri capolavori in animazione. Del resto, dal Panda che combatte agli orsi che volano il passo è davvero breve!",
+      ],
+      videos: [
+        {
+          src: "https://www.youtube.com/embed/W_smIq9Xscw",
+          title: "Golia Activ Plus - Spot Binocolo",
+        },
+        {
+          src: "https://www.youtube.com/embed/f0Zrn__I2Fc",
+          title: "Golia Activ Plus - Spot Alberi",
+        },
+      ],
+      credits: [
+        ["CLIENT", "Perfetti Van Melle"],
+        ["PRODUCT", "Golia Activ Plus"],
+        ["SUBJECT", '"Binocolo" - "Alberi"'],
+        ["AGENCY", "Selection Communication & Design"],
+        ["ACCOUNT E MEDIA DIRECTOR", "Gianmaria Pasqual"],
+        ["ACCOUNT E MEDIA MANAGER", "Cecilia Rossi"],
+        ["ACCOUNT EXECUTIVE", "Silvia Pacini"],
+        ["CREATIVE DIRECTOR", "Antonia Capasso"],
+        ["COPYWRITER", "Marco Pappalardo"],
+        ["Art Director", "Stefano Colombo"],
+        ["CGI Director", "Alessandro Carloni"],
+        ["Live Action Director", "William 9"],
+        ["Production", "Selection Production"],
+        ["Executive Producer", "Marta Stella"],
+        ["Cinematographer", "Diego Indraccolo"],
+        ["Editor", "Marco Bonini"],
+        ["Post Production", "Spook, Panebarco"],
+      ],
+    },
+  ] as const;
+
+  return portfolioProjects.map((project) => ({
+    params: { slugPort: project.slugPort },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout
+  title={`${project.title} - Panebarco Portfolio`}
+  description={project.description}
+  useInnerPagesScript={false}
+  useInnerStyles={false}
+  headerProps={{ darkmode: false }}
+>
+  <main class="portfolio-detail-page">
+    <HeroStyHome
+      id="portfolio-hero"
+      className="hero-wrap"
+      videoSrc={false}
+      imageSrc={project.heroImage}
+      showSlider={false}
+      showTitle={false}
+      showSubtitle={false}
+      showCta={false}
+    />
+
+    <section class="portfolio-detail-content pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="text-uppercase fw-bold text-body-secondary small mb-2">{project.category}</p>
+            <h1 class="heading-detail mb-2">{project.title}</h1>
+            <p class="text-uppercase fw-bold text-body-secondary small mb-3">{project.meta}</p>
+
+            <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
+              {project.tags.map((tag, index) => (
+                <span
+                  class:list={[
+                    "badge fw-bold rounded-1 px-2 py-1",
+                    index === 0
+                      ? "text-bg-primary text-uppercase"
+                      : "bg-secondary-subtle text-dark-emphasis",
+                  ]}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p class="mt-3 mt-md-5 pt-5 mb-3">{project.intro[0]}</p>
+            <p class="mb-4">{project.intro[1]}</p>
+            <p class="mb-4">{project.intro[2]}</p>
+
+            <div class="ratio ratio-16x9 overflow-hidden mb-4">
+              <iframe
+                src={project.videos[0].src}
+                title={project.videos[0].title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <p class="mt-5 mb-5">{project.intro[2]}</p>
+
+            <div class="ratio ratio-16x9 overflow-hidden">
+              <iframe
+                src={project.videos[1].src}
+                title={project.videos[1].title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <section class="pt-5 mt-5">
+              <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                  <hr class="border-dark opacity-100 mb-5" />
+                </div>
+                <div class="col-12 col-lg-10">
+                  <h2 class="h1 text-uppercase fw-bold mb-4">Credits</h2>
+
+                  {project.credits.map(([label, value], idx) => (
+                    <p class:list={["fw-normal", idx === project.credits.length - 1 ? "mb-0" : "mb-2"]}>
+                      <strong>{label}:</strong> {value}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .portfolio-detail-page p {
+    max-width: 100%;
+  }
+</style>
