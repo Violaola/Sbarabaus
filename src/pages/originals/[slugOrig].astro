@@ -185,7 +185,7 @@ const renderingLevelsCards = renderingLevelsSlides.flat();
         >
           <div class="carousel-inner">
             {backgroundPropsSlides.map((slide, slideIndex) => (
-              <div class:list={["carousel-item px-3", slideIndex === 0 && "active"]}>
+              <div class:list={["carousel-item", slideIndex === 0 && "active"]}>
                 <div class="row g-3 mx-0">
                   {slide.map((card) => (
                     <div class="col-4">
@@ -279,7 +279,7 @@ const renderingLevelsCards = renderingLevelsSlides.flat();
         >
           <div class="carousel-inner">
             {renderingLevelsSlides.map((slide, slideIndex) => (
-              <div class:list={["carousel-item px-3", slideIndex === 0 && "active"]}>
+              <div class:list={["carousel-item", slideIndex === 0 && "active"]}>
                 <div class="row g-3 mx-0">
                   {slide.map((card) => (
                     <div class="col-4">
