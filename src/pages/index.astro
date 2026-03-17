@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroStyHome from "../components/HeroStyHome.astro";
+import mainScriptUrl from "../scripts/main.js?url";
 ---
 
 <Layout
   title="Panebarco - Homepage"
   description="Homepage Panebarco"
-  useInnerPagesScript={false}
   headerProps={{ darkmode: false }}
 >
     <main>
@@ -251,4 +251,5 @@ import HeroStyHome from "../components/HeroStyHome.astro";
         </div>
       </section>
     </main>
+    <script type="module" src={mainScriptUrl}></script>
 </Layout>

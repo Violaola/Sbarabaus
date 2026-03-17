@@ -1,11 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroStyStudio from "../../components/HeroStyStudio.astro";
+import studioPageScriptUrl from "../../scripts/pages/studio.js?url";
 ---
 
 <Layout
   title="Studio - Panebarco"
-  useInnerPagesScript={true}
   useInnerStyles={true}
   headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
 >
@@ -220,5 +220,6 @@ import HeroStyStudio from "../../components/HeroStyStudio.astro";
         </div>
       </section>
     </main>
+    <script type="module" src={studioPageScriptUrl}></script>
 </Layout>
               <a class="btn btn-cta btn-cta--blue btn-pill" href="/studio/ci-vediamo-agli-oscar">Scopri di più</a>

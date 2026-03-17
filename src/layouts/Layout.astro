@@ -5,15 +5,12 @@ import "../../styles/main.scss";
 import "../../styles/footer.scss";
 import innerStylesUrl from "../../styles/inner-pages.scss?url";
 import menuScriptUrl from "../scripts/menu.js?url";
-import mainScriptUrl from "../scripts/main.js?url";
-import innerPagesScriptUrl from "../scripts/inner-pages.js?url";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 
 interface Props {
   title?: string;
   description?: string;
-  useInnerPagesScript?: boolean;
   useInnerStyles?: boolean;
   showHeader?: boolean;
   showFooter?: boolean;
@@ -24,7 +21,6 @@ interface Props {
 const {
   title = "Panebarco",
   description = "",
-  useInnerPagesScript = false,
   useInnerStyles = false,
   showHeader = true,
   showFooter = true,
@@ -55,10 +51,5 @@ const {
     {showFooter && <SiteFooter {...footerProps} />}
 
     <script type="module" src={menuScriptUrl}></script>
-    <script type="module" src={mainScriptUrl}></script>
-
-    {useInnerPagesScript && (
-      <script type="module" src={innerPagesScriptUrl}></script>
-    )}
   </body>
 </html>

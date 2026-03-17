@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroStyStudio from "../../components/HeroStyStudio.astro";
+import commercialsPageScriptUrl from "../../scripts/pages/commercials.js?url";
 
 // I 4 cluster narrativi mostrati nella sezione "modi per comunicare".
 const communicationModes = [
@@ -49,7 +50,6 @@ const modeBubbleSets = {
 
 <Layout
   title="Commercials - Panebarco"
-  useInnerPagesScript={true}
   useInnerStyles={true}
   headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
 >
@@ -221,4 +221,5 @@ const modeBubbleSets = {
       </div>
     </section>
   </main>
+  <script type="module" src={commercialsPageScriptUrl}></script>
 </Layout>

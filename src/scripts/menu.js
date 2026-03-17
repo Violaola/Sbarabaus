@@ -9,6 +9,24 @@
   const submenuToggleButtons = overlay ? overlay.querySelectorAll(".menu-submenu-toggle") : [];
 
   if (!menuBtn || !overlay || !closeBtn) return;
+
+  function updateCurrentLinkState() {
+    const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+
+    menuLinks.forEach(function (link) {
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      const normalizedHref = href.replace(/\/$/, "") || "/";
+      const isCurrent = normalizedHref === "/"
+        ? currentPath === "/"
+        : currentPath === normalizedHref || currentPath.startsWith(normalizedHref + "/");
+
+      link.toggleAttribute("aria-current", isCurrent);
+    });
+  }
+
+  updateCurrentLinkState();
   if (overlay.dataset.menuInitialized === "true") return;
 
   overlay.dataset.menuInitialized = "true";
