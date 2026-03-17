@@ -173,8 +173,29 @@ import HeroStyStudio from "../../components/HeroStyStudio.astro";
       </section>
 
       <section class="studio-panebarcos-photo py-0" aria-label="Il team Panebarcos">
-        <div class="container-fluid px-0">
-          <img class="img-fluid d-block w-100" src="/images/lo-studio-panebarcos.jpg" alt="Il team Panebarcos in studio">
+        <div class="container-fluid px-0 position-relative">
+          <img
+            id="studioPanebarcosImage"
+            class="img-fluid d-block w-100"
+            src="/images/lo-studio-panebarcos-01.jpg"
+            alt="Il team Panebarcos in studio"
+            data-studio-panebarcos-image
+          >
+          <button
+            class="studio-panebarcos-trigger position-absolute d-block m-2 m-md-4"
+            type="button"
+            aria-label="Mostra la foto successiva dei Panebarcos"
+            aria-controls="studioPanebarcosImage"
+            data-studio-panebarcos-trigger
+            style="top:0; right:0; width:clamp(7rem, 22vw, 20rem); z-index:2;"
+          >
+            <img
+              class="img-fluid d-block w-100"
+              src="/images/studio-make-magic-happen.png"
+              alt=""
+              aria-hidden="true"
+            >
+          </button>
         </div>
       </section>
 

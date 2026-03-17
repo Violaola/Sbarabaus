@@ -146,3 +146,30 @@
 
   render(0);
 })();
+
+(function () {
+  const image = document.querySelector("[data-studio-panebarcos-image]");
+  const trigger = document.querySelector("[data-studio-panebarcos-trigger]");
+
+  if (!image || !trigger) return;
+
+  const images = [
+    "/images/lo-studio-panebarcos-01.jpg",
+    "/images/lo-studio-panebarcos-02.jpg",
+    "/images/lo-studio-panebarcos-03.jpg",
+    "/images/lo-studio-panebarcos-04.jpg",
+  ];
+
+  let activeIndex = images.indexOf(image.getAttribute("src") || "");
+  if (activeIndex < 0) activeIndex = 0;
+
+  images.slice(1).forEach(function (src) {
+    const preloadImage = new Image();
+    preloadImage.src = src;
+  });
+
+  trigger.addEventListener("click", function () {
+    activeIndex = (activeIndex + 1) % images.length;
+    image.setAttribute("src", images[activeIndex]);
+  });
+})();

@@ -429,6 +429,21 @@ body.inner-page {
     color: var(--ink);
   }
 
+  .studio-page .studio-panebarcos-trigger {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    line-height: 0;
+    cursor: pointer;
+    transform-origin: top right;
+    transition: transform 0.2s ease;
+  }
+
+  .studio-page .studio-panebarcos-trigger:hover,
+  .studio-page .studio-panebarcos-trigger:focus-visible {
+    transform: scale(1.08);
+  }
+
   .studio-page .studio-oscar-copy h2 {
     margin: 0 0 $spacer * 0.85;
     color: $gray-900;
