@@ -26,3 +26,24 @@ Snippet d’uso:
 <!-- Solo immagine -->
 <HeroStyHome videoSrc={false} imageSrc="/images/hero-static.jpg" showSlider={false} />
 ```
+
+## Astro Transitions
+- Il progetto usa `ClientRouter` di `astro:transitions`.
+- È attivato nel layout comune: [src/layouts/Layout.astro](/Users/violaolagrafica/Documents/GitHub/Sbarabaus/src/layouts/Layout.astro).
+- Quindi le pagine che passano dal layout navigano in client-side con view transitions abilitate.
+- Gli script JS sono inizializzati su `astro:page-load` e fanno cleanup su `astro:before-swap`, così restano compatibili con la navigazione client-side.
+
+## Script
+- Globale: [src/scripts/menu.js](/Users/violaolagrafica/Documents/GitHub/Sbarabaus/src/scripts/menu.js)
+  Gestisce menu overlay, stato header on-scroll, submenu mobile, hover bubble e link attivo nel menu.
+- Homepage only: [src/scripts/main.js](/Users/violaolagrafica/Documents/GitHub/Sbarabaus/src/scripts/main.js)
+  Gestisce reveal servizi, reveal portfolio, reveal titoli, typing text, chat slider hero e carousel originals.
+- Studio only: [src/scripts/pages/studio.js](/Users/violaolagrafica/Documents/GitHub/Sbarabaus/src/scripts/pages/studio.js)
+  Gestisce timeline della pagina Studio e slider immagini Panebarcos.
+- Commercials only: [src/scripts/pages/commercials.js](/Users/violaolagrafica/Documents/GitHub/Sbarabaus/src/scripts/pages/commercials.js)
+  Gestisce l’animazione/reveal dei blocchi `data-commercial-mode-heading`.
+
+Regola pratica:
+- Nel layout lasciare solo script veramente globali.
+- Le feature specifiche di pagina vanno richiamate direttamente nella pagina relativa oppure in un file dedicato importato da quella pagina.
+- Evitare file omnibus per script eterogenei di più pagine.
