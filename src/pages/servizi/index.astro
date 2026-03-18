@@ -6,28 +6,64 @@ import mainScriptUrl from "../../scripts/main.js?url";
 
 const serviceAreas = [
   {
-    title: "Commercials",
+    title: "Commercials e Brand Video",
     href: "/servizi/commercials",
-    image: "/images/servizi-cover-01-340x487.png",
-    summary: "Spot, branded content e video pensati per raccontare, spiegare, promuovere e coinvolgere.",
+    videoSrc: "/images/panebarco-commercial-video.mp4",
+    poster: "/images/hero-commercials.png",
+    summary:
+      "Realizziamo video animati per brand e istituzioni: definiamo stile, tecnica e tono, sviluppiamo lo script e produciamo spot efficaci, riconoscibili e flessibili nel budget.",
+    bullets: [
+      "Sviluppo script e concept",
+      "Scelta di stile, tecnica e tono",
+      "Spot animati e brand video",
+      "Produzioni flessibili nel budget",
+    ],
+    buttonLabel: "Scopri commercials",
   },
   {
     title: "Post-produzione",
     href: "/servizi/post-produzione",
-    image: "/images/servizi-cover-02-340x487.jpg",
-    summary: "Color, compositing, VFX e finishing per dare ritmo, atmosfera e precisione alle immagini.",
+    videoSrc: "/images/1021768637.mp4",
+    poster: "/images/compositing-e-visual-effects-01.jpg",
+    summary:
+      "Curare l’ultimo miglio è la nostra specialità: montaggio, 3D, VFX, compositing, integrazione live action e color grading per un risultato impeccabile.",
+    bullets: [
+      "Montaggio e finishing",
+      "3D, VFX e compositing",
+      "Integrazione live action",
+      "Color grading e rifinitura finale",
+    ],
+    buttonLabel: "Scopri la post",
   },
   {
-    title: "Service",
+    title: "Service e Produzione Esecutiva",
     href: "/servizi/service",
-    image: "/images/servizi-cover-03-340x487.jpg",
-    summary: "Supporto produttivo e operativo per accompagnare ogni fase del lavoro, dalla partenza alla consegna.",
+    videoSrc: "/images/panebarco-studio-video.mp4",
+    poster: "/images/servizi-cover-03-340x487.jpg",
+    summary:
+      "Accompagniamo produzioni animate in ogni fase, dalla pre-produzione alla post, integrandoci nei tuoi flussi con qualità, continuità e gestione operativa.",
+    bullets: [
+      "Supporto dalla pre alla post",
+      "Integrazione nei flussi esistenti",
+      "Coordinamento operativo",
+      "Continuità di processo e qualità",
+    ],
+    buttonLabel: "Scopri il service",
   },
   {
-    title: "...e tanto altro",
-    href: "/servizi/e-tanto-altro",
-    image: "/images/servizi-cover-01-340x487.png",
-    summary: "Progetti speciali, sperimentazioni e idee laterali che allargano il nostro modo di lavorare.",
+    title: "Originals",
+    href: "/originals",
+    videoSrc: "/images/1021768637.mp4",
+    poster: "/images/hero-dettaglio-originals.jpg",
+    summary:
+      "Siamo una casa di produzione indipendente con centinaia di IP originali, tra sviluppo, produzione e distribuzione. Cerchiamo partner per nuovi progetti audiovisivi.",
+    bullets: [
+      "IP originali in sviluppo",
+      "Progetti in produzione",
+      "Titoli pronti alla distribuzione",
+      "Ricerca di partner e coproduzioni",
+    ],
+    buttonLabel: "Scopri originals",
   },
 ] as const;
 
@@ -66,60 +102,41 @@ const repeatedClientLogos = Array.from({ length: 3 }, (_, groupIndex) =>
         className="hero-sty-studio page-hero page-hero--studio"
       />
 
-      <section class="page-main page-main--studio services-hub-intro">
-        <div class="container">
-          <div class="row g-4 g-xl-5 align-items-center">
-            <div class="col-12 col-lg-6">
-              <div class="services-intro-copy">
-                <h2 class="page-title-uniform">Un hub semplice per capire dove possiamo esserti utili.</h2>
-                <p>
-                  Lavoriamo tra narrazione, produzione e rifinitura, costruendo ogni progetto con un approccio
-                  artigianale, flessibile e molto concreto. Qui trovi i quattro ambiti che organizzano il nostro
-                  modo di lavorare.
-                </p>
-                <ul class="services-bullets list-unstyled">
-                  <li><span class="fw-bold">Commercials</span> per raccontare, spiegare, promuovere e coinvolgere.</li>
-                  <li><span class="fw-bold">Post-produzione</span> per integrare, trasformare, rifinire e potenziare le immagini.</li>
-                  <li><span class="fw-bold">Service</span> per supporto creativo, produttivo e organizzativo.</li>
-                  <li><span class="fw-bold">...e tanto altro</span> per progetti speciali, contenuti trasversali e sperimentazioni.</li>
-                </ul>
-              </div>
-            </div>
+      
 
-            <div class="col-12 col-lg-6">
-              <div class="services-intro-video ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
-                <video autoplay muted loop playsinline preload="metadata" poster="/images/servizi-cose.png">
-                  <source src="/images/1021768637.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <section id="servizi" class="section-space section-space--soft services-home-cards">
-        <div class="container">
+      <section id="servizi" class=" mt-5 section-space section-space--soft services-home-cards">
+        <div class="container mt-md-5 pt-5">
           <h2 class="section-title section-title-reveal">
             <span class="section-title-text">SERVIZI</span>
             <img class="section-title-sticker" src="/images/cose che sappiamo fare.png" alt="" aria-hidden="true">
           </h2>
-          <div class="row g-4 services-box-grid">
+          <div class="row g-4 g-xxl-5 services-editorial-grid">
             {serviceAreas.map((service) => (
-              <div class="col-12 col-md-6 col-lg-3">
-                <a
-                  class="services-box-link d-block text-decoration-none"
-                  href={service.href}
-                  aria-label={`Apri la pagina ${service.title}`}
-                >
-                  <article class="services-box-card" style={`--service-bg:url('${service.image}');`}>
-                    <div class="services-box-card__overlay"></div>
-                    <div class="services-box-card__content">
-                      <h3>{service.title}</h3>
-                      <p>{service.summary}</p>
+              <div class="col-12 col-xl-6">
+                <article class="service-editorial-card h-100">
+                  <div class="service-editorial-card__inner h-100">
+                    <h3>{service.title}</h3>
+                    <p class="service-editorial-summary">{service.summary}</p>
+
+                    <div class="service-editorial-video ratio ratio-16x9 rounded-4 overflow-hidden">
+                      <video autoplay muted loop playsinline preload="metadata" poster={service.poster}>
+                        <source src={service.videoSrc} type="video/mp4" />
+                      </video>
                     </div>
-                  </article>
-                </a>
+
+                    <ul class="service-editorial-list list-unstyled">
+                      {service.bullets.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+
+                    <div class="mt-auto pt-2">
+                      <a class="btn btn-cta btn-cta--blue btn-pill" href={service.href}>
+                        {service.buttonLabel}
+                      </a>
+                    </div>
+                  </div>
+                </article>
               </div>
             ))}
           </div>
@@ -169,137 +186,3 @@ const repeatedClientLogos = Array.from({ length: 3 }, (_, groupIndex) =>
     </main>
     <script type="module" src={mainScriptUrl}></script>
 </Layout>
-
-<style>
-  .services-page .services-hub-intro {
-    overflow: hidden;
-  }
-
-  .services-page .services-intro-copy h2 {
-    margin-bottom: 1rem;
-  }
-
-  .services-page .services-bullets {
-    display: grid;
-    gap: 0.75rem;
-    margin: 0 0 2rem;
-    padding: 0;
-  }
-
-  .services-page .services-bullets li {
-    position: relative;
-    padding-left: 1.45rem;
-    margin: 0;
-  }
-
-  .services-page .services-bullets li::before {
-    content: "";
-    position: absolute;
-    top: 0.52rem;
-    left: 0;
-    width: 0.68rem;
-    height: 0.68rem;
-    border-radius: 50%;
-    background: var(--bs-warning);
-    box-shadow: 0 0 0 0.2rem rgba(var(--bs-warning-rgb), 0.22);
-  }
-
-  .services-page .services-intro-video {
-    background: #0f1115;
-  }
-
-  .services-page .services-intro-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .services-page .services-clients-head h2 {
-    color: var(--ink);
-  }
-
-  .services-page .services-logos-marquee {
-    overflow: hidden;
-    position: relative;
-    margin-top: clamp(1.75rem, 3vw, 2.5rem);
-    border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.6);
-    padding: 1.2rem 0;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
-  }
-
-  .services-page .services-logos-marquee::before,
-  .services-page .services-logos-marquee::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: clamp(2rem, 8vw, 7rem);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .services-page .services-logos-marquee::before {
-    left: 0;
-    background: linear-gradient(90deg, var(--bg) 0%, rgba(243, 244, 246, 0) 100%);
-  }
-
-  .services-page .services-logos-marquee::after {
-    right: 0;
-    background: linear-gradient(270deg, var(--bg) 0%, rgba(243, 244, 246, 0) 100%);
-  }
-
-  .services-page .services-logos-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    animation: services-logo-scroll 22s linear infinite;
-  }
-
-  .services-page .services-logo-item {
-    flex: 0 0 auto;
-    width: clamp(12rem, 18vw, 16rem);
-    min-height: 5rem;
-    display: grid;
-    place-items: center;
-    padding: 1rem clamp(1rem, 2vw, 1.8rem);
-  }
-
-  .services-page .services-logo-item img {
-    max-width: 100%;
-    max-height: 3.6rem;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.84;
-  }
-
-  @keyframes services-logo-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-33.3333%);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .services-page .services-logos-track {
-      animation: none;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    .services-page .services-logos-marquee {
-      padding-block: 1rem;
-    }
-
-    .services-page .services-logo-item {
-      width: 11rem;
-      min-height: 4.4rem;
-    }
-  }
-</style>

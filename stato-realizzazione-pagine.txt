@@ -5,6 +5,9 @@ FATTE
 - il dettaglio Originals
 - il dettaglio Portfolio
 - Servizi
+- Post-produzione
+- Service
+- ...e tanto altro
 
 Da sviluppare
 - Portfolio
@@ -14,7 +17,4 @@ Da sviluppare
 - Storia di un'azienda mutante
 - I Panebarcos
 - Ci vediamo agli Oscar
-- Post-produzione
-- Service
-- ...e tanto altro
 - Diario di viaggio

@@ -1226,6 +1226,10 @@ h2 {
       position: relative;
     }
 
+    .originals-stage--wide {
+      max-width: min(78rem, calc(100vw - 2.5rem));
+    }
+
     .originals-title-logo {
       display: block;
       width: min(25rem, 72vw);
@@ -1337,18 +1341,22 @@ h2 {
       text-transform: none;
       font-weight: 500;
       padding-inline: clamp(1.8rem, 3vw, 2.8rem);
-      min-width: clamp(14rem, 20vw, 16rem);
+      width: fit-content;
+      max-width: 100%;
+      min-width: clamp(11rem, 20vw, 16rem);
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
     }
 
     .original-more-btn:hover,
     .original-more-btn:focus-visible,
+    .original-more-btn:active,
     .original-more-btn.btn-cta--blue:hover,
-    .original-more-btn.btn-cta--blue:focus-visible {
+    .original-more-btn.btn-cta--blue:focus-visible,
+    .original-more-btn.btn-cta--blue:active {
       font-weight: 600;
-      background: #f3ab28;
-      color: #141414;
+      background: var(--cta-orange);
+      color: var(--cta-ink);
       border-color: transparent;
       box-shadow: 0 0.35rem 0.95rem rgba(0, 0, 0, 0.2);
       transform: translateY(-1px);
@@ -1388,6 +1396,88 @@ h2 {
       color: #008fcd;
       transform: translateY(-1px) scale(1.02);
       box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.34);
+    }
+
+    .originals-parallax--large .originals-sticky {
+      padding: clamp(2.8rem, 5.8vw, 5rem) 0;
+    }
+
+    .originals-parallax--large .originals-title-logo {
+      width: min(29rem, 78vw);
+      margin-bottom: 2.35rem;
+    }
+
+    .originals-parallax--large .originals-layout {
+      grid-template-columns: 1fr;
+      gap: clamp(0.9rem, 1.4vw, 1.25rem);
+    }
+
+    .originals-parallax--large .original-featured,
+    .originals-parallax--large .original-side-card {
+      border-radius: 1.15rem;
+      box-shadow: 0 0.85rem 1.8rem rgba(0, 0, 0, 0.34);
+      width: 100%;
+    }
+
+    .originals-parallax--large .original-featured {
+      aspect-ratio: 16 / 6.2;
+    }
+
+    .originals-parallax--large .original-side-card {
+      aspect-ratio: 16 / 6.2;
+    }
+
+    .originals-parallax--large .featured-content {
+      padding: 1.4rem;
+    }
+
+    .originals-parallax--large .side-content {
+      padding: 1.15rem;
+    }
+
+    .originals-parallax--large .featured-content h4 {
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+    }
+
+    .originals-parallax--large .side-content h4 {
+      font-size: clamp(1.35rem, 1.95vw, 2.25rem);
+    }
+
+    .originals-parallax--large .side-content {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-inline: clamp(1.5rem, 3vw, 2.6rem);
+    }
+
+    .originals-parallax--large .featured-content {
+      padding-inline: clamp(1.8rem, 3.4vw, 3rem);
+    }
+
+    .originals-parallax--large .originals-logo-mark {
+      width: clamp(7rem, 12vw, 9.6rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .originals-parallax--large .side-content .originals-logo-mark {
+      width: clamp(6rem, 9.2vw, 8rem);
+      margin: 0.1rem 0 0.5rem;
+    }
+
+    .originals-parallax--large .original-more-btn,
+    .originals-parallax--large .original-more-btn.btn-cta--blue {
+      min-width: clamp(15rem, 22vw, 17.5rem);
+      padding-inline: clamp(2rem, 3.2vw, 3.2rem);
+    }
+
+    .originals-parallax--large .originals-nav-bottom {
+      margin-top: 1.2rem;
+    }
+
+    .originals-parallax--large .originals-arrow {
+      width: 2.45rem;
+      height: 2.45rem;
+      font-size: 1.18rem;
     }
 
     .portfolio-container {
@@ -1689,6 +1779,56 @@ h2 {
 
       .original-side-card {
         aspect-ratio: 10 / 13;
+      }
+
+      .originals-stage--wide {
+        max-width: min(100%, calc(100vw - 1.5rem));
+      }
+
+      .originals-parallax--large .originals-sticky {
+        padding: 0;
+      }
+
+      .originals-parallax--large .originals-title-logo {
+        width: min(24rem, 76vw);
+        margin-bottom: 1.8rem;
+      }
+
+      .originals-parallax--large .originals-layout {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+
+      .originals-parallax--large .original-featured {
+        grid-column: auto;
+        aspect-ratio: 16 / 7.8;
+      }
+
+      .originals-parallax--large .original-side-card {
+        aspect-ratio: 16 / 7.8;
+      }
+
+      .originals-parallax--large .side-content {
+        padding-inline: 1.2rem;
+      }
+
+      .original-more-btn,
+      .original-more-btn.btn-cta--blue,
+      .originals-parallax--large .original-more-btn,
+      .originals-parallax--large .original-more-btn.btn-cta--blue {
+        min-width: 0;
+        width: auto;
+        padding-inline: 1.35rem;
+      }
+
+      .original-more-btn.btn-cta--blue:hover,
+      .original-more-btn.btn-cta--blue:focus-visible,
+      .original-more-btn.btn-cta--blue:active,
+      .originals-parallax--large .original-more-btn.btn-cta--blue:hover,
+      .originals-parallax--large .original-more-btn.btn-cta--blue:focus-visible,
+      .originals-parallax--large .original-more-btn.btn-cta--blue:active {
+        background: var(--cta-orange);
+        color: var(--cta-ink);
       }
 
       .services-box-card,

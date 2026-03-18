@@ -1,28 +1,284 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroStyStudio from "../../components/HeroStyStudio.astro";
+import ContactCtaBanner from "../../components/ContactCtaBanner.astro";
+import OriginalsShowcase from "../../components/OriginalsShowcase.astro";
+
+const portfolioProjects = [
+  {
+    title: "Vita dura per gli Orsi Marsicani",
+    href: "/portfolio/vita-dura-per-gli-orsi-marsicani",
+    image: "/images/portfolio-cover-03-695x391.jpg",
+    serviceCategory: "Service",
+    videoType: "Entertainment",
+    summary: "Service e 3D per uno spot in cui l'intervento tecnico resta perfettamente dentro la storia.",
+    tags: ["3D", "Live action"],
+  },
+  {
+    title: "Caramelle",
+    href: "/originals/caramelle",
+    image: "/images/caramelle-intro.jpg",
+    serviceCategory: "Originals",
+    videoType: "Emozionale",
+    summary: "Un progetto in cui il racconto visivo e il tono emotivo guidano tutte le scelte di immagine.",
+    tags: ["Originals", "Story"],
+  },
+  {
+    title: "Marta e la morte",
+    href: "/originals/caramelle",
+    image: "/images/marta-e-la-morte.jpg",
+    serviceCategory: "Originals",
+    videoType: "Story-driven",
+    summary: "Narrazione, atmosfera e composizione costruiti per sostenere un immaginario più autoriale.",
+    tags: ["Autoriale", "Narrativa"],
+  },
+  {
+    title: "#Nostoppingnora",
+    href: "/originals/caramelle",
+    image: "/images/nostoppingnora.jpg",
+    serviceCategory: "Commercials",
+    videoType: "Promozionale",
+    summary: "Un lavoro pensato per essere immediato, riconoscibile e adatto a diversi contesti di distribuzione.",
+    tags: ["Campaign", "Social"],
+  },
+  {
+    title: "Rendering a livelli",
+    href: "/servizi/post-produzione",
+    image: "/images/rendering-a-livelli-02.jpg",
+    serviceCategory: "Post-produzione",
+    videoType: "Divulgativo",
+    summary: "Una lettura più tecnica del progetto, utile quando il contenuto deve restare chiaro e ordinato.",
+    tags: ["Post", "CGI"],
+  },
+  {
+    title: "Rendering finale",
+    href: "/servizi/post-produzione",
+    image: "/images/rendering-finale-01.jpg",
+    serviceCategory: "Post-produzione",
+    videoType: "Emozionale",
+    summary: "Look, finitura e controllo del frame per dare all'immagine una presenza più netta.",
+    tags: ["Look", "Finishing"],
+  },
+  {
+    title: "Hero commercials",
+    href: "/servizi/commercials",
+    image: "/images/hero-commercials.png",
+    serviceCategory: "Commercials",
+    videoType: "Promozionale",
+    summary: "Brand video e contenuti orientati alla comunicazione, con una direzione visiva semplice ma forte.",
+    tags: ["Brand", "Spot"],
+  },
+  {
+    title: "Panebarco service",
+    href: "/servizi/service",
+    image: "/images/portfolio-cover-05-695x391.jpg",
+    serviceCategory: "Service",
+    videoType: "Divulgativo",
+    summary: "Quando il supporto produttivo e organizzativo diventa parte del valore del progetto finale.",
+    tags: ["Pipeline", "Supporto"],
+  },
+] as const;
+
+// I filtri riflettono direttamente i valori usati sui data-attribute delle card.
+const serviceFilters = ["Tutti", "Originals", "Commercials", "Post-produzione", "Service"] as const;
+const typeFilters = ["Tutti", "Story-driven", "Divulgativo", "Promozionale", "Emozionale", "Entertainment"] as const;
 ---
 
 <Layout
   title="Portfolio - Panebarco"
   useInnerStyles={true}
-  headerProps={{ containerClass: "hero-fluid" }}
+  headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
 >
-    <main class="studio-page">
-      <HeroStyStudio
-        backgroundVideoSrc="/images/1021768637.mp4"
-        bgWord="COSE BELLE"
-        title="PORTFOLIO"
-        subtitle="Progetti, storie e mondi costruiti fotogramma per fotogramma"
-        sideImageSrc="/images/lo-studio-panebarco-teams.png"
-        sideImageAlt="Team Panebarco"
-        className="hero-sty-studio page-hero page-hero--studio"
-      />
-  
-      <section class="page-main page-main--studio">
-        <div class="container">
-          <h2>I nostri lavori in evidenza</h2>
+  <main class="studio-page portfolio-page">
+    <HeroStyStudio
+      backgroundVideoSrc="/images/1021768637.mp4"
+      bgWord="COSE BELLE"
+      title="PORTFOLIO"
+      subtitle="Progetti, storie e mondi costruiti fotogramma per fotogramma"
+      sideImageSrc="/images/lo-studio-panebarco-teams.png"
+      sideImageAlt="Team Panebarco"
+    />
+
+    <OriginalsShowcase
+      sectionId="portfolio-originals"
+      sectionClass="page-main-offset dark-band originals-parallax originals-parallax--large"
+      containerClass="container originals-stage originals-stage--wide"
+    />
+
+    <section class="section-space section-space--soft portfolio-catalogue" data-portfolio-root>
+      <div class="container">
+        <div class="row justify-content-center text-center mb-3 mb-lg-4">
+          <div class="col-12 col-xl-8">
+            <h2 class="page-title-uniform">Esplora i progetti</h2>
+            <p class="portfolio-section-intro">
+              Filtra il portfolio per area di servizio o per tipologia di video e scorri una griglia più ampia di lavori,
+              frame e casi correlati.
+            </p>
+          </div>
         </div>
-      </section>
-    </main>
+
+        <div class="portfolio-filters">
+          <div class="portfolio-filter-group">
+            <p class="portfolio-filter-label">Categoria di servizio</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              {serviceFilters.map((filter, index) => (
+                <button
+                  class:list={["portfolio-filter-chip", index === 0 && "is-active"]}
+                  type="button"
+                  data-filter-group="service"
+                  data-filter-value={filter}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="portfolio-filter-group mt-3 mt-lg-4">
+            <p class="portfolio-filter-label">Tipologia di video</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              {typeFilters.map((filter, index) => (
+                <button
+                  class:list={["portfolio-filter-chip", index === 0 && "is-active"]}
+                  type="button"
+                  data-filter-group="type"
+                  data-filter-value={filter}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2 mt-lg-3" data-portfolio-grid>
+          {portfolioProjects.map((project) => (
+            <div
+              class="col-12 col-md-6 col-xl-4"
+              data-portfolio-card
+              data-service={project.serviceCategory}
+              data-type={project.videoType}
+            >
+              <a class="portfolio-work-card d-block h-100 text-decoration-none" href={project.href}>
+                <div class="portfolio-work-card__frame">
+                  <div class="ratio ratio-4x3 portfolio-work-card__media">
+                    <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                  </div>
+                </div>
+                <div class="portfolio-work-card__body">
+                  <div class="portfolio-work-card__tags" aria-hidden="true">
+                    <span>{project.serviceCategory}</span>
+                    <span>{project.videoType}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.summary}</p>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div class="portfolio-empty-state d-none text-center mt-4" data-portfolio-empty>
+          <p class="mb-0">Nessun progetto corrisponde ai filtri attuali.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space section-space--tight pt-2 pt-md-3 pt-lg-4">
+      <div class="container">
+        <ContactCtaBanner
+          kicker="Hai visto un tono o un formato che ti assomiglia?"
+          title="PARLIAMONE NOI."
+        />
+      </div>
+    </section>
+  </main>
+
+  <script is:inline>
+    (function () {
+      function initPortfolioPage() {
+        // Ogni blocco filtri mantiene il proprio stato, così la pagina resta estendibile.
+        document.querySelectorAll("[data-portfolio-root]").forEach(function (root) {
+          if (root.dataset.bound === "true") return;
+          root.dataset.bound = "true";
+
+          var activeFilters = { service: "Tutti", type: "Tutti" };
+          var buttons = root.querySelectorAll("[data-filter-group]");
+          var cards = root.querySelectorAll("[data-portfolio-card]");
+          var emptyState = root.querySelector("[data-portfolio-empty]");
+
+          function updateCards() {
+            var visibleCount = 0;
+
+            cards.forEach(function (card) {
+              var service = card.getAttribute("data-service");
+              var type = card.getAttribute("data-type");
+              var matchesService = activeFilters.service === "Tutti" || activeFilters.service === service;
+              var matchesType = activeFilters.type === "Tutti" || activeFilters.type === type;
+              var isVisible = matchesService && matchesType;
+
+              card.classList.toggle("d-none", !isVisible);
+              if (isVisible) visibleCount += 1;
+            });
+
+            if (emptyState) {
+              emptyState.classList.toggle("d-none", visibleCount > 0);
+            }
+          }
+
+          buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+              var group = button.getAttribute("data-filter-group");
+              var value = button.getAttribute("data-filter-value");
+              if (!group || !value) return;
+
+              activeFilters[group] = value;
+
+              buttons.forEach(function (btn) {
+                if (btn.getAttribute("data-filter-group") === group) {
+                  btn.classList.toggle("is-active", btn === button);
+                }
+              });
+
+              updateCards();
+            });
+          });
+
+          updateCards();
+        });
+
+        document.querySelectorAll("[data-portfolio-slider]").forEach(function (root) {
+          if (root.dataset.bound === "true") return;
+          root.dataset.bound = "true";
+
+          var track = root.querySelector("[data-portfolio-track]");
+          var prev = root.querySelector("[data-portfolio-prev]");
+          var next = root.querySelector("[data-portfolio-next]");
+
+          if (!track || !prev || !next) return;
+
+          function scrollByAmount(direction) {
+            // Lo step segue la larghezza visibile del track invece di un valore fisso.
+            var amount = Math.max(track.clientWidth * 0.82, 280) * direction;
+            track.scrollBy({ left: amount, behavior: "smooth" });
+          }
+
+          prev.addEventListener("click", function () {
+            scrollByAmount(-1);
+          });
+
+          next.addEventListener("click", function () {
+            scrollByAmount(1);
+          });
+        });
+      }
+
+      if (!window.__panebarcoPortfolioPageBound) {
+        document.addEventListener("astro:page-load", initPortfolioPage);
+        window.__panebarcoPortfolioPageBound = true;
+      }
+
+      initPortfolioPage();
+    })();
+  </script>
 </Layout>

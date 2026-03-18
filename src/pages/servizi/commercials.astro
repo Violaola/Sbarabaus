@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroStyStudio from "../../components/HeroStyStudio.astro";
+import ContactCtaBanner from "../../components/ContactCtaBanner.astro";
 import commercialsPageScriptUrl from "../../scripts/pages/commercials.js?url";
 
 // I 4 cluster narrativi mostrati nella sezione "modi per comunicare".
@@ -203,18 +204,10 @@ const modeBubbleSets = {
 
             <!-- CTA finale verso pagina contatti -->
             <section class="mt-4 mt-md-5 pt-2 pt-md-4">
-              <div class="commercials-cta-card position-relative rounded-4">
-                <img
-                  class="commercials-cta-figure"
-                  src="/images/lo-animiamo-noi.png"
-                  alt="Mascotte Panebarco"
-                />
-                <div class="commercials-cta-copy text-white text-start">
-                  <p class="commercials-cta-kicker mb-0 fw-bold fs-2 fs-lg-1 lh-1">Hai un progetto in mente?</p>
-                  <h3 class="commercials-cta-title mt-1 mb-0 text-white fw-bolder text-uppercase display-5 display-lg-4 lh-1">LO ANIMIAMO NOI.</h3>
-                  <a href="/contatti" class="btn btn-cta btn-cta--blue btn-pill mt-3">Contattaci</a>
-                </div>
-              </div>
+              <ContactCtaBanner
+                kicker="Hai un progetto in mente?"
+                title="LO ANIMIAMO NOI."
+              />
             </section>
           </div>
         </div>

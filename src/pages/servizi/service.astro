@@ -1,29 +1,173 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroStyStudio from "../../components/HeroStyStudio.astro";
+import ContactCtaBanner from "../../components/ContactCtaBanner.astro";
+
+const supportAreas = [
+  {
+    title: "Sviluppare",
+    description: "Supporto creativo e progettuale.",
+    image: "/images/spiegare-01.png",
+  },
+  {
+    title: "Produrre",
+    description: "Animazione 2D / 3D e contenuti audiovisivi.",
+    image: "/images/promuovere-03.png",
+  },
+  {
+    title: "Coordinare",
+    description: "Gestione del lavoro con team e partner.",
+    image: "/images/coinvolgere-03.jpg",
+  },
+  {
+    title: "Accompagnare",
+    description: "Affiancamento lungo tutto il processo produttivo.",
+    image: "/images/raccontare-02.jpg",
+  },
+] as const;
+
+const relatedCases = [
+  {
+    title: "Commercials",
+    href: "/servizi/commercials",
+    image: "/images/hero-commercials.png",
+    summary: "Quando concept, produzione e delivery devono restare allineati in un unico flusso operativo.",
+    tags: ["Produzione", "Coordination"],
+  },
+  {
+    title: "Vita dura per gli Orsi Marsicani",
+    href: "/portfolio/vita-dura-per-gli-orsi-marsicani",
+    image: "/images/raccontare-03.jpg",
+    summary: "Un esempio di collaborazione con partner esterni, pipeline condivisa e gestione puntuale delle fasi.",
+    tags: ["Service", "Pipeline"],
+  },
+  {
+    title: "Caramelle",
+    href: "/originals/caramelle",
+    image: "/images/lo-studio-panebarcos-02.jpg",
+    summary: "Sviluppo, produzione e accompagnamento diventano un unico lavoro di squadra, dal primo snodo alla consegna.",
+    tags: ["Originals", "Supporto"],
+  },
+  {
+    title: "Lo Studio",
+    href: "/studio",
+    image: "/images/lo-studio-panebarcos-04.jpg",
+    summary: "Il lato operativo del nostro lavoro: coordinamento, flessibilità e integrazione con chi produce insieme a noi.",
+    tags: ["Team", "Produzione"],
+  },
+] as const;
 ---
 
 <Layout
   title="Service - Panebarco"
   useInnerStyles={true}
-  headerProps={{ containerClass: "hero-fluid" }}
+  headerProps={{ containerClass: "container-fluid hero-fluid px-3 px-md-4 px-lg-5" }}
 >
-    <main class="studio-page">
-      <HeroStyStudio
-        backgroundVideoSrc="/images/1021768637.mp4"
-        bgWord="SERVICE"
-        title="SERVICE"
-        subtitle="Produzione e supporto on demand"
-        sideImageSrc="/images/lo-studio-panebarco-teams.png"
-        sideImageAlt="Team Panebarco"
-        className="hero-sty-studio page-hero page-hero--studio"
-      />
-      
-      <section class="page-main page-main--studio">
-        <div class="container">
-          <h2>Universi originali Panebarco</h2>
+  <main class="studio-page commercials-page service-page">
+    <HeroStyStudio
+      backgroundVideoSrc="/images/panebarco-studio-video.mp4"
+      bgWord="SERVICE"
+      title="SERVICE"
+      subtitle="Supporto creativo, produttivo e operativo lungo tutto il processo"
+      sideImageSrc="/images/lo-studio-panebarco-teams.png"
+      sideImageAlt="Team Panebarco"
+    />
+
+    <section class="studio-oscar-section section-space section-space--soft service-top-intro">
+      <div class="container">
+        <div class="row g-4 g-lg-5 align-items-start align-items-lg-center studio-oscar-grid">
+          <div class="col-12 col-lg-5 studio-oscar-art">
+            <img class="img-fluid d-block mx-auto mx-lg-0" src="/images/lo-studio-oscar.png" alt="Personaggi con Oscar">
+          </div>
+          <div class="col-12 col-lg-7 studio-oscar-copy text-start">
+            <h2 class="page-title-uniform">
+              SERVICE
+              <span>APPROCCIO</span>
+            </h2>
+            <p>
+              Affianchiamo produzioni, agenzie e partner creativi quando serve una squadra capace di entrare nel processo
+              con metodo, flessibilità e continuità. Possiamo intervenire nello sviluppo, nella produzione di contenuti 2D e 3D,
+              nel coordinamento operativo e nella gestione del lavoro condiviso.
+            </p>
+            <a class="btn btn-cta btn-cta--blue btn-pill" href="/studio">Scopri il nostro approccio</a>
+          </div>
         </div>
-      </section>
-      
-    </main>
+      </div>
+    </section>
+
+    <section class="section-space section-space--soft service-areas" aria-labelledby="serviceAreasTitle">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-12 col-xl-8">
+            <h2 id="serviceAreasTitle" class="page-title-uniform">Ambiti di supporto</h2>
+            <p class="service-section-intro">
+              Entriamo nel progetto dove serve più continuità: per sviluppare, produrre, coordinare o accompagnare il lavoro
+              insieme a team interni, partner esterni e produzioni già avviate.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          {supportAreas.map((area, index) => (
+            <div class="col-12 col-md-6">
+              <article class="service-support-card service-case-card h-100">
+                <div class="ratio ratio-16x9 service-support-card__media">
+                  <img src={area.image} alt={area.title} loading="lazy" decoding="async" />
+                </div>
+                <div class="service-support-card__body">
+                  <p class="service-support-card__index">{String(index + 1).padStart(2, "0")}</p>
+                  <h3>{area.title}</h3>
+                  <p>{area.description}</p>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space service-cases mb-4 mb-lg-5" aria-labelledby="serviceCasesTitle">
+      <div class="container">
+        <div class="row g-3 align-items-end mb-2 mb-lg-3">
+          <div class="col-12 col-lg-8">
+            <h2 id="serviceCasesTitle" class="page-title-uniform">Case history correlate</h2>
+            <p class="service-section-intro service-section-intro--left mb-0">
+              Alcuni lavori in cui il nostro contributo passa dalla produzione vera e propria, oppure da un affiancamento operativo,
+              creativo e organizzativo.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          {relatedCases.map((item) => (
+            <div class="col-12 col-md-6 col-xl-3">
+              <a class="service-case-card d-block h-100 text-decoration-none" href={item.href}>
+                <div class="ratio ratio-4x3 service-case-card__media">
+                  <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
+                </div>
+                <div class="service-case-card__body">
+                  <div class="service-case-card__tags" aria-hidden="true">
+                    {item.tags.map((tag) => (
+                      <span>{tag}</span>
+                    ))}
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.summary}</p>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space section-space--tight pt-2 pt-md-3 pt-lg-4">
+      <div class="container">
+        <ContactCtaBanner
+          kicker="Hai bisogno di una squadra che entri nel flusso?"
+          title="TI AFFIANCHIAMO NOI."
+        />
+      </div>
+    </section>
+  </main>
 </Layout>

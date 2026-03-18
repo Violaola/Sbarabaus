@@ -17,6 +17,7 @@ const {
   containerClass = "container originals-stage",
 } = Astro.props;
 
+// Dataset minimo condiviso tra home e pagine interne per pilotare lo showcase.
 const originals: OriginalItem[] = [
   {
     title: "Caramelle",
@@ -109,6 +110,7 @@ const [featured, sideOne, sideTwo] = originals;
 <script is:inline>
   (function () {
     function initOriginalsCarousels() {
+      // Ogni showcase si inizializza una sola volta, anche dopo i page swap di Astro.
       document.querySelectorAll("[data-originals-carousel]").forEach(function (root) {
         if (root.dataset.bound === "true") return;
 
@@ -148,6 +150,7 @@ const [featured, sideOne, sideTwo] = originals;
         root.dataset.bound = "true";
 
         var activeIndex = 0;
+        var autoplayId = null;
 
         function mod(index, length) {
           return ((index % length) + length) % length;
@@ -164,6 +167,7 @@ const [featured, sideOne, sideTwo] = originals;
             card.classList.add("is-swapping");
           });
 
+          // Le tre card visibili sono sempre una finestra mobile sullo stesso array.
           var featured = items[mod(activeIndex, items.length)];
           var sideOne = items[mod(activeIndex + 1, items.length)];
           var sideTwo = items[mod(activeIndex + 2, items.length)];
@@ -180,17 +184,48 @@ const [featured, sideOne, sideTwo] = originals;
           });
         }
 
+        function stopAutoplay() {
+          if (autoplayId !== null) {
+            window.clearInterval(autoplayId);
+            autoplayId = null;
+          }
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          // L'autoplay usa la stessa rotazione della freccia "next" per evitare stati divergenti.
+          autoplayId = window.setInterval(function () {
+            activeIndex = mod(activeIndex + 1, items.length);
+            renderOriginals();
+          }, 3400);
+        }
+
         prevBtn.addEventListener("click", function () {
           activeIndex = mod(activeIndex - 1, items.length);
           renderOriginals();
+          startAutoplay();
         });
 
         nextBtn.addEventListener("click", function () {
           activeIndex = mod(activeIndex + 1, items.length);
           renderOriginals();
+          startAutoplay();
+        });
+
+        root.addEventListener("pointerenter", stopAutoplay);
+        root.addEventListener("pointerleave", startAutoplay);
+        root.addEventListener("focusin", stopAutoplay);
+        // Se il focus esce dal carosello, il ciclo riparte senza interferire con la navigazione da tastiera.
+        root.addEventListener("focusout", function () {
+          window.requestAnimationFrame(function () {
+            if (!root.contains(document.activeElement)) {
+              startAutoplay();
+            }
+          });
         });
 
         renderOriginals();
+        startAutoplay();
       });
     }
 
