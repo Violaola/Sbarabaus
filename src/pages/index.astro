@@ -1,7 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroStyHome from "../components/HeroStyHome.astro";
+import OriginalsShowcase from "../components/OriginalsShowcase.astro";
 import mainScriptUrl from "../scripts/main.js?url";
+
+const serviceAreas = [
+  {
+    title: "Commercials",
+    href: "/servizi/commercials",
+    image: "/images/servizi-cover-01-340x487.png",
+    summary: "Spot, branded content e video pensati per raccontare, spiegare, promuovere e coinvolgere.",
+  },
+  {
+    title: "Post-produzione",
+    href: "/servizi/post-produzione",
+    image: "/images/servizi-cover-02-340x487.jpg",
+    summary: "Color, compositing, VFX e finishing per dare ritmo, atmosfera e precisione alle immagini.",
+  },
+  {
+    title: "Service",
+    href: "/servizi/service",
+    image: "/images/servizi-cover-03-340x487.jpg",
+    summary: "Supporto produttivo e operativo per accompagnare ogni fase del lavoro, dalla partenza alla consegna.",
+  },
+  {
+    title: "...e tanto altro",
+    href: "/servizi/e-tanto-altro",
+    image: "/images/servizi-cover-01-340x487.png",
+    summary: "Progetti speciali, sperimentazioni e idee laterali che allargano il nostro modo di lavorare.",
+  },
+] as const;
 ---
 
 <Layout
@@ -51,76 +79,36 @@ import mainScriptUrl from "../scripts/main.js?url";
       </section>
   
       <!-- Cards servizi -->
-      <section id="servizi" class="section-space section-space--soft">
+      <section id="servizi" class="section-space section-space--soft services-home-cards">
         <div class="container">
           <h2 class="section-title section-title-reveal">
-          <span class="section-title-text">SERVIZI</span>
-          <img class="section-title-sticker" src="/images/cose che sappiamo fare.png" alt="" aria-hidden="true">
-        </h2>
-          <div class="row g-4 justify-content-center">
-            <div class="col-12 col-lg-6 col-xxl-4 service-col">
-              <article class="service-card" style="--service-bg:url('/images/servizi-cover-01-340x487.png');">
-                <h3>Commercials</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>
-              </article>
-            </div>
-            <div class="col-12 col-lg-6 col-xxl-4 service-col">
-              <article class="service-card" style="--service-bg:url('/images/servizi-cover-02-340x487.jpg');">
-                <h3>Post-produzione</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor sed posuere.</p>
-              </article>
-            </div>
-            <div class="col-12 col-lg-6 col-xxl-4 service-col">
-              <article class="service-card" style="--service-bg:url('/images/servizi-cover-03-340x487.jpg');">
-                <h3>Service</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum et fermentum.</p>
-              </article>
-            </div>
+            <span class="section-title-text">SERVIZI</span>
+            <img class="section-title-sticker" src="/images/cose che sappiamo fare.png" alt="" aria-hidden="true">
+          </h2>
+          <div class="row g-4 services-box-grid">
+            {serviceAreas.map((service) => (
+              <div class="col-12 col-md-6 col-lg-3">
+                <a
+                  class="services-box-link d-block text-decoration-none"
+                  href={service.href}
+                  aria-label={`Apri la pagina ${service.title}`}
+                >
+                  <article class="services-box-card" style={`--service-bg:url('${service.image}');`}>
+                    <div class="services-box-card__overlay"></div>
+                    <div class="services-box-card__content">
+                      <h3>{service.title}</h3>
+                      <p>{service.summary}</p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </section>
   
       <!-- Slider Panebarco Originals -->
-      <section id="originals" class="dark-band originals-parallax" style="--originals-bg-image:url('/images/panebarco-originals-bg.jpg');">
-        <div class="originals-sticky">
-          <div class="container originals-stage">
-            <h2 class="visually-hidden">Panebarco Originals</h2>
-            <img class="originals-title-logo" src="/images/panebarco originals logo.png" alt="Panebarco Originals">
-            <div id="originalsCarousel" class="originals-carousel">
-              <div class="originals-layout">
-                <article id="originalFeaturedCard" class="original-featured">
-                  <div class="featured-content">
-                    <h4 id="originalFeaturedTitle"></h4>
-                    <img class="originals-logo-mark" src="/images/panebarco originals logo.png" alt="">
-                    <a id="originalFeaturedBtn" href="/originals/caramelle" class="btn btn-cta btn-cta--blue original-more-btn">Scopri di pi&ugrave;</a>
-                  </div>
-                </article>
-                <article id="originalSideCard1" class="original-side-card">
-                  <div class="side-content">
-                    <h4 id="originalSideTitle1"></h4>
-                    <img class="originals-logo-mark" src="/images/panebarco originals logo.png" alt="">
-                  </div>
-                </article>
-                <article id="originalSideCard2" class="original-side-card">
-                  <div class="side-content">
-                    <h4 id="originalSideTitle2"></h4>
-                    <img class="originals-logo-mark" src="/images/panebarco originals logo.png" alt="">
-                  </div>
-                </article>
-              </div>
-  
-              <div class="originals-nav-bottom">
-                <button id="originalsPrev" class="originals-arrow" type="button" aria-label="Slide precedente">
-                  <i class="bi bi-arrow-left"></i>
-                </button>
-                <button id="originalsNext" class="originals-arrow" type="button" aria-label="Slide successiva">
-                  <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <OriginalsShowcase />
   
       <!-- Griglia portfolio -->
       <section id="portfolio" class="section-space">

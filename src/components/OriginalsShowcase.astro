@@ -1,0 +1,204 @@
+---
+interface OriginalItem {
+  title: string;
+  image: string;
+  link: string;
+}
+
+interface Props {
+  sectionId?: string;
+  sectionClass?: string;
+  containerClass?: string;
+}
+
+const {
+  sectionId = "originals",
+  sectionClass = "dark-band originals-parallax",
+  containerClass = "container originals-stage",
+} = Astro.props;
+
+const originals: OriginalItem[] = [
+  {
+    title: "Caramelle",
+    image: "/images/originals-cover-01-700x395.jpg",
+    link: "/originals/caramelle",
+  },
+  {
+    title: "Marta e la morte",
+    image: "/images/originals-cover-02-270x395.jpg",
+    link: "/originals/caramelle",
+  },
+  {
+    title: "#Nostoppingnora",
+    image: "/images/originals-cover-03-270x395.jpg",
+    link: "/originals/caramelle",
+  },
+];
+
+const [featured, sideOne, sideTwo] = originals;
+---
+
+<section
+  id={sectionId}
+  class={sectionClass}
+  style="--originals-bg-image:url('/images/panebarco-originals-bg.jpg');"
+>
+  <div class="originals-sticky">
+    <div class={containerClass}>
+      <h2 class="visually-hidden">Panebarco Originals</h2>
+      <img class="originals-title-logo" src="/images/panebarco originals logo.png" alt="Panebarco Originals" />
+      <div class="originals-carousel" data-originals-carousel data-originals-items={JSON.stringify(originals)}>
+        <div class="originals-layout">
+          <article
+            class="original-featured"
+            data-originals-featured
+            aria-label={featured.title}
+            style={`background-image:url('${featured.image}');`}
+          >
+            <div class="featured-content">
+              <h4 data-originals-featured-title>{featured.title}</h4>
+              <img class="originals-logo-mark" src="/images/panebarco originals logo.png" alt="" />
+              <a
+                data-originals-featured-link
+                href={featured.link}
+                class="btn btn-cta btn-cta--blue original-more-btn"
+              >
+                Scopri di pi&ugrave;
+              </a>
+            </div>
+          </article>
+
+          <article
+            class="original-side-card"
+            data-originals-side-one
+            aria-label={sideOne.title}
+            style={`background-image:url('${sideOne.image}');`}
+          >
+            <div class="side-content">
+              <h4 data-originals-side-one-title>{sideOne.title}</h4>
+              <img class="originals-logo-mark" src="/images/panebarco originals logo.png" alt="" />
+            </div>
+          </article>
+
+          <article
+            class="original-side-card"
+            data-originals-side-two
+            aria-label={sideTwo.title}
+            style={`background-image:url('${sideTwo.image}');`}
+          >
+            <div class="side-content">
+              <h4 data-originals-side-two-title>{sideTwo.title}</h4>
+              <img class="originals-logo-mark" src="/images/panebarco originals logo.png" alt="" />
+            </div>
+          </article>
+        </div>
+
+        <div class="originals-nav-bottom">
+          <button class="originals-arrow" type="button" aria-label="Slide precedente" data-originals-prev>
+            <i class="bi bi-arrow-left"></i>
+          </button>
+          <button class="originals-arrow" type="button" aria-label="Slide successiva" data-originals-next>
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    function initOriginalsCarousels() {
+      document.querySelectorAll("[data-originals-carousel]").forEach(function (root) {
+        if (root.dataset.bound === "true") return;
+
+        var items;
+        try {
+          items = JSON.parse(root.dataset.originalsItems || "[]");
+        } catch (_error) {
+          items = [];
+        }
+
+        var featuredCard = root.querySelector("[data-originals-featured]");
+        var sideCard1 = root.querySelector("[data-originals-side-one]");
+        var sideCard2 = root.querySelector("[data-originals-side-two]");
+        var featuredTitle = root.querySelector("[data-originals-featured-title]");
+        var sideTitle1 = root.querySelector("[data-originals-side-one-title]");
+        var sideTitle2 = root.querySelector("[data-originals-side-two-title]");
+        var featuredBtn = root.querySelector("[data-originals-featured-link]");
+        var prevBtn = root.querySelector("[data-originals-prev]");
+        var nextBtn = root.querySelector("[data-originals-next]");
+
+        if (
+          !featuredCard ||
+          !sideCard1 ||
+          !sideCard2 ||
+          !featuredTitle ||
+          !sideTitle1 ||
+          !sideTitle2 ||
+          !featuredBtn ||
+          !prevBtn ||
+          !nextBtn ||
+          !Array.isArray(items) ||
+          items.length < 3
+        ) {
+          return;
+        }
+
+        root.dataset.bound = "true";
+
+        var activeIndex = 0;
+
+        function mod(index, length) {
+          return ((index % length) + length) % length;
+        }
+
+        function setCard(cardEl, titleEl, item) {
+          cardEl.style.backgroundImage = "url('" + item.image + "')";
+          cardEl.setAttribute("aria-label", item.title);
+          titleEl.textContent = item.title;
+        }
+
+        function renderOriginals() {
+          [featuredCard, sideCard1, sideCard2].forEach(function (card) {
+            card.classList.add("is-swapping");
+          });
+
+          var featured = items[mod(activeIndex, items.length)];
+          var sideOne = items[mod(activeIndex + 1, items.length)];
+          var sideTwo = items[mod(activeIndex + 2, items.length)];
+
+          setCard(featuredCard, featuredTitle, featured);
+          setCard(sideCard1, sideTitle1, sideOne);
+          setCard(sideCard2, sideTitle2, sideTwo);
+          featuredBtn.setAttribute("href", featured.link || "/originals/caramelle");
+
+          window.requestAnimationFrame(function () {
+            [featuredCard, sideCard1, sideCard2].forEach(function (card) {
+              card.classList.remove("is-swapping");
+            });
+          });
+        }
+
+        prevBtn.addEventListener("click", function () {
+          activeIndex = mod(activeIndex - 1, items.length);
+          renderOriginals();
+        });
+
+        nextBtn.addEventListener("click", function () {
+          activeIndex = mod(activeIndex + 1, items.length);
+          renderOriginals();
+        });
+
+        renderOriginals();
+      });
+    }
+
+    if (!window.__panebarcoOriginalsShowcaseBound) {
+      document.addEventListener("astro:page-load", initOriginalsCarousels);
+      window.__panebarcoOriginalsShowcaseBound = true;
+    }
+
+    initOriginalsCarousels();
+  })();
+</script>

@@ -4,9 +4,9 @@ FATTE
 - Commercials
 - il dettaglio Originals
 - il dettaglio Portfolio
+- Servizi
 
 Da sviluppare
-- Servizi
 - Portfolio
 - Originals
 - Paneblog
